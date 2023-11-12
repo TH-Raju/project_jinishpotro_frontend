@@ -4,6 +4,7 @@ import Home from "../Pages/Home";
 import RangeSelector from "../Pages/UsesComponents";
 import User from "../Pages/User";
 import Login from "../Pages/Authentication/Login";
+import Signup from "../Pages/Authentication/Signup";
 
 export const router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ export const router = createBrowserRouter([
       {
         path: "/login",
         element: <Login />,
+      },
+      {
+        path: "/signup",
+        element: <Signup />,
       },
     ],
   },

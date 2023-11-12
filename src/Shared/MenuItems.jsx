@@ -23,5 +23,10 @@ export const menuItems = (
         <p>Login</p>
       </Link>
     </li>
+    <li>
+      <Link to="/signup">
+        <p>Sign up</p>
+      </Link>
+    </li>
   </>
 );
