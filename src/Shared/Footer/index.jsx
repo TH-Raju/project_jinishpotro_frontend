@@ -123,7 +123,7 @@ const Footer = () => {
               </div>
               <ul
                 tabIndex={0}
-                className="dropdown-content -ml-28 z-[1] menu p-2 shadow bg-base-100 rounded-box w-40"
+                className="dropdown-content -ml-28  z-[1] menu p-2 shadow bg-base-100 rounded-box w-40"
               >
                 {/* <Link to={`/profile`}>
                 <li className=" mb-2">
