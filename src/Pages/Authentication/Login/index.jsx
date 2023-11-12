@@ -23,34 +23,33 @@ const Login = () => {
   const onSubmit = async (data) => {
     console.log(data);
     // setLoading(true);
-    // fetch("https://task-manage-9e14yw343-th-raju.vercel.app/api/v1/login", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify(data),
-    // })
-    //   .then((res) => res.json())
-    //   .then((data) => {
-    //     // console.log(data);
-    //     if (data.success) {
-    //       // console.log(data);
-    //       toast.success("Log in Successful.");
-    //       cookies.set("email", data?.data.email, { path: "/" });
-    //       setUserId(data?.data._id);
-    //       cookies.set("name", data?.data.name, { path: "/" });
-    //       cookies.set("role", data?.data.role, { path: "/" });
-    //       cookies.set("id", data?.data._id, { path: "/" });
-    //       localStorage.setItem(
-    //         "accessToken",
-    //         `bearer ${data?.data.accessToken}`
-    //       );
-    //       reset();
-    //       navigate("/");
-    //     } else {
-    //       toast.error("Login Failed");
-    //     }
-    //   });
+    fetch("http://localhost:5000/api/v1/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.success) {
+          // console.log(data);
+          toast.success("Log in Successful.");
+          cookies.set("email", data?.data.email, { path: "/" });
+          cookies.set("name", data?.data.name, { path: "/" });
+          cookies.set("role", data?.data.role, { path: "/" });
+          cookies.set("id", data?.data._id, { path: "/" });
+          localStorage.setItem(
+            "accessToken",
+            `bearer ${data?.data.accessToken}`
+          );
+          reset();
+          navigate("/");
+        } else {
+          toast.error("Login Failed");
+        }
+      });
   };
   return (
     <section className="relative flex items-center justify-center   ">

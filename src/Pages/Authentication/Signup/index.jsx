@@ -44,40 +44,41 @@ const Signup = () => {
         .then((imgData) => {
           if (imgData.success) {
             data.photo = imgData?.data.url;
-            console.log(data);
+            // console.log(data);
+            fetch("http://localhost:5000/api/v1/signup", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(data),
+            })
+              .then((res) => res.json())
+              .then((data) => {
+                if (data.success) {
+                  console.log(data);
+                  toast.success("Account create Successful.");
+                  //   console.log(data?.data.email);
+                  cookies.set("email", data?.data.email, { path: "/" });
+                  cookies.set("name", data?.data.name, { path: "/" });
+                  cookies.set("role", data?.data.role, { path: "/" });
+                  cookies.set("id", data?.data._id, { path: "/" });
+                  localStorage.setItem("photo", data?.data.photo);
+                  localStorage.setItem(
+                    "accessToken",
+                    `bearer ${data?.data.accessToken}`
+                  );
+                  reset();
+                  //   setLoading(false);
+                  navigate("/");
+                } else {
+                  //   setLoading(false);
+                  toast.error("Failed to Create Account");
+                  setErrorMsg(data.message);
+                }
+              });
           }
         });
     }
-    // fetch("https://task-manage-9e14yw343-th-raju.vercel.app/api/v1/signup", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify(data),
-    // })
-    //   .then((res) => res.json())
-    //   .then((data) => {
-    //     // console.log(data);
-    //     if (data.success) {
-    //       toast.success("Account create Successful.");
-    //       //   console.log(data?.data.email);
-    //       cookies.set("email", data?.data.email, { path: "/" });
-    //       cookies.set("name", data?.data.name, { path: "/" });
-    //       cookies.set("role", data?.data.role, { path: "/" });
-    //       // localStorage.setItem("photo", data?.data.photo);
-    //       localStorage.setItem(
-    //         "accessToken",
-    //         `bearer ${data?.data.accessToken}`
-    //       );
-    //       reset();
-    //       //   setLoading(false);
-    //       navigate("/");
-    //     } else {
-    //       //   setLoading(false);
-    //       toast.error("Failed to Create Account");
-    //       setErrorMsg(data.message);
-    //     }
-    //   });
   };
   return (
     <section className="relative  flex justify-center items-center">

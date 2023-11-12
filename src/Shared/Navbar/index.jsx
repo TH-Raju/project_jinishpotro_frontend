@@ -1,11 +1,66 @@
 import { useContext } from "react";
 import { ContextData } from "../../Context";
 import { SunIcon } from "@heroicons/react/24/solid";
-import { menuItems } from "../MenuItems";
+import { Link, useNavigate } from "react-router-dom";
+import Cookies from "universal-cookie";
 
 const Navbar = () => {
   const { siteName, theme, setTheme } = useContext(ContextData);
-
+  const cookies = new Cookies();
+  const userEmail = cookies.get("email");
+  const navigate = useNavigate();
+  
+  
+  const handleLogout = async () => {
+    cookies.remove("email", { path: "/" });
+    cookies.remove("name", { path: "/" });
+    cookies.remove("role", { path: "/" });
+    cookies.remove("id", { path: "/" });
+    localStorage.clear();
+    navigate("/login")
+  };
+ const menuItems = (
+    <>
+      <li>
+        <Link to="/">
+          <p>Home</p>
+        </Link>
+      </li>
+      <li>
+        <Link to="/range">
+          <p>Range</p>
+        </Link>
+      </li>
+      <li>
+        <Link to="/wishlist">
+          <p>User</p>
+        </Link>
+      </li>
+      {
+        userEmail ? <> <li className="">
+        <button
+          onClick={() => handleLogout()}
+          className="hover:bg-red-700 hover:text-white bg-red-500  my-2 md:my-0  rounded-lg duration-100"
+        >
+          <span>Log out</span>
+        </button>
+      </li></> 
+        :
+         <>
+         <li>
+        <Link to="/login">
+          <p>Login</p>
+        </Link>
+      </li>
+      <li>
+        <Link to="/signup">
+          <p>Sign up</p>
+        </Link>
+      </li>
+         </>
+      }
+    </>
+  );
   return (
     <div className="lg:block hidden ">
       <div className="navbar fixed top-0 z-40 bg-gray-400">
