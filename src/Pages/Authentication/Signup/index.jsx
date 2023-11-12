@@ -14,6 +14,7 @@ const Signup = () => {
   const [visible, setVisible] = useState(false);
   const cookies = new Cookies();
   const navigate = useNavigate();
+  let imgbbAPIKey = "cedfa53cc1e836179f47e98c08ae1930";
 
   let dataType = "";
   if (visible) {
@@ -25,11 +26,27 @@ const Signup = () => {
     // console.log(data.password);
     let pass = data.password;
     let repass = data.rePassword;
-    if (pass === repass) {
-      console.log(data);
-    } else {
+    if (pass !== repass) {
       toast.error("Password Not Matched!!");
-      return false
+      return false;
+    } else {
+      //   console.log(data);
+      const img = data.photo[0];
+      const formData = new FormData();
+      formData.append("image", img);
+
+      const url = `https://api.imgbb.com/1/upload?key=${imgbbAPIKey}`;
+      fetch(url, {
+        method: "POST",
+        body: formData,
+      })
+        .then((res) => res.json())
+        .then((imgData) => {
+          if (imgData.success) {
+            data.photo = imgData?.data.url;
+            console.log(data);
+          }
+        });
     }
     // fetch("https://task-manage-9e14yw343-th-raju.vercel.app/api/v1/signup", {
     //   method: "POST",
@@ -85,6 +102,39 @@ const Signup = () => {
                 theme ? "text-black" : "text-white"
               } my-2 font-bold`}
             >
+              As a <span className="text-red-600">*</span>
+            </label>
+            <div className="relative border border-black p-2 rounded-full">
+              <div className="flex justify-around">
+                <label className="flex items-center">
+                  <input
+                    type="radio"
+                    {...register("role")}
+                    value="buyer"
+                    className="radio "
+                    defaultChecked
+                  />
+                  <span className="ml-2">Buyer</span>
+                </label>
+
+                <label className="flex items-center">
+                  <input
+                    type="radio"
+                    {...register("role")}
+                    value="seller"
+                    className="radio"
+                  />
+                  <span className="ml-2">Seller</span>
+                </label>
+              </div>
+            </div>
+          </div>
+          <div>
+            <label
+              className={`block ${
+                theme ? "text-black" : "text-white"
+              } my-2 font-bold`}
+            >
               Name <span className="text-red-600">*</span>
             </label>
             <div className="relative">
@@ -92,6 +142,23 @@ const Signup = () => {
                 type="text"
                 placeholder="Enter Your Name"
                 {...register("name", { required: true })}
+                className="w-full border  px-4 py-3 rounded-md border-gray-700 bg-white text-black focus:dark:border-violet-400"
+              />
+            </div>
+          </div>
+          <div>
+            <label
+              className={`block ${
+                theme ? "text-black" : "text-white"
+              } my-2 font-bold`}
+            >
+              Phone <span className="text-red-600">*</span>
+            </label>
+            <div className="relative">
+              <input
+                type="text"
+                placeholder="Enter Your Phone Number"
+                {...register("phone", { required: true })}
                 className="w-full border  px-4 py-3 rounded-md border-gray-700 bg-white text-black focus:dark:border-violet-400"
               />
             </div>
