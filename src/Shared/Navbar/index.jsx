@@ -3,23 +3,24 @@ import { ContextData } from "../../Context";
 import { SunIcon } from "@heroicons/react/24/solid";
 import { Link, useNavigate } from "react-router-dom";
 import Cookies from "universal-cookie";
+import defaultPic from "../../assets/default.png";
 
 const Navbar = () => {
   const { siteName, theme, setTheme } = useContext(ContextData);
   const cookies = new Cookies();
   const userEmail = cookies.get("email");
+  const photo = localStorage.getItem("photo");
   const navigate = useNavigate();
-  
-  
+
   const handleLogout = async () => {
     cookies.remove("email", { path: "/" });
     cookies.remove("name", { path: "/" });
     cookies.remove("role", { path: "/" });
     cookies.remove("id", { path: "/" });
     localStorage.clear();
-    navigate("/login")
+    navigate("/login");
   };
- const menuItems = (
+  const menuItems = (
     <>
       <li>
         <Link to="/">
@@ -36,29 +37,22 @@ const Navbar = () => {
           <p>User</p>
         </Link>
       </li>
-      {
-        userEmail ? <> <li className="">
-        <button
-          onClick={() => handleLogout()}
-          className="hover:bg-red-700 hover:text-white bg-red-500  my-2 md:my-0  rounded-lg duration-100"
-        >
-          <span>Log out</span>
-        </button>
-      </li></> 
-        :
-         <>
-         <li>
-        <Link to="/login">
-          <p>Login</p>
-        </Link>
-      </li>
-      <li>
-        <Link to="/signup">
-          <p>Sign up</p>
-        </Link>
-      </li>
-         </>
-      }
+      {userEmail ? (
+        <></>
+      ) : (
+        <>
+          <li>
+            <Link to="/login">
+              <p>Login</p>
+            </Link>
+          </li>
+          <li>
+            <Link to="/signup">
+              <p>Sign up</p>
+            </Link>
+          </li>
+        </>
+      )}
     </>
   );
   return (
@@ -96,7 +90,7 @@ const Navbar = () => {
             {menuItems}
           </ul>
         </div>
-        <div className="navbar-end">
+        <div className="navbar-end flex items-center gap-3">
           <div
             className={`btn btn-sm  ${
               theme
@@ -119,6 +113,38 @@ const Navbar = () => {
               </p>
             )}
           </div>
+          {userEmail && (
+            <div className="dropdown dropdown-hover  dropdown-end hidden lg:block ">
+              <div className="avatar online mt-1">
+                <div className="w-10 rounded-full">
+                  <img
+                    src={photo ? photo : defaultPic}
+                    className="object-cover"
+                  />
+                </div>
+              </div>
+              <ul
+                tabIndex={0}
+                className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-40"
+              >
+                {/* <Link to={`/profile`}>
+                <li className=" mb-2">
+                  <button className="hover:bg-primary hover:text-white my-2 bg-sky-500  rounded-lg duration-100">
+                    Profile
+                  </button>
+                </li>
+              </Link> */}
+                <li className="">
+                  <button
+                    onClick={() => handleLogout()}
+                    className="hover:bg-red-700 hover:text-white bg-red-500    rounded-lg duration-100"
+                  >
+                    <span>Log out</span>
+                  </button>
+                </li>
+              </ul>
+            </div>
+          )}
         </div>
       </div>
     </div>
