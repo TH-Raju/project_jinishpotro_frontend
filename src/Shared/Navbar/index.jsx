@@ -134,6 +134,14 @@ const Navbar = () => {
                   </button>
                 </li>
               </Link> */}
+                <Link to={`/dashboard`}>
+                  <li className=" mb-2">
+                    <button className="hover:bg-primary hover:text-white my-2 bg-sky-500  rounded-lg duration-100">
+                      Dashboard
+                    </button>
+                  </li>
+                </Link>
+
                 <li className="">
                   <button
                     onClick={() => handleLogout()}

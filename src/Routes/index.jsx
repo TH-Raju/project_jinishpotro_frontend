@@ -5,6 +5,8 @@ import RangeSelector from "../Pages/UsesComponents";
 import User from "../Pages/User";
 import Login from "../Pages/Authentication/Login";
 import Signup from "../Pages/Authentication/Signup";
+import DashboardLayout from "../Layout/DashboardLayout";
+import AddCategoriy from "../Pages/Dashboard/AddCategoriy";
 
 export const router = createBrowserRouter([
   {
@@ -30,6 +32,20 @@ export const router = createBrowserRouter([
       {
         path: "/signup",
         element: <Signup />,
+      },
+      {
+        path: "/dashboard",
+        element: <DashboardLayout />,
+        children: [
+          {
+            path: "/dashboard",
+            element: <AddCategoriy />,
+          },
+          {
+            path: "/dashboard/addCategoriy",
+            element: <AddCategoriy />,
+          },
+        ],
       },
     ],
   },
