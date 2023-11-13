@@ -22,7 +22,9 @@ const DashboardLayout = () => {
         <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
           {/* Sidebar content here */}
           <Link to={`/dashboard/addCategoriy`}>
-            <li className=" mb-2">add</li>
+            <li className="btn btn-outline btn-sm w-full btn-info mb-2">
+              Add Categoriy
+            </li>
           </Link>
           <li>
             <a>Sidebar Item 2</a>

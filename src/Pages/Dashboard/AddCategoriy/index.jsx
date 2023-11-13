@@ -59,7 +59,7 @@ const AddCategoriy = () => {
       {loading && <Loading />}
       <div className="w-5/6 mx-auto p-7">
         <h2 className="text-3xl md:text-5xl font-bold mb-10">
-          Add New Categoriy
+          Add New <span className="text-rose-700">Categoriy</span>
         </h2>
         <form
           onSubmit={handleSubmit(handleAddCategoriy)}
@@ -146,7 +146,7 @@ const AddCategoriy = () => {
           <div className=" text-center mt-8 md:col-span-2">
             <input
               className="btn btn-accent mt-4 font-bold md:w-96"
-              value="Add Item"
+              value="Add Categoriy"
               type="submit"
             />
           </div>
