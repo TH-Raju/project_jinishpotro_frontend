@@ -1,12 +1,13 @@
-import { useState } from "react";
+import { useContext } from "react";
+import { ContextData } from "../Context";
 
 const Range = () => {
-  const [count, setCount] = useState(0);
+  const { count, setCount } = useContext(ContextData);
 
   return (
     <div>
-      Count
-      <div className="w-[20%] bg-gray-400 px-4 rounded-full py-3">
+      <h1 className="font-bold ml-2 my-2">Price Range</h1>
+      <div className="rounded-full py-3 border px-3">
         <input
           type="range"
           min={0}
@@ -16,7 +17,6 @@ const Range = () => {
           onChange={(e) => setCount(Number(e.target.value))}
         />
       </div>
-      <p>{count}</p>
     </div>
   );
 };
