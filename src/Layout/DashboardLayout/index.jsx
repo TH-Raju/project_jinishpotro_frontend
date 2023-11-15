@@ -26,6 +26,11 @@ const DashboardLayout = () => {
               Add Categoriy
             </li>
           </Link>
+          <Link to={`/dashboard/addProduct`}>
+            <li className="btn btn-outline btn-sm w-full btn-info mb-2">
+              Add Product
+            </li>
+          </Link>
           <li>
             <a>Sidebar Item 2</a>
           </li>
