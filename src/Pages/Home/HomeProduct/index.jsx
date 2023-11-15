@@ -31,10 +31,10 @@ const HomeProducts = () => {
         </p>
       </div>
       <div>
-        <h1>Products {categories.length}</h1>
+        {/* <h1>Products {categories.length}</h1> */}
 
         <div>
-          {categories.map((categorie) => (
+          {categories?.map((categorie) => (
             <Categoriy key={categorie._id} categoriy={categorie} />
           ))}
         </div>
