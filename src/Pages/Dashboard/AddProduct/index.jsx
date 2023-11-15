@@ -69,7 +69,7 @@ const AddProduct = () => {
       return data.data;
     },
   });
-  console.log(categories);
+  //   console.log(categories);
 
   return (
     <div>
