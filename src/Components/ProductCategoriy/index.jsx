@@ -7,7 +7,7 @@ import { useContext } from "react";
 import { ContextData } from "../../Context";
 
 const ProductCategoriy = ({ categoriy }) => {
-  const { name, title, products } = categoriy;
+  const { name, title, products, _id } = categoriy;
   const { theme } = useContext(ContextData);
   let arr = [];
 
@@ -19,7 +19,9 @@ const ProductCategoriy = ({ categoriy }) => {
       </h1>
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 my-5 gap-6 ">
         {products?.map((product) => (
-          <ProductCard key={product._id} products={product} />
+          <Link key={product._id} to={`/categoriy/${_id}/${product._id}`}>
+            <ProductCard products={product} />
+          </Link>
         ))}
       </div>
     </div>

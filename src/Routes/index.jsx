@@ -10,6 +10,7 @@ import AddCategoriy from "../Pages/Dashboard/AddCategoriy";
 import ProductsPageLayout from "../Layout/ProductsPageLayout";
 import Products from "../Pages/Products";
 import AddProduct from "../Pages/Dashboard/AddProduct";
+import CategoriesProduct from "../Pages/CategoryProducts";
 
 export const router = createBrowserRouter([
   {
@@ -45,6 +46,14 @@ export const router = createBrowserRouter([
             element: <Products />,
           },
         ],
+      },
+      {
+        path: "/categoriy/:categoryId/:productId",
+        loader: ({ params }) =>
+          fetch(
+            `http://localhost:5000/api/v1/categoriy/${params.categoryId}/product/${params.productId}`
+          ),
+        element: <CategoriesProduct />,
       },
       {
         path: "/dashboard",

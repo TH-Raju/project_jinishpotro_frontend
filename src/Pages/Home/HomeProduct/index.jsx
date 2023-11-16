@@ -35,7 +35,11 @@ const HomeProducts = () => {
 
         <div>
           {categories?.map((categorie) => (
-            <Categoriy key={categorie._id} categoriy={categorie} />
+            <Categoriy
+              key={categorie._id}
+              categoriy={categorie}
+              categoryId={categorie._id}
+            />
           ))}
         </div>
       </div>

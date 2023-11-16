@@ -10,8 +10,6 @@ const ProductCard = ({ products }) => {
   const { name, price, detail, photo } = products;
   const { theme } = useContext(ContextData);
 
-
-
   return (
     <div>
       <div className="card card-compact text-black w-52 bg-base-100 shadow-xl border border-blue-200 p-2">
