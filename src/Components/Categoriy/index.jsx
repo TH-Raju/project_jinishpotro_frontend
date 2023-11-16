@@ -8,7 +8,7 @@ import { ContextData } from "../../Context";
 
 const Categoriy = ({ categoriy }) => {
   const { name, title, products, _id, categoryId } = categoriy;
-  console.log(categoriy);
+  // console.log(categoriy._id);
   const { theme } = useContext(ContextData);
   let arr = [];
 
@@ -24,7 +24,10 @@ const Categoriy = ({ categoriy }) => {
             <ProductCard products={product} />
           </Link>
         ))}
-        <Link className="card card-compact w-52 bg-base-100 shadow-xl border border-blue-200 p-2 flex justify-center items-center text-black">
+        <Link
+          to={`/categoriy/${categoriy._id}`}
+          className="card card-compact w-52 bg-base-100 shadow-xl border border-blue-200 p-2 flex justify-center items-center text-black"
+        >
           <h2 className="card-title text-5xl">+</h2>
           <h2 className="card-title text-2xl opacity-20">See More Items</h2>
         </Link>

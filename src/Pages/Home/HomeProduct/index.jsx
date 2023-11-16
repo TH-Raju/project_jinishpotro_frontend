@@ -6,6 +6,7 @@ import Categoriy from "../../../Components/Categoriy";
 /* eslint-disable react/no-unescaped-entities */
 const HomeProducts = () => {
   const { siteName } = useContext(ContextData);
+
   const { data: categories } = useQuery({
     queryKey: ["categoriy"],
     queryFn: async () => {
