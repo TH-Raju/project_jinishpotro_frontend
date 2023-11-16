@@ -3,6 +3,7 @@ import { Link, Outlet } from "react-router-dom";
 import Range from "../../Components/Range";
 import { useContext } from "react";
 import { ContextData } from "../../Context";
+import { useQuery } from "@tanstack/react-query";
 
 const ProductsPageLayout = () => {
   const { selectedOptions, setSelectedOptions } = useContext(ContextData);
@@ -21,8 +22,20 @@ const ProductsPageLayout = () => {
     }
   };
 
-  const options = ["Option 1", "Option 2", "Option 3", "Option 4"];
+  // const options = ["Option 1", "Option 2", "Option 3", "Option 4"];
 
+  const { data: categories } = useQuery({
+    queryKey: ["product"],
+    queryFn: async () => {
+      const res = await fetch("http://localhost:5000/api/v1/categoriy");
+      const data = await res.json();
+      return data.data;
+    },
+  });
+
+  let options = categories?.map((categorie) => categorie.name);
+  // console.log(options);
+  // console.log("options");
   return (
     <div className="drawer lg:drawer-open lg:mt-16">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -50,7 +63,7 @@ const ProductsPageLayout = () => {
 
           <Range />
           <div>
-            {options.map((option) => (
+            {options?.map((option) => (
               <div key={option} className="flex items-center">
                 <input
                   type="checkbox"
@@ -78,7 +91,7 @@ const ProductsPageLayout = () => {
                       />
                     </svg>
 
-                    <p className="text-gray-700">{option}</p>
+                    <p className="text-gray-700">{option} </p>
                   </div>
                 </label>
               </div>
