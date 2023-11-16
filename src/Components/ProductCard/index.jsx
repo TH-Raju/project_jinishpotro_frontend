@@ -1,11 +1,16 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
+
+import { useContext } from "react";
+import { ContextData } from "../../Context";
+
 // eslint-disable-next-line react/prop-types
 const ProductCard = ({ products }) => {
   const { name, price, detail, photo } = products;
+  const { theme } = useContext(ContextData);
   return (
     <div>
-      <div className="card card-compact w-52 bg-base-100 shadow-xl border border-blue-200 p-2">
+      <div className="card card-compact text-black w-52 bg-base-100 shadow-xl border border-blue-200 p-2">
         <figure>
           <img src={photo} alt="Shoes" className="h-20" />
         </figure>

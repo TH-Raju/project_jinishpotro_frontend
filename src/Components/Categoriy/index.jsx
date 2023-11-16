@@ -3,9 +3,12 @@
 
 import { Link } from "react-router-dom";
 import ProductCard from "../ProductCard";
+import { useContext } from "react";
+import { ContextData } from "../../Context";
 
 const Categoriy = ({ categoriy }) => {
   const { name, title, products } = categoriy;
+  const { theme } = useContext(ContextData);
   return (
     <div className="w-[80%] mx-auto my-20">
       <h1 className="text-2xl sm:text-2xl font-extrabold mb-5">
@@ -19,7 +22,7 @@ const Categoriy = ({ categoriy }) => {
             {product.name}
           </ProductCard>
         ))}
-        <Link className="card card-compact w-52 bg-base-100 shadow-xl border border-blue-200 p-2 flex justify-center items-center">
+        <Link className="card card-compact w-52 bg-base-100 shadow-xl border border-blue-200 p-2 flex justify-center items-center text-black">
           <h2 className="card-title text-5xl">+</h2>
           <h2 className="card-title text-2xl opacity-20">See More Items</h2>
         </Link>
