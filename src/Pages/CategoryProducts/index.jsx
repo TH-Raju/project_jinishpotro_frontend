@@ -77,7 +77,7 @@ const CategoriesProduct = () => {
           ))}
         </div>
       </div>
-        <div>Review</div>
+      <div>Review</div>
     </div>
   );
 };
