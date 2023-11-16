@@ -3,10 +3,18 @@
 import { useContext } from "react";
 import { ContextData } from "../../Context";
 import { useQuery } from "@tanstack/react-query";
-import Categoriy from "../../Components/Categoriy";
+import ProductCategoriy from "../../Components/ProductCategoriy";
 
 const Products = () => {
-  const { count, selectedOptions, siteName } = useContext(ContextData);
+  const {
+    count,
+    setCount,
+    maxCount,
+    setMinCount,
+    setMaxCount,
+    selectedOptions,
+    siteName,
+  } = useContext(ContextData);
   const { data: categories } = useQuery({
     queryKey: ["categoriesProduct"],
     queryFn: async () => {
@@ -15,6 +23,29 @@ const Products = () => {
       return data.data;
     },
   });
+  // Initialize max and min variables
+  let maxPrice = -Infinity;
+  let minPrice = Infinity;
+  categories?.forEach((category) => {
+    category.products.forEach((product) => {
+      const price = product.price;
+
+      // Update max and min values
+      if (price > maxPrice) {
+        maxPrice = price;
+      }
+
+      if (price < minPrice) {
+        minPrice = price;
+      }
+    });
+  });
+
+  // console.log(maxPrice);
+  // console.log(minPrice);
+  setMaxCount(maxPrice);
+  setMinCount(minPrice);
+  // setCount(minPrice);
 
   let categorieData = categories?.map((categorie) => categorie.name);
   // console.log(categorieData);
@@ -25,16 +56,42 @@ const Products = () => {
   );
   // console.log(filteredData);
 
+  // Filter the data based on the price range
+  const filteredPriceData = categories?.reduce((result, category) => {
+    const filteredProducts = category.products.filter((product) => {
+      const price = product.price;
+      // console.log("price", price);
+      // console.log("min", minPrice);
+      // console.log("max", maxPrice);
+      // console.log("count", count);
+
+      // return price >= minPrice && price <= maxPrice;
+      return price <= count;
+    });
+
+    if (filteredProducts.length > 0) {
+      result.push({
+        ...category,
+        products: filteredProducts,
+      });
+    }
+
+    return result;
+  }, []);
+
+  // Display the filtered data
+  console.log(filteredPriceData);
+
   return (
     <div>
-      Products from {count}
+      {/* Products from {count}
       <div>
         <strong>Selected Options:</strong> {selectedOptions.join(", ")}
-      </div>
+      </div> */}
       <div>
         <div className="text-center">
           <h1 className="text-3xl sm:text-5xl font-extrabold my-4">
-            Product <span className="text-rose-700 ">Categories</span>
+            {siteName} <span className="text-rose-700 ">Products</span>
           </h1>
           <p className="w-[80%] lg:w-[60%] mx-auto">
             "Discover endless possibilities at{" "}
@@ -48,16 +105,19 @@ const Products = () => {
           {/* <h1>Products {categories.length}</h1> */}
 
           <div>
-            {filteredData.length > 0 ? (
+            {filteredData?.length > 0 || filteredPriceData?.length > 0 ? (
               <>
                 {filteredData?.map((categorie) => (
-                  <Categoriy key={categorie._id} categoriy={categorie} />
+                  <ProductCategoriy key={categorie._id} categoriy={categorie} />
+                ))}
+                {filteredPriceData?.map((categorie) => (
+                  <ProductCategoriy key={categorie._id} categoriy={categorie} />
                 ))}
               </>
             ) : (
               <>
                 {categories?.map((categorie) => (
-                  <Categoriy key={categorie._id} categoriy={categorie} />
+                  <ProductCategoriy key={categorie._id} categoriy={categorie} />
                 ))}
               </>
             )}

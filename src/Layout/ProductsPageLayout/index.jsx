@@ -1,5 +1,5 @@
 import { Bars3BottomLeftIcon } from "@heroicons/react/24/solid";
-import { Link, Outlet } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import Range from "../../Components/Range";
 import { useContext } from "react";
 import { ContextData } from "../../Context";
@@ -55,11 +55,6 @@ const ProductsPageLayout = () => {
         ></label>
         <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
           {/* Sidebar content here */}
-          <Link to={`/dashboard/addCategoriy`}>
-            <li className="btn btn-outline btn-sm w-full btn-info mb-2">
-              Add Categoriy
-            </li>
-          </Link>
 
           <Range />
           <div>

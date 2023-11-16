@@ -35,16 +35,6 @@ const Footer = () => {
           <p>Products</p>
         </Link>
       </li>
-      <li>
-        <Link to="/range">
-          <p>Range</p>
-        </Link>
-      </li>
-      <li>
-        <Link to="/wishlist">
-          <p>User</p>
-        </Link>
-      </li>
       {userEmail ? (
         <></>
       ) : (

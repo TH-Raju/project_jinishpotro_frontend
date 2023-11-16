@@ -1,8 +1,9 @@
+/* eslint-disable no-unused-vars */
 import { useContext } from "react";
 import { ContextData } from "../Context";
 
 const Range = () => {
-  const { count, setCount } = useContext(ContextData);
+  const { count, setCount, maxCount, minCount } = useContext(ContextData);
 
   return (
     <div>
@@ -10,12 +11,13 @@ const Range = () => {
       <div className="rounded-full py-3 border px-3">
         <input
           type="range"
-          min={0}
-          max="100"
+          min={minCount}
+          max={maxCount}
           value={count}
           className="range range-success"
           onChange={(e) => setCount(Number(e.target.value))}
         />
+        <h1>Price Range: {count}</h1>
       </div>
     </div>
   );
