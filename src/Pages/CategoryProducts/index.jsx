@@ -24,7 +24,7 @@ const CategoriesProduct = () => {
     },
   });
 
-  console.log(categories);
+  // console.log(categories);
   return (
     <div>
       <div className=" lg:w-[60%] mx-auto bg-base-100 shadow-xl lg:p-10 flex justify-around mt-8 py-10 my-10">
@@ -58,7 +58,7 @@ const CategoriesProduct = () => {
         <p>Product ID: {productId}</p> */}
         <div className="text-center">
           <h1 className="text-3xl sm:text-5xl font-extrabold my-4">
-            {categories.name}
+            {categories ? categories.name : "Loading..."}
             <span className="text-rose-700 "> Products</span>
           </h1>
         </div>
