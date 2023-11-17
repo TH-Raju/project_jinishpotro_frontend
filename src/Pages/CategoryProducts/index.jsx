@@ -7,10 +7,12 @@ import ProductCategoriy from "../../Components/ProductCategoriy";
 import ProductCard from "../../Components/ProductCard";
 import { useContext } from "react";
 import { ContextData } from "../../Context";
+import Reviews from "../../Components/Review";
 
 const CategoriesProduct = () => {
   const data = useLoaderData();
-  const { name, photo, detail, price, sellerName } = data.data;
+  // console.log(data.data.review);
+  const { name, photo, detail, price, sellerName, review } = data.data;
   const { categoryId, productId } = useParams();
   const { siteName } = useContext(ContextData);
   const { data: categories } = useQuery({
@@ -77,7 +79,7 @@ const CategoriesProduct = () => {
           ))}
         </div>
       </div>
-      <div>Review</div>
+      <Reviews review={review} />
     </div>
   );
 };
