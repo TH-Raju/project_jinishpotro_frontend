@@ -18,7 +18,7 @@ const WishList = () => {
     localStorage.setItem("wishlist", JSON.stringify(wishlist));
   }
 
-  function removeFromWishlist(productId) {
+  function removeFromWishlist(productId, cId) {
     wishlist = wishlist.filter((item) => item.pId !== productId);
     // Update totalData
     updateTotalData();
@@ -26,7 +26,7 @@ const WishList = () => {
 
     // Save wishlist to localStorage
     saveWishlistToLocalStorage();
-    navigate("/");
+    navigate(`/categoriy/${cId}/${productId}`);
     console.log("Product removed from wishlist.");
   }
 
@@ -56,7 +56,7 @@ const WishList = () => {
               <button className="btn btn-sm btn-primary">ok</button>
               <button
                 className="btn btn-sm btn-warning ml-1"
-                onClick={() => removeFromWishlist(wish.pId)}
+                onClick={() => removeFromWishlist(wish.pId, wish.cId)}
               >
                 No
               </button>

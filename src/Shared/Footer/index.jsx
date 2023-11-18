@@ -71,7 +71,7 @@ const Footer = () => {
     </>
   );
   return (
-    <div className="lg:hidden">
+    <div className="lg:hidden text-black">
       <div className={`navbar bg-gray-400 bottom-0 fixed lg:hidden pb-5`}>
         <div className="navbar-start">
           <div className="dropdown">
@@ -98,32 +98,9 @@ const Footer = () => {
               {menuItems}
             </ul>
           </div>
-          <a className="btn btn-ghost normal-case text-xl ">{siteName}</a>
+          <a className="btn btn-ghost normal-case text-xl -ml-6">{siteName}</a>
         </div>
         <div className="navbar-end flex items-center gap-3">
-          <div
-            className={`btn btn-sm  ${
-              theme
-                ? "bg-black text-white hover:bg-gray-800 duration-200"
-                : "bg-white hover:bg-gray-400 duration-200 hover:text-white"
-            }`}
-            onClick={() => setTheme(!theme)}
-          >
-            {theme ? (
-              <p className="flex justify-center items-center ">
-                {" "}
-                <SunIcon className="h-6 w-6 text-blue-500" />
-                <p>Dark</p>
-              </p>
-            ) : (
-              <p className="flex justify-center items-center ">
-                {" "}
-                <SunIcon className="h-6 w-6 text-blue-500" />
-                <p>Light</p>
-              </p>
-            )}
-          </div>
-
           <div>
             <div className="drawer drawer-end z-40 ">
               <input
@@ -148,15 +125,17 @@ const Footer = () => {
           </div>
 
           {userEmail && (
-            <div className="dropdown dropdown-hover  dropdown-top ">
-              <div className="avatar online mt-1">
-                <div className="w-10 rounded-full">
-                  <img
-                    src={photo ? photo : defaultPic}
-                    className="object-cover"
-                  />
+            <div className="dropdown dropdown-top dropdown-end">
+              <label tabIndex={0} className=" m-1">
+                <div className="avatar online mt-1">
+                  <div className="w-10 rounded-full">
+                    <img
+                      src={photo ? photo : defaultPic}
+                      className="object-cover"
+                    />
+                  </div>
                 </div>
-              </div>
+              </label>
               <ul
                 tabIndex={0}
                 className="dropdown-content -ml-28  z-[1] menu p-2 shadow bg-base-100 rounded-box w-40"
@@ -175,7 +154,36 @@ const Footer = () => {
                     </button>
                   </li>
                 </Link>
-                <li className="">
+
+                <li className="mb-2">
+                  <div
+                    className={`border border-red-500 w-full ${
+                      theme
+                        ? "bg-black text-white hover:bg-gray-800 duration-200 hover:text-white"
+                        : "bg-white hover:bg-gray-400 duration-200 "
+                    }`}
+                    onClick={() => setTheme(!theme)}
+                  >
+                    <div>
+                      <div>
+                        {theme ? (
+                          <p className="flex justify-center items-center ">
+                            {" "}
+                            <SunIcon className="h-6 w-6 text-blue-500" />
+                            <span>Dark</span>
+                          </p>
+                        ) : (
+                          <p className="flex justify-center items-center ">
+                            {" "}
+                            <SunIcon className="h-6 w-6 text-blue-500" />
+                            <span>Light</span>
+                          </p>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li className="mb-2">
                   <button
                     onClick={() => handleLogout()}
                     className="hover:bg-red-700 hover:text-white bg-red-500    rounded-lg duration-100"

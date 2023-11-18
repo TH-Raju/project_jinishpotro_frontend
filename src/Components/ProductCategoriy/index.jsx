@@ -12,7 +12,7 @@ const ProductCategoriy = ({ categoriy }) => {
   let arr = [];
 
   return (
-    <div className="w-[80%] mx-auto my-20">
+    <div className="w-[90%] md:w-[80%] mx-auto my-20">
       <h1 className="text-2xl sm:text-2xl font-extrabold mb-5">
         <span className="text-rose-700 font-extrabold">I</span> {name}{" "}
         <h1 className="ml-3 mb-4 text-xl font-normal">{title}</h1>

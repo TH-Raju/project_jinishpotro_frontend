@@ -26,8 +26,8 @@ const CategoriyAllProduct = () => {
   // console.log(data.data);
   // console.log(name);
   return (
-    <div>
-      <div className="w-[80%] mx-auto mt-20">
+    <div className="-mt-5 pt-8 md:pt-4">
+      <div className="w-[90%] md:w-[80%] mx-auto md:mt-20">
         <div className="text-center">
           <h1 className="text-3xl sm:text-5xl font-extrabold my-4">
             {categories ? categories.name : "Loading..."}

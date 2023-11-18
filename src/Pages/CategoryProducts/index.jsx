@@ -75,7 +75,7 @@ const CategoriesProduct = () => {
         cId: categoryId,
         name: name,
         photo: photo,
-        price: price,
+        price: actualPrice,
       });
       saveWishlistToLocalStorage();
       // console.log(wishlist);
@@ -90,8 +90,8 @@ const CategoriesProduct = () => {
 
   // console.log(categories);
   return (
-    <div>
-      <div className=" lg:w-[60%] mx-auto shadow-xl shadow-sky-400 lg:p-10 flex justify-around mt-8 py-10 my-10 ">
+    <div className="-mt-10 md:mt-8 lg:mt-18">
+      <div className=" lg:w-[60%] mx-auto shadow-xl shadow-sky-400 lg:p-10 flex flex-wrap justify-around mt-8 py-10 my-10 ">
         <figure>
           <img
             src={photo}
@@ -99,9 +99,9 @@ const CategoriesProduct = () => {
             alt="Album"
           />
         </figure>
-        <div className="w-[60%] ">
+        <div className="w-[70%] md:w-[60%] mx-auto mt-5">
           <div className=" justify-center leading-7">
-            <h2 className="text-3xl font-bold">{name}</h2>
+            <h2 className="text-3xl font-bold mb-5 ">{name}</h2>
             <p>{detail}</p>
             <p>
               Price: <span className="font-bold">${price}</span>
@@ -112,7 +112,7 @@ const CategoriesProduct = () => {
             <p>
               Price: <span className="font-bold">${actualPrice}</span>
             </p>
-            <div className="bottom-0 mt-12">
+            <div className="bottom-0 mt-12 flex justify-between md:justify-end">
               <button
                 className="btn btn-primary btn-sm mb-2 lg:mb-0"
                 onClick={() => document.getElementById(_id).showModal()}
@@ -120,7 +120,7 @@ const CategoriesProduct = () => {
                 Buy Now
               </button>
               <button
-                className="btn btn-primary btn-sm lg:ml-4 ml-0 md:ml-3"
+                className="btn btn-primary btn-sm lg:ml-4 ml-2 md:ml-3"
                 onClick={() => addToWishlist(_id)}
               >
                 Add to Cart
@@ -130,7 +130,7 @@ const CategoriesProduct = () => {
         </div>
         <AddToCard id={_id} productData={productData} />
       </div>
-      <div className="w-[80%] mx-auto mt-20">
+      <div className="w-[90%] md:w-[80%] mx-auto mt-20">
         {/* <p>Category ID: {categoryId}</p>
         <p>Product ID: {productId}</p> */}
         <div className="text-center">
@@ -150,7 +150,7 @@ const CategoriesProduct = () => {
           {categories?.products?.slice(0, 10).map((product) => (
             <Link
               key={product._id}
-              to={`/categoriy/${categoryId}/${productId}`}
+              to={`/categoriy/${categoryId}/${product._id}`}
             >
               <ProductCard products={product} />
             </Link>
