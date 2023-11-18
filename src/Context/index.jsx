@@ -13,7 +13,6 @@ const ShareContextData = ({ children }) => {
 
   let imgbbAPIKey = "cedfa53cc1e836179f47e98c08ae1930";
   const siteName = "JinishPotro";
-  let totalData = 0;
 
   const share = {
     siteName,
@@ -30,7 +29,6 @@ const ShareContextData = ({ children }) => {
     setMinCount,
     selectedOptions,
     setSelectedOptions,
-    totalData,
   };
   return <ContextData.Provider value={share}>{children}</ContextData.Provider>;
 };

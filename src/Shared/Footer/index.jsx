@@ -6,6 +6,8 @@ import { ShoppingCartIcon, SunIcon } from "@heroicons/react/24/solid";
 import defaultPic from "../../assets/default.png";
 import Cookies from "universal-cookie";
 import { Link, useNavigate } from "react-router-dom";
+import CardData from "../../Components/CardData";
+import FooterData from "../../Components/FooterData";
 
 const Footer = () => {
   const { siteName, theme, setTheme } = useContext(ContextData);
@@ -121,16 +123,30 @@ const Footer = () => {
               </p>
             )}
           </div>
+
           <div>
-            <button className="btn btn-sm border border-none bg-transparent mx-2">
-              <h2 className="card-title relative">
-                <ShoppingCartIcon className="h-6 w-6  text-blue-500" />
-              </h2>
-              <div className="badge badge-secondary badge-sm mb-8 ml-10 absolute">
-                {totalData ? totalData : 0}
-              </div>
-            </button>
+            <div className="drawer drawer-end z-40">
+              <input
+                id="my-drawer-45"
+                type="checkbox"
+                className="drawer-toggle"
+              />
+              <label
+                htmlFor="my-drawer-45"
+                className="btn drawer-button lg:hidden border border-none bg-transparent"
+              >
+                <h2 className="card-title relative">
+                  <ShoppingCartIcon className="h-6 w-6  text-blue-500" />
+                </h2>
+                <div className="badge badge-secondary badge-sm mb-8 ml-10 absolute">
+                  {totalData ? totalData : 0}
+                </div>
+              </label>
+
+              <FooterData />
+            </div>
           </div>
+
           {userEmail && (
             <div className="dropdown dropdown-hover  dropdown-top ">
               <div className="avatar online mt-1">

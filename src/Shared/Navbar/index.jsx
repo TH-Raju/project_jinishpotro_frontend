@@ -4,6 +4,7 @@ import { ShoppingCartIcon, SunIcon } from "@heroicons/react/24/solid";
 import { Link, useNavigate } from "react-router-dom";
 import Cookies from "universal-cookie";
 import defaultPic from "../../assets/default.png";
+import CardData from "../../Components/CardData";
 
 const Navbar = () => {
   const { siteName, theme, setTheme } = useContext(ContextData);
@@ -20,6 +21,19 @@ const Navbar = () => {
     localStorage.clear();
     navigate("/login");
   };
+
+  let wishlist = [];
+  let totalData = 0;
+  const savedWishlist = localStorage.getItem("wishlist");
+  if (savedWishlist) {
+    wishlist = JSON.parse(savedWishlist);
+    updateTotalData();
+  }
+
+  function updateTotalData() {
+    totalData = wishlist.length;
+    console.log(totalData);
+  }
   const menuItems = (
     <>
       <li>
@@ -109,15 +123,28 @@ const Navbar = () => {
               </p>
             )}
           </div>
+
           <div>
-            <button className="btn btn-sm border border-none bg-transparent mx-2">
-              <h2 className="card-title relative">
-                <ShoppingCartIcon className="h-6 w-6  text-blue-500" />
-              </h2>
-              <div className="badge badge-secondary badge-sm mb-8 ml-10 absolute">
-                NEW
-              </div>
-            </button>
+            <div className="drawer drawer-end z-40">
+              <input
+                id="my-drawer-44"
+                type="checkbox"
+                className="drawer-toggle"
+              />
+              <label
+                htmlFor="my-drawer-44"
+                className="btn drawer-button  border border-none bg-transparent"
+              >
+                <h2 className="card-title relative">
+                  <ShoppingCartIcon className="h-6 w-6  text-blue-500" />
+                </h2>
+                <div className="badge badge-secondary badge-sm mb-8 ml-10 absolute">
+                  {totalData ? totalData : 0}
+                </div>
+              </label>
+
+              <CardData />
+            </div>
           </div>
           {userEmail && (
             <div className="dropdown dropdown-hover  dropdown-end hidden lg:block ">
