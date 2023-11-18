@@ -6,7 +6,11 @@ import Cookies from "universal-cookie";
 import { Rating } from "@smastrom/react-rating";
 
 import "@smastrom/react-rating/style.css";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { ContextData } from "../../Context";
+import { useNavigate, useParams } from "react-router-dom";
+import toast from "react-hot-toast";
+import Loading from "../../Shared/Loading/inde";
 
 function getRating(rating) {
   switch (rating) {
@@ -25,13 +29,24 @@ function getRating(rating) {
   }
 }
 
-const Reviews = ({ review, categoryId, productId }) => {
+const Reviews = ({ review, refetch, categoryId, productId }) => {
   // console.log("rev", review);
   const cookies = new Cookies();
   const name = cookies.get("name");
   const id = cookies.get("id");
+  const photo = localStorage.getItem("photo");
+  const navigate = useNavigate();
   const [rating, setRating] = useState(0);
   const [hoveredRating, setHoveredRating] = useState(0);
+  const { loading, setLoading } = useContext(ContextData);
+
+  const d = new Date();
+  const options = { month: "short", day: "numeric", year: "numeric" };
+  const formattedDate = d.toLocaleString("en-US", options);
+
+  // console.log(photo);
+  // console.log(formattedDate);
+
   const {
     register,
     handleSubmit,
@@ -39,7 +54,7 @@ const Reviews = ({ review, categoryId, productId }) => {
   } = useForm();
 
   const handleAddReview = (data) => {
-    data.rating = parseInt(data.rating);
+    data.rating = rating;
     // console.log(data);
 
     const revData = {
@@ -47,13 +62,35 @@ const Reviews = ({ review, categoryId, productId }) => {
       productId: productId,
       reviewData: data,
     };
-    console.log(revData);
+    setLoading(true);
+    fetch("http://localhost:5000/api/v1/categoriy/product/review", {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+        authorization: `bearer ${localStorage.getItem("accessToken")}`,
+      },
+      body: JSON.stringify(revData),
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        if (result.acknowledged) {
+          setLoading(false);
+          refetch();
+          document.getElementById("my_modal_5").close();
+          toast.success("Review Added");
+          navigate(`/categoriy/${categoryId}/${productId}`);
+        }
+        //   console.log(result);
+      });
+
+    // console.log(revData);
   };
 
   let rateData = rating;
 
   return (
-    <div className="w-[80%] mx-auto">
+    <div className="w-[80%] mx-auto my-20">
+      {loading && <Loading />}
       <div className="flex justify-between items-center">
         <h1 className="text-2xl sm:text-2xl font-extrabold mb-5">
           <span className="text-rose-700 font-extrabold">I</span> Reviews
@@ -82,33 +119,45 @@ const Reviews = ({ review, categoryId, productId }) => {
               </div>
             </div>
 
-            <div className="form-control w-full max-w-xs">
+            <div className="form-control  ">
               <label className="label">
                 {" "}
                 <span className="label-text text-xl font-bold">Review</span>
               </label>
-              <input
+              <textarea
                 type="text"
                 placeholder="Enter Your Feedback"
                 {...register("comment", {
                   required: "Opinion is Required",
                 })}
-                className="input input-bordered w-full max-w-xs"
+                className="input input-bordered w-full "
               />
               {errors.name && (
                 <p className="text-red-500">{errors.name.message}</p>
               )}
             </div>
             <div className="hidden form-control w-full max-w-xs">
-              <label className="label">
-                {" "}
-                <span className="label-text text-xl font-bold">Name</span>
-              </label>
               <input
                 type="number"
-                value={rateData}
+                value={rating}
                 onChange={setRating}
                 {...register("rating")}
+              />
+            </div>
+            <div className="hidden form-control w-full max-w-xs">
+              <input
+                type="text"
+                value={photo}
+                onChange={setRating}
+                {...register("userPhoto")}
+              />
+            </div>
+            <div className="hidden form-control w-full max-w-xs">
+              <input
+                type="text"
+                value={formattedDate}
+                onChange={setRating}
+                {...register("date")}
               />
             </div>
             <div className="hidden form-control w-full max-w-xs">
@@ -155,31 +204,37 @@ const Reviews = ({ review, categoryId, productId }) => {
         </dialog>
       </form>
 
-      <div className="">
+      <div>
         {review?.map((rev) => (
           <div key={rev._id}>
-            <div className="container border border-sky-400 flex flex-col mt-3 w-full max-w-lg p-6  divide-y rounded-md divide-gray-700 ">
+            <div className="container border border-sky-400 flex flex-col mt-3 w-full max-w-5xl mx-auto p-6  divide-y rounded-md divide-gray-700 ">
               <div className="flex justify-between p-4">
                 <div className="flex space-x-4">
-                  {/* <div>
+                  <div>
                     <img
-                      src="https://source.unsplash.com/100x100/?portrait"
+                      src={
+                        rev.userPhoto
+                          ? rev.userPhoto
+                          : "https://source.unsplash.com/100x100/?portrait"
+                      }
                       alt=""
                       className="object-cover w-12 h-12 rounded-full dark:bg-gray-500"
                     />
-                  </div> */}
+                  </div>
                   <div>
                     <h4 className="font-bold">{rev.name}</h4>
+                    <span className="text-xs dark:text-gray-400">
+                      {rev.date}
+                    </span>
                   </div>
                 </div>
                 <div className="flex items-center space-x-2 dark:text-yellow-500">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 512 512"
-                    className="w-5 h-5 fill-current"
-                  >
-                    <path d="M494,198.671a40.536,40.536,0,0,0-32.174-27.592L345.917,152.242,292.185,47.828a40.7,40.7,0,0,0-72.37,0L166.083,152.242,50.176,171.079a40.7,40.7,0,0,0-22.364,68.827l82.7,83.368-17.9,116.055a40.672,40.672,0,0,0,58.548,42.538L256,428.977l104.843,52.89a40.69,40.69,0,0,0,58.548-42.538l-17.9-116.055,82.7-83.368A40.538,40.538,0,0,0,494,198.671Zm-32.53,18.7L367.4,312.2l20.364,132.01a8.671,8.671,0,0,1-12.509,9.088L256,393.136,136.744,453.3a8.671,8.671,0,0,1-12.509-9.088L144.6,312.2,50.531,217.37a8.7,8.7,0,0,1,4.778-14.706L187.15,181.238,248.269,62.471a8.694,8.694,0,0,1,15.462,0L324.85,181.238l131.841,21.426A8.7,8.7,0,0,1,461.469,217.37Z"></path>
-                  </svg>
+                  <Rating
+                    className="w-28"
+                    value={rev.rating}
+                    onChange={setRating}
+                    isRequired
+                  />
                   <span className="text-xl font-bold">{rev.rating}</span>
                 </div>
               </div>

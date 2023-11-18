@@ -5,17 +5,21 @@ import { Link, useLoaderData } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import ProductCategoriy from "../../Components/ProductCategoriy";
 import ProductCard from "../../Components/ProductCard";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { ContextData } from "../../Context";
 import Reviews from "../../Components/Review";
+import { Rating } from "@smastrom/react-rating";
+
+import "@smastrom/react-rating/style.css";
 
 const CategoriesProduct = () => {
   const data = useLoaderData();
   // console.log(data.data.review);
   const { name, photo, detail, price, sellerName, review } = data.data;
   const { categoryId, productId } = useParams();
+  const [rating, setRating] = useState(0);
   const { siteName } = useContext(ContextData);
-  const { data: categories } = useQuery({
+  const { data: categories, refetch } = useQuery({
     queryKey: ["singleCategoriy"],
     queryFn: async () => {
       const res = await fetch(
@@ -25,6 +29,10 @@ const CategoriesProduct = () => {
       return data.data;
     },
   });
+
+  useEffect(() => {
+    refetch();
+  }, [refetch]);
 
   // console.log(categories);
   return (
@@ -61,7 +69,10 @@ const CategoriesProduct = () => {
         <div className="text-center">
           <h1 className="text-3xl sm:text-5xl font-extrabold my-4">
             More
-            <span className="text-rose-700 "> {categories ? categories.name : "Loading..."}</span>
+            <span className="text-rose-700 ">
+              {" "}
+              {categories ? categories.name : "Loading..."}
+            </span>
           </h1>
         </div>
         <h1 className="text-2xl sm:text-2xl font-extrabold mb-5">
@@ -79,7 +90,12 @@ const CategoriesProduct = () => {
           ))}
         </div>
       </div>
-      <Reviews review={review} categoryId={categoryId} productId={productId} />
+      <Reviews
+        review={review}
+        refetch={refetch}
+        categoryId={categoryId}
+        productId={productId}
+      />
     </div>
   );
 };
