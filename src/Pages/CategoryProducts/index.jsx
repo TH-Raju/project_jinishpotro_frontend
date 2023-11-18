@@ -81,7 +81,7 @@ const CategoriesProduct = () => {
   // console.log(categories);
   return (
     <div>
-      <div className=" lg:w-[60%] mx-auto bg-base-100 shadow-xl lg:p-10 flex justify-around mt-8 py-10 my-10">
+      <div className=" lg:w-[60%] mx-auto shadow-xl shadow-sky-400 lg:p-10 flex justify-around mt-8 py-10 my-10 ">
         <figure>
           <img
             src={photo}

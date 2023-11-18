@@ -71,7 +71,7 @@ const Footer = () => {
     </>
   );
   return (
-    <div>
+    <div className="lg:hidden">
       <div className={`navbar bg-gray-400 bottom-0 fixed lg:hidden pb-5`}>
         <div className="navbar-start">
           <div className="dropdown">
