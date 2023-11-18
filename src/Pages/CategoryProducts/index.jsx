@@ -11,11 +11,13 @@ import Reviews from "../../Components/Review";
 import { Rating } from "@smastrom/react-rating";
 
 import "@smastrom/react-rating/style.css";
+import AddToCard from "../../Components/AddToCard";
 
 const CategoriesProduct = () => {
   const data = useLoaderData();
   // console.log(data.data.review);
-  const { name, photo, detail, price, sellerName, review } = data.data;
+  const { name, photo, detail, price, sellerName, discount, review, _id } =
+    data.data;
   const { categoryId, productId } = useParams();
   const [rating, setRating] = useState(0);
   const { siteName } = useContext(ContextData);
@@ -33,6 +35,15 @@ const CategoriesProduct = () => {
   useEffect(() => {
     refetch();
   }, [refetch]);
+
+  const productData = {
+    id: _id,
+    name: name,
+    detail: detail,
+    photo: photo,
+    price: price,
+    discount: discount,
+  };
 
   // console.log(categories);
   return (
@@ -56,12 +67,16 @@ const CategoriesProduct = () => {
               <button className="btn btn-primary btn-sm mb-2 lg:mb-0">
                 Buy Now
               </button>
-              <button className="btn btn-primary btn-sm lg:ml-4 ml-0 md:ml-3">
+              <button
+                className="btn btn-primary btn-sm lg:ml-4 ml-0 md:ml-3"
+                onClick={() => document.getElementById(_id).showModal()}
+              >
                 Add to Cart
               </button>
             </div>
           </div>
         </div>
+        <AddToCard id={_id} productData={productData} />
       </div>
       <div className="w-[80%] mx-auto mt-20">
         {/* <p>Category ID: {categoryId}</p>
