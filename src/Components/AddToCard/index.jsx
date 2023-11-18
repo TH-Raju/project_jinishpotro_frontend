@@ -8,9 +8,9 @@ import Cookies from "universal-cookie";
 const AddToCard = ({ id, categoryId, productData }) => {
   const [quantity, setQuantity] = useState(1);
   const cookies = new Cookies();
-  const userName = cookies.get("name")
-  const userPhone = cookies.get("phone")
-  const userEmail = cookies.get("email")
+  const userName = cookies.get("name");
+  const userPhone = cookies.get("phone");
+  const userEmail = cookies.get("email");
   const { name, photo, detail, price, sellerName, discount, review, _id } =
     productData;
   const discountAmount = (price * discount) / 100;
@@ -70,12 +70,12 @@ const AddToCard = ({ id, categoryId, productData }) => {
               {/* if there is a button in form, it will close the modal */}
               <button className="btn btn-warning">Close</button>
               <button
-                className="btn"
+                className="btn btn-success ml-3"
                 onClick={() =>
                   document.getElementById("my_modal_50").showModal()
                 }
               >
-                open modal
+                Confirm Order
               </button>
             </form>
           </div>

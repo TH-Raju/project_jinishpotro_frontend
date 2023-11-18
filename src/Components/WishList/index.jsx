@@ -53,7 +53,12 @@ const WishList = () => {
               </div>
             </Link>
             <div>
-              <button className="btn btn-sm btn-primary">ok</button>
+              <button
+                className="btn btn-sm btn-primary"
+                onClick={() => document.getElementById(wish.pId).showModal()}
+              >
+                ok
+              </button>
               <button
                 className="btn btn-sm btn-warning ml-1"
                 onClick={() => removeFromWishlist(wish.pId, wish.cId)}
