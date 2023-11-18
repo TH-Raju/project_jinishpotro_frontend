@@ -120,7 +120,7 @@ const Reviews = ({ review, refetch, categoryId, productId }) => {
   };
 
   return (
-    <div className="w-[80%] mx-auto my-20">
+    <div className="w-[80%] mx-auto py-20">
       {loading && <Loading />}
       <div className="flex justify-between items-center">
         <h1 className="text-2xl sm:text-2xl font-extrabold mb-5">

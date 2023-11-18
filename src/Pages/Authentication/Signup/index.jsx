@@ -71,6 +71,7 @@ const Signup = () => {
                   //   console.log(data?.data.email);
                   cookies.set("email", data?.data.email, { path: "/" });
                   cookies.set("name", data?.data.name, { path: "/" });
+                  cookies.set("phone", data?.data.phone, { path: "/" });
                   cookies.set("role", data?.data.role, { path: "/" });
                   cookies.set("id", data?.data._id, { path: "/" });
                   localStorage.setItem("photo", data?.data.photo);

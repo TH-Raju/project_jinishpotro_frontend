@@ -128,7 +128,7 @@ const CategoriesProduct = () => {
             </div>
           </div>
         </div>
-        <AddToCard id={_id} productData={productData} />
+        <AddToCard id={_id} categoryId={categoryId} productData={productData} />
       </div>
       <div className="w-[90%] md:w-[80%] mx-auto mt-20">
         {/* <p>Category ID: {categoryId}</p>

@@ -9,7 +9,7 @@ function App() {
   const { theme } = useContext(ContextData);
   return (
     <div
-      className={` min-h-screen lg:mt-16 lg:pb-0 pb-28 ${
+      className={` min-h-screen lg:mt-16 pb-28 lg:pb-0  ${
         theme ? "text-black " : "text-white bg-gray-900"
       }`}
     >
