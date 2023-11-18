@@ -1,6 +1,7 @@
-import { useContext } from "react";
+/* eslint-disable no-unused-vars */
+import { useContext, useState } from "react";
 import { ContextData } from "../../Context";
-import { SunIcon } from "@heroicons/react/24/solid";
+import { ShoppingCartIcon, SunIcon } from "@heroicons/react/24/solid";
 
 import defaultPic from "../../assets/default.png";
 import Cookies from "universal-cookie";
@@ -14,6 +15,20 @@ const Footer = () => {
   const userEmail = cookies.get("email");
   const photo = localStorage.getItem("photo");
   const navigate = useNavigate();
+
+  let wishlist = [];
+  let totalData = 0;
+  const savedWishlist = localStorage.getItem("wishlist");
+  if (savedWishlist) {
+    wishlist = JSON.parse(savedWishlist);
+    updateTotalData();
+  }
+
+  function updateTotalData() {
+    totalData = wishlist.length;
+    console.log(totalData);
+  }
+  // console.log(totalData);
 
   const handleLogout = async () => {
     cookies.remove("email", { path: "/" });
@@ -105,6 +120,16 @@ const Footer = () => {
                 <p>Light</p>
               </p>
             )}
+          </div>
+          <div>
+            <button className="btn btn-sm border border-none bg-transparent mx-2">
+              <h2 className="card-title relative">
+                <ShoppingCartIcon className="h-6 w-6  text-blue-500" />
+              </h2>
+              <div className="badge badge-secondary badge-sm mb-8 ml-10 absolute">
+                {totalData ? totalData : 0}
+              </div>
+            </button>
           </div>
           {userEmail && (
             <div className="dropdown dropdown-hover  dropdown-top ">

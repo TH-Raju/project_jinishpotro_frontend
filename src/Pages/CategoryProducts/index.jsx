@@ -1,7 +1,8 @@
+/* eslint-disable no-const-assign */
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable no-unused-vars */
 import { useQuery } from "@tanstack/react-query";
-import { Link, useLoaderData } from "react-router-dom";
+import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import ProductCategoriy from "../../Components/ProductCategoriy";
 import ProductCard from "../../Components/ProductCard";
@@ -12,6 +13,7 @@ import { Rating } from "@smastrom/react-rating";
 
 import "@smastrom/react-rating/style.css";
 import AddToCard from "../../Components/AddToCard";
+import toast from "react-hot-toast";
 
 const CategoriesProduct = () => {
   const data = useLoaderData();
@@ -21,7 +23,8 @@ const CategoriesProduct = () => {
   const { categoryId, productId } = useParams();
   const [rating, setRating] = useState(0);
   const [item, setItem] = useState([]);
-  const { siteName } = useContext(ContextData);
+  const navigate = useNavigate();
+  const { siteName, totalData } = useContext(ContextData);
   const { data: categories, refetch } = useQuery({
     queryKey: ["singleCategoriy"],
     queryFn: async () => {
@@ -66,13 +69,14 @@ const CategoriesProduct = () => {
         // Add other product details as needed
       });
       saveWishlistToLocalStorage();
-      console.log(`Product added to wishlist: ${name}`);
+      toast.success(`Product added to wishlist: ${name}`);
+      navigate(`/categoriy/${categoryId}/${productId}`);
     } else {
-      console.log("Product is already in the wishlist.");
+      toast.error("Product is already in the wishlist.");
     }
   }
 
-  console.log(wishlist);
+  // console.log(wishlist);
 
   // console.log(categories);
   return (

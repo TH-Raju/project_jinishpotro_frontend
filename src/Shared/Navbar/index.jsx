@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { ContextData } from "../../Context";
-import { SunIcon } from "@heroicons/react/24/solid";
+import { ShoppingCartIcon, SunIcon } from "@heroicons/react/24/solid";
 import { Link, useNavigate } from "react-router-dom";
 import Cookies from "universal-cookie";
 import defaultPic from "../../assets/default.png";
@@ -108,6 +108,16 @@ const Navbar = () => {
                 <p>Light</p>
               </p>
             )}
+          </div>
+          <div>
+            <button className="btn btn-sm border border-none bg-transparent mx-2">
+              <h2 className="card-title relative">
+                <ShoppingCartIcon className="h-6 w-6  text-blue-500" />
+              </h2>
+              <div className="badge badge-secondary badge-sm mb-8 ml-10 absolute">
+                NEW
+              </div>
+            </button>
           </div>
           {userEmail && (
             <div className="dropdown dropdown-hover  dropdown-end hidden lg:block ">
