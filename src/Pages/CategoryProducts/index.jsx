@@ -22,6 +22,7 @@ const CategoriesProduct = () => {
     data.data;
   const { categoryId, productId } = useParams();
   const [rating, setRating] = useState(0);
+  const [wishlist, setWishlist] = useState([]);
   const [item, setItem] = useState([]);
   const navigate = useNavigate();
   const { siteName, totalData } = useContext(ContextData);
@@ -40,6 +41,9 @@ const CategoriesProduct = () => {
     refetch();
   }, [refetch]);
 
+  const discountAmount = (price * discount) / 100;
+  const actualPrice = price - discountAmount;
+
   const productData = {
     id: _id,
     name: name,
@@ -49,28 +53,34 @@ const CategoriesProduct = () => {
     discount: discount,
   };
 
-  let wishlist = [];
+  useEffect(() => {
+    // Load wishlist from localStorage on component mount
+    const storedWishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+    setWishlist(storedWishlist);
+  }, []);
+
   function saveWishlistToLocalStorage() {
     localStorage.setItem("wishlist", JSON.stringify(wishlist));
   }
 
   function isProductInWishlist(productId) {
-    return wishlist.some((item) => item._id === productId);
+    return wishlist.some((item) => item.pId === productId);
   }
 
   function addToWishlist(productId) {
     if (!isProductInWishlist(productId)) {
       // Add product to the wishlist
       wishlist.push({
-        _id: productId,
+        pId: productId,
+        cId: categoryId,
         name: name,
         photo: photo,
         price: price,
-        // Add other product details as needed
       });
       saveWishlistToLocalStorage();
+      // console.log(wishlist);
       toast.success(`Product added to wishlist: ${name}`);
-      navigate(`/categoriy/${categoryId}/${productId}`);
+      navigate(`/categoriy/${categoryId}`);
     } else {
       toast.error("Product is already in the wishlist.");
     }
@@ -95,6 +105,12 @@ const CategoriesProduct = () => {
             <p>{detail}</p>
             <p>
               Price: <span className="font-bold">${price}</span>
+            </p>
+            <p>
+              Discount: <span className="font-bold">{discount}%</span>
+            </p>
+            <p>
+              Price: <span className="font-bold">${actualPrice}</span>
             </p>
             <div className="bottom-0 mt-12">
               <button

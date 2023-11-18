@@ -28,7 +28,7 @@ const Footer = () => {
 
   function updateTotalData() {
     totalData = wishlist.length;
-    console.log(totalData);
+    // console.log(totalData);
   }
   // console.log(totalData);
 
@@ -125,7 +125,7 @@ const Footer = () => {
           </div>
 
           <div>
-            <div className="drawer drawer-end z-40">
+            <div className="drawer drawer-end z-40 ">
               <input
                 id="my-drawer-45"
                 type="checkbox"

@@ -32,7 +32,7 @@ const Navbar = () => {
 
   function updateTotalData() {
     totalData = wishlist.length;
-    console.log(totalData);
+    // console.log(totalData);
   }
   const menuItems = (
     <>
