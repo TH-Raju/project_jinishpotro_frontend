@@ -20,6 +20,7 @@ const CategoriesProduct = () => {
     data.data;
   const { categoryId, productId } = useParams();
   const [rating, setRating] = useState(0);
+  const [item, setItem] = useState([]);
   const { siteName } = useContext(ContextData);
   const { data: categories, refetch } = useQuery({
     queryKey: ["singleCategoriy"],
@@ -45,6 +46,34 @@ const CategoriesProduct = () => {
     discount: discount,
   };
 
+  let wishlist = [];
+  function saveWishlistToLocalStorage() {
+    localStorage.setItem("wishlist", JSON.stringify(wishlist));
+  }
+
+  function isProductInWishlist(productId) {
+    return wishlist.some((item) => item._id === productId);
+  }
+
+  function addToWishlist(productId) {
+    if (!isProductInWishlist(productId)) {
+      // Add product to the wishlist
+      wishlist.push({
+        _id: productId,
+        name: name,
+        photo: photo,
+        price: price,
+        // Add other product details as needed
+      });
+      saveWishlistToLocalStorage();
+      console.log(`Product added to wishlist: ${name}`);
+    } else {
+      console.log("Product is already in the wishlist.");
+    }
+  }
+
+  console.log(wishlist);
+
   // console.log(categories);
   return (
     <div>
@@ -64,12 +93,15 @@ const CategoriesProduct = () => {
               Price: <span className="font-bold">${price}</span>
             </p>
             <div className="bottom-0 mt-12">
-              <button className="btn btn-primary btn-sm mb-2 lg:mb-0">
+              <button
+                className="btn btn-primary btn-sm mb-2 lg:mb-0"
+                onClick={() => document.getElementById(_id).showModal()}
+              >
                 Buy Now
               </button>
               <button
                 className="btn btn-primary btn-sm lg:ml-4 ml-0 md:ml-3"
-                onClick={() => document.getElementById(_id).showModal()}
+                onClick={() => addToWishlist(_id)}
               >
                 Add to Cart
               </button>
