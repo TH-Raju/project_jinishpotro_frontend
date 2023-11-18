@@ -60,8 +60,8 @@ const CategoriesProduct = () => {
         <p>Product ID: {productId}</p> */}
         <div className="text-center">
           <h1 className="text-3xl sm:text-5xl font-extrabold my-4">
-            {categories ? categories.name : "Loading..."}
-            <span className="text-rose-700 "> Products</span>
+            More
+            <span className="text-rose-700 "> {categories ? categories.name : "Loading..."}</span>
           </h1>
         </div>
         <h1 className="text-2xl sm:text-2xl font-extrabold mb-5">
@@ -79,7 +79,7 @@ const CategoriesProduct = () => {
           ))}
         </div>
       </div>
-      <Reviews review={review} />
+      <Reviews review={review} categoryId={categoryId} productId={productId} />
     </div>
   );
 };

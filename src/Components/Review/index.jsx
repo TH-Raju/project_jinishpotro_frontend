@@ -1,11 +1,121 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
-const Reviews = ({ review }) => {
+import { PlusCircleIcon } from "@heroicons/react/24/solid";
+import { useForm } from "react-hook-form";
+import Cookies from "universal-cookie";
+
+function getRating(rating) {
+  switch (rating) {
+    case 1:
+      return "Poor";
+    case 2:
+      return "Nothing special";
+    case 3:
+      return "Average";
+    case 4:
+      return "Very good";
+    case 5:
+      return "Excellent";
+    default:
+      return "None";
+  }
+}
+
+const Reviews = ({ review, categoryId, productId }) => {
   // console.log("rev", review);
+  const cookies = new Cookies();
+  const name = cookies.get("name");
+  const id = cookies.get("id");
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const handleAddReview = (data) => {
+    console.log(data);
+  };
+
   return (
     <div className="w-[80%] mx-auto">
-      <h1 className="text-2xl sm:text-2xl font-extrabold mb-5">
-        <span className="text-rose-700 font-extrabold">I</span> Reviews
-      </h1>
+      <div className="flex justify-between items-center">
+        <h1 className="text-2xl sm:text-2xl font-extrabold mb-5">
+          <span className="text-rose-700 font-extrabold">I</span> Reviews
+        </h1>
+        <button
+          className="btn btn-primary btn-sm"
+          onClick={() => document.getElementById("my_modal_5").showModal()}
+        >
+          <PlusCircleIcon className="h-6 w-6 text-blue-500" /> Give a Review
+        </button>
+      </div>
+
+      <form action="" onSubmit={handleSubmit(handleAddReview)}>
+        <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
+          <div className="modal-box">
+            <h3 className="font-bold text-lg">Your opinion matters!</h3>
+            <div className="form-control w-full max-w-xs">
+              <label className="label">
+                {" "}
+                <span className="label-text text-xl font-bold">Opinion</span>
+              </label>
+              <input
+                type="text"
+                placeholder="Enter Categoriy Title"
+                {...register("comment", {
+                  required: "Opinion is Required",
+                })}
+                className="input input-bordered w-full max-w-xs"
+              />
+              {errors.name && (
+                <p className="text-red-500">{errors.name.message}</p>
+              )}
+            </div>
+            <div className="hidden form-control w-full max-w-xs">
+              <label className="label">
+                {" "}
+                <span className="label-text text-xl font-bold">Name</span>
+              </label>
+              <input
+                type="text"
+                value={name}
+                {...register("name")}
+                className="input input-bordered w-full max-w-xs"
+              />
+            </div>
+            <div className=" hidden form-control w-full max-w-xs">
+              <label className="label">
+                {" "}
+                <span className="label-text text-xl font-bold">Id</span>
+              </label>
+              <input
+                type="text"
+                value={id}
+                placeholder="Enter Categoriy Title"
+                {...register("userId")}
+                className="input input-bordered w-full max-w-xs"
+              />
+            </div>
+            {/* <h1>categoryId ={categoryId}</h1>
+            <h1>productId = {productId}</h1> */}
+            <div className="modal-action">
+              <form method="dialog">
+                {/* if there is a button in form, it will close the modal */}
+                <button className="btn">Close</button>
+              </form>
+              <div className=" text-center mt-8 md:col-span-2">
+                <input
+                  className="btn btn-accent mt-4 font-bold md:w-96"
+                  value="Add Categoriy"
+                  type="submit"
+                />
+              </div>
+            </div>
+          </div>
+        </dialog>
+      </form>
+
       <div className="">
         {review?.map((rev) => (
           <div key={rev._id}>
