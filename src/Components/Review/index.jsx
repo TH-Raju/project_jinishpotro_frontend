@@ -3,6 +3,10 @@
 import { PlusCircleIcon } from "@heroicons/react/24/solid";
 import { useForm } from "react-hook-form";
 import Cookies from "universal-cookie";
+import { Rating } from "@smastrom/react-rating";
+
+import "@smastrom/react-rating/style.css";
+import { useState } from "react";
 
 function getRating(rating) {
   switch (rating) {
@@ -26,7 +30,8 @@ const Reviews = ({ review, categoryId, productId }) => {
   const cookies = new Cookies();
   const name = cookies.get("name");
   const id = cookies.get("id");
-
+  const [rating, setRating] = useState(0);
+  const [hoveredRating, setHoveredRating] = useState(0);
   const {
     register,
     handleSubmit,
@@ -34,8 +39,18 @@ const Reviews = ({ review, categoryId, productId }) => {
   } = useForm();
 
   const handleAddReview = (data) => {
-    console.log(data);
+    data.rating = parseInt(data.rating);
+    // console.log(data);
+
+    const revData = {
+      categoriyId: categoryId,
+      productId: productId,
+      reviewData: data,
+    };
+    console.log(revData);
   };
+
+  let rateData = rating;
 
   return (
     <div className="w-[80%] mx-auto">
@@ -55,14 +70,26 @@ const Reviews = ({ review, categoryId, productId }) => {
         <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
           <div className="modal-box">
             <h3 className="font-bold text-lg">Your opinion matters!</h3>
+            <div className=" form-control w-[40%] mx-auto text-center">
+              <Rating
+                value={rating}
+                onChange={setRating}
+                onHoverChange={setHoveredRating}
+              />
+              <div>
+                <div>{`Selected: ${getRating(rating)}`}</div>
+                <div>{`Hovered: ${getRating(hoveredRating)}`}</div>
+              </div>
+            </div>
+
             <div className="form-control w-full max-w-xs">
               <label className="label">
                 {" "}
-                <span className="label-text text-xl font-bold">Opinion</span>
+                <span className="label-text text-xl font-bold">Review</span>
               </label>
               <input
                 type="text"
-                placeholder="Enter Categoriy Title"
+                placeholder="Enter Your Feedback"
                 {...register("comment", {
                   required: "Opinion is Required",
                 })}
@@ -71,6 +98,18 @@ const Reviews = ({ review, categoryId, productId }) => {
               {errors.name && (
                 <p className="text-red-500">{errors.name.message}</p>
               )}
+            </div>
+            <div className="hidden form-control w-full max-w-xs">
+              <label className="label">
+                {" "}
+                <span className="label-text text-xl font-bold">Name</span>
+              </label>
+              <input
+                type="number"
+                value={rateData}
+                onChange={setRating}
+                {...register("rating")}
+              />
             </div>
             <div className="hidden form-control w-full max-w-xs">
               <label className="label">
@@ -99,10 +138,10 @@ const Reviews = ({ review, categoryId, productId }) => {
             </div>
             {/* <h1>categoryId ={categoryId}</h1>
             <h1>productId = {productId}</h1> */}
-            <div className="modal-action">
+            <div className="modal-action flex items-baseline">
               <form method="dialog">
                 {/* if there is a button in form, it will close the modal */}
-                <button className="btn">Close</button>
+                <button className="btn btn-warning">Close</button>
               </form>
               <div className=" text-center mt-8 md:col-span-2">
                 <input
