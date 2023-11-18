@@ -98,9 +98,34 @@ const Footer = () => {
               {menuItems}
             </ul>
           </div>
-          <a className="btn btn-ghost normal-case text-xl -ml-6">{siteName}</a>
+          <Link to={"/"} className="btn btn-ghost normal-case text-xl -ml-6">
+            {siteName}
+          </Link>
         </div>
         <div className="navbar-end flex items-center gap-3">
+          <div
+            className={`btn btn-sm  ${
+              theme
+                ? "bg-black text-white hover:bg-gray-800 duration-200"
+                : "bg-white hover:bg-gray-400 duration-200 hover:text-white"
+            }`}
+            onClick={() => setTheme(!theme)}
+          >
+            {theme ? (
+              <p className="flex justify-center items-center ">
+                {" "}
+                <SunIcon className="h-6 w-6 text-blue-500" />
+                <p>Dark</p>
+              </p>
+            ) : (
+              <p className="flex justify-center items-center ">
+                {" "}
+                <SunIcon className="h-6 w-6 text-blue-500" />
+                <p>Light</p>
+              </p>
+            )}
+          </div>
+
           <div>
             <div className="drawer drawer-end z-40 ">
               <input
@@ -155,34 +180,7 @@ const Footer = () => {
                   </li>
                 </Link>
 
-                <li className="mb-2">
-                  <div
-                    className={`border border-red-500 w-full ${
-                      theme
-                        ? "bg-black text-white hover:bg-gray-800 duration-200 hover:text-white"
-                        : "bg-white hover:bg-gray-400 duration-200 "
-                    }`}
-                    onClick={() => setTheme(!theme)}
-                  >
-                    <div>
-                      <div>
-                        {theme ? (
-                          <p className="flex justify-center items-center ">
-                            {" "}
-                            <SunIcon className="h-6 w-6 text-blue-500" />
-                            <span>Dark</span>
-                          </p>
-                        ) : (
-                          <p className="flex justify-center items-center ">
-                            {" "}
-                            <SunIcon className="h-6 w-6 text-blue-500" />
-                            <span>Light</span>
-                          </p>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-                </li>
+                
                 <li className="mb-2">
                   <button
                     onClick={() => handleLogout()}

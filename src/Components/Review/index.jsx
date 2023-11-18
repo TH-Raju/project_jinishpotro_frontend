@@ -1,6 +1,9 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
-import { PlusCircleIcon } from "@heroicons/react/24/solid";
+import {
+  EllipsisHorizontalIcon,
+  PlusCircleIcon,
+} from "@heroicons/react/24/solid";
 import { useForm } from "react-hook-form";
 import Cookies from "universal-cookie";
 import { Rating } from "@smastrom/react-rating";
@@ -88,6 +91,34 @@ const Reviews = ({ review, refetch, categoryId, productId }) => {
 
   let rateData = rating;
 
+  const delteReview = (data, userId) => {
+    if (id === userId) {
+      fetch(
+        `http://localhost:5000/api/v1/categoriy/${categoryId}/products/${productId}/review/${data}`,
+        {
+          method: "DELETE",
+          headers: {
+            "content-type": "application/json",
+            authorization: `bearer ${localStorage.getItem("accessToken")}`,
+          },
+        }
+      )
+        .then((res) => res.json())
+        .then((result) => {
+          if (result.acknowledged) {
+            // console.log(result);
+            setLoading(false);
+            toast.success("Successfully Delete");
+            //   console.log(result);
+            navigate(`/categoriy/${categoryId}/${productId}`);
+          }
+        });
+    } else {
+      toast.error("Please Login First");
+      navigate("/login");
+    }
+  };
+
   return (
     <div className="w-[80%] mx-auto my-20">
       {loading && <Loading />}
@@ -105,7 +136,7 @@ const Reviews = ({ review, refetch, categoryId, productId }) => {
 
       <form action="" onSubmit={handleSubmit(handleAddReview)}>
         <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
-          <div className="modal-box">
+          <div className="modal-box text-black">
             <h3 className="font-bold text-lg">Your opinion matters!</h3>
             <div className=" form-control w-[40%] mx-auto text-center">
               <Rating
@@ -222,12 +253,34 @@ const Reviews = ({ review, refetch, categoryId, productId }) => {
                     />
                   </div>
                   <div>
-                    <h4 className="font-bold">{rev.name}</h4>
+                    <div className="grid grid-cols-2 it">
+                      <div className="flex dropdown">
+                        <h4 className="font-bold">{rev.name}</h4>
+                        <label tabIndex={0} className=" m-1">
+                          <EllipsisHorizontalIcon className="h-8 w-8 text-white -mt-2" />
+                        </label>
+                        <ul
+                          tabIndex={0}
+                          className="dropdown-content z-[1] text-black menu p-2 shadow bg-base-100 rounded-box w-32 mt-5"
+                        >
+                          <li
+                            className="btn btn-warning btn-sm"
+                            onClick={() => delteReview(rev._id, rev.userId)}
+                          >
+                            delete
+                          </li>
+                          <li>
+                            <a>Item 2</a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
                     <span className="text-xs dark:text-gray-400">
-                      {rev.date}
+                      {rev.date} 2
                     </span>
                   </div>
                 </div>
+
                 <div className="flex items-center space-x-2 dark:text-yellow-500">
                   <Rating
                     className="w-28"
