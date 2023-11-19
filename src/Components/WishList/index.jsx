@@ -12,7 +12,7 @@ const WishList = ({ closeModal }) => {
   let totalData = 0;
   function updateTotalData() {
     totalData = wishlist.length;
-    console.log(totalData);
+    // console.log(totalData);
   }
 
   function saveWishlistToLocalStorage() {

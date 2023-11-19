@@ -12,8 +12,8 @@ import Reviews from "../../Components/Review";
 import { Rating } from "@smastrom/react-rating";
 
 import "@smastrom/react-rating/style.css";
-import AddToCard from "../../Components/AddToCard";
 import toast from "react-hot-toast";
+import ConfirmOrder from "../../Components/ConfirmOrder";
 
 const CategoriesProduct = () => {
   const data = useLoaderData();
@@ -128,7 +128,11 @@ const CategoriesProduct = () => {
             </div>
           </div>
         </div>
-        <AddToCard id={_id} categoryId={categoryId} productData={productData} />
+        <ConfirmOrder
+          id={_id}
+          categoryId={categoryId}
+          productData={productData}
+        />
       </div>
       <div className="w-[90%] md:w-[80%] mx-auto mt-20">
         {/* <p>Category ID: {categoryId}</p>
