@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { CheckIcon } from "@heroicons/react/24/solid";
+import { CheckIcon, XMarkIcon } from "@heroicons/react/24/solid";
 import { useQuery } from "@tanstack/react-query";
 import { useContext, useState } from "react";
 import Cookies from "universal-cookie";
@@ -57,7 +57,7 @@ const Orders = () => {
   };
 
   let totalAmount = 0;
-//   console.log(filterData);
+  //   console.log(filterData);
   if (filterData.length > 0) {
     filterData.forEach((order) => {
       totalAmount += order?.totalPrice || 0;
@@ -105,11 +105,12 @@ const Orders = () => {
           <thead>
             <tr>
               <th>SN</th>
-              <th>order Name</th>
-              <th>order Number</th>
-              <th>order Package</th>
-              <th>Received Number</th>
-              <th>Transaction Number</th>
+              <th>Client Name</th>
+              <th>Client Number</th>
+              <th>Product</th>
+              <th>Product status</th>
+              <th>Bkash Number</th>
+              <th>Bkash Transaction</th>
               <th>Price</th>
             </tr>
           </thead>
@@ -123,6 +124,14 @@ const Orders = () => {
                     <td>{order?.userName}</td>
                     <td>{order?.userPhone}</td>
                     <td>{order?.productName}</td>
+                    <td>
+                      <button className="btn btn-xs btn-success">
+                        <CheckIcon className="h-4 w-4 text-white font-bold" />{" "}
+                      </button>
+                      <button className="btn btn-xs btn-error ml-2">
+                        <XMarkIcon className="h-4 w-4 text-white font-bold" />{" "}
+                      </button>
+                    </td>
                     <td>{order?.sendMoney}</td>
                     <td>{order?.transaction}</td>
                     <td>{order?.totalPrice}</td>
@@ -140,6 +149,15 @@ const Orders = () => {
                     <td>{order?.userName}</td>
                     <td>{order?.userPhone}</td>
                     <td>{order?.productName}</td>
+
+                    <td>
+                      <button className="btn btn-xs btn-success">
+                        <CheckIcon className="h-4 w-4 text-white font-bold" />{" "}
+                      </button>
+                      <button className="btn btn-xs btn-error ml-2">
+                        <XMarkIcon className="h-4 w-4 text-white font-bold" />{" "}
+                      </button>
+                    </td>
                     <td>{order?.sendMoney}</td>
                     <td>{order?.transaction}</td>
                     <td>{order?.totalPrice}</td>
