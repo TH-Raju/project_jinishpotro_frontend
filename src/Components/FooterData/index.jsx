@@ -1,6 +1,10 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable no-unused-vars */
+import { useState } from "react";
 import WishList from "../WishList";
 
-const FooterData = () => {
+const FooterData = ({closeModal}) => {
+
   return (
     <div className="drawer-side">
       <label
@@ -8,7 +12,7 @@ const FooterData = () => {
         aria-label="close sidebar"
         className="drawer-overlay"
       ></label>
-      <WishList />
+      <WishList closeModal={closeModal}/>
     </div>
   );
 };

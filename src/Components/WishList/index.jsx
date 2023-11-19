@@ -1,7 +1,8 @@
+/* eslint-disable react/prop-types */
 import { Link, useNavigate } from "react-router-dom";
-
+import toast from "react-hot-toast";
 /* eslint-disable no-unused-vars */
-const WishList = () => {
+const WishList = ({ closeModal }) => {
   const navigate = useNavigate();
   let wishlist = [];
   const savedWishlist = localStorage.getItem("wishlist");
@@ -26,9 +27,26 @@ const WishList = () => {
 
     // Save wishlist to localStorage
     saveWishlistToLocalStorage();
-    navigate(`/categoriy/${cId}/${productId}`);
-    console.log("Product removed from wishlist.");
   }
+
+  const remove = () => {
+    closeModal();
+    navigate(`/`);
+    toast.success("Product removed from wishlist.");
+  };
+  const buy = () => {
+    // navigate(`/categoriy/${cId}/${productId}`);
+    toast.success("Please Confirm Your Order.");
+  };
+
+  const confirmOrder = (pId, cId) => {
+    closeModal();
+    navigate(`/categoriy/${cId}/${pId}`);
+    removeFromWishlist(pId, cId);
+    setTimeout(() => {
+      document.getElementById(pId).showModal();
+    }, 1000);
+  };
 
   return (
     <ul className="menu   w-80 min-h-full bg-base-200 text-base-content">
@@ -55,13 +73,19 @@ const WishList = () => {
             <div>
               <button
                 className="btn btn-sm btn-primary"
-                onClick={() => document.getElementById(wish.pId).showModal()}
+                onClick={() => {
+                  confirmOrder(wish.pId, wish.cId);
+                  buy();
+                }}
               >
                 ok
               </button>
               <button
                 className="btn btn-sm btn-warning ml-1"
-                onClick={() => removeFromWishlist(wish.pId, wish.cId)}
+                onClick={() => {
+                  removeFromWishlist(wish.pId, wish.cId);
+                  remove();
+                }}
               >
                 No
               </button>

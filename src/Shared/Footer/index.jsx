@@ -11,6 +11,7 @@ import FooterData from "../../Components/FooterData";
 
 const Footer = () => {
   const { siteName, theme, setTheme } = useContext(ContextData);
+  const [isModalVisible, setModalVisible] = useState(false);
 
   //   console.log(theme);
   const cookies = new Cookies();
@@ -40,6 +41,19 @@ const Footer = () => {
     localStorage.clear();
     navigate("/login");
   };
+
+  const d = () => {
+    console.log("hit");
+  };
+
+  const closeModal = () => {
+    setModalVisible(false);
+  };
+
+  const openModal = () => {
+    setModalVisible(true);
+  };
+
   const menuItems = (
     <>
       <li>
@@ -134,6 +148,7 @@ const Footer = () => {
                 className="drawer-toggle"
               />
               <label
+                onClick={() => openModal()}
                 htmlFor="my-drawer-45"
                 className="btn drawer-button lg:hidden border border-none bg-transparent"
               >
@@ -144,8 +159,13 @@ const Footer = () => {
                   {totalData ? totalData : 0}
                 </div>
               </label>
-
-              <FooterData />
+              {isModalVisible && (
+                <FooterData
+                  // pass any necessary props to your modal component
+                  closeModal={closeModal}
+                />
+              )}
+              {/* <FooterData /> */}
             </div>
           </div>
 
@@ -180,7 +200,6 @@ const Footer = () => {
                   </li>
                 </Link>
 
-                
                 <li className="mb-2">
                   <button
                     onClick={() => handleLogout()}
