@@ -132,6 +132,7 @@ const CategoriesProduct = () => {
           id={_id}
           categoryId={categoryId}
           productData={productData}
+          categoryName={categories && categories.name}
         />
       </div>
       <div className="w-[90%] md:w-[80%] mx-auto mt-20">

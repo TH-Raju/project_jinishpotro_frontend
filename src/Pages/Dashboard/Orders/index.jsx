@@ -4,6 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useContext, useState } from "react";
 import Cookies from "universal-cookie";
 import { ContextData } from "../../../Context";
+import toast from "react-hot-toast";
 
 const Orders = () => {
   const { loading, setLoading, orderRole, setorderRole } =
@@ -37,11 +38,11 @@ const Orders = () => {
   // console.log(orders);
 
   const handleOnchange = (e) => {
-    const productName = e.target.value;
+    const categoryName = e.target.value;
     // console.log(productName);
 
     const filterproductName = orders.filter(
-      (item) => item?.productName === productName
+      (item) => item?.categoryName === categoryName
     );
 
     setFilterData(filterproductName);
@@ -69,10 +70,77 @@ const Orders = () => {
   }
 
   const uniqueProductName = [
-    ...new Set(orders.map((order) => order?.productName)),
+    ...new Set(orders.map((order) => order?.categoryName)),
   ];
 
+//   console.log(uniqueProductName);
   // console.log(parseInt(totalAmount));
+
+  const delteOrder = (data) => {
+    // console.log(data);
+    fetch(`http://localhost:5000/api/v1/order/${data}`, {
+      method: "DELETE",
+      headers: {
+        "content-type": "application/json",
+        authorization: `bearer ${localStorage.getItem("accessToken")}`,
+      },
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        if (result.acknowledged) {
+          // console.log(result);
+          setLoading(false);
+          toast.success("Successfully Delete");
+          refetch();
+          //   console.log(result);
+        }
+      });
+  };
+
+  const updateOrder = (data) => {
+    // console.log(data);
+    data.status = "Confirm";
+    fetch(`http://localhost:5000/api/v1/order/update/${data._id}`, {
+      method: "PATCH",
+      headers: {
+        "content-type": "application/json",
+        authorization: `bearer ${localStorage.getItem("accessToken")}`,
+      },
+      body: JSON.stringify(data),
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        if (result.success) {
+          // console.log(result);
+          setLoading(false);
+          toast.success("Order Confirmed");
+          refetch();
+          //   console.log(result);
+        }
+      });
+  };
+  const cancelOrder = (data) => {
+    // console.log(data);
+    data.status = "Cancel";
+    fetch(`http://localhost:5000/api/v1/order/update/${data._id}`, {
+      method: "PATCH",
+      headers: {
+        "content-type": "application/json",
+        authorization: `bearer ${localStorage.getItem("accessToken")}`,
+      },
+      body: JSON.stringify(data),
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        if (result.success) {
+          // console.log(result);
+          setLoading(false);
+          toast.success("Order Canceled");
+          refetch();
+          //   console.log(result);
+        }
+      });
+  };
 
   return (
     <div>
@@ -125,12 +193,60 @@ const Orders = () => {
                     <td>{order?.userPhone}</td>
                     <td>{order?.productName}</td>
                     <td>
-                      <button className="btn btn-xs btn-success">
-                        <CheckIcon className="h-4 w-4 text-white font-bold" />{" "}
-                      </button>
-                      <button className="btn btn-xs btn-error ml-2">
-                        <XMarkIcon className="h-4 w-4 text-white font-bold" />{" "}
-                      </button>
+                      {order.status === "Pending" ? (
+                        <div className="text-center">
+                          <button
+                            className="btn btn-xs btn-success"
+                            onClick={() => updateOrder(order)}
+                          >
+                            <CheckIcon className="h-4 w-4 text-white font-bold" />{" "}
+                          </button>
+                          <button
+                            className="btn btn-xs btn-error ml-2"
+                            onClick={() => cancelOrder(order)}
+                          >
+                            <XMarkIcon className="h-4 w-4 text-white font-bold" />{" "}
+                          </button>
+                        </div>
+                      ) : (
+                        <>
+                          {order.status === "Pending" ? (
+                            <>
+                              <button
+                                className="btn btn-xs btn-success"
+                                onClick={() => updateOrder(order)}
+                              >
+                                <CheckIcon className="h-4 w-4 text-white font-bold" />{" "}
+                              </button>
+                              <button
+                                className="btn btn-xs btn-error ml-2"
+                                onClick={() => cancelOrder(order)}
+                              >
+                                <XMarkIcon className="h-4 w-4 text-white font-bold" />{" "}
+                              </button>
+                            </>
+                          ) : (
+                            <>
+                              {order?.status === "Confirm" ? (
+                                <>
+                                  <button className="btn w-full btn-success btn-xs text-sm">
+                                    Confirmed
+                                  </button>
+                                </>
+                              ) : (
+                                <div className="text-center">
+                                  <button
+                                    className="btn btn-error w-full btn-xs text-sm "
+                                    onClick={() => delteOrder(order?._id)}
+                                  >
+                                    Delete
+                                  </button>
+                                </div>
+                              )}
+                            </>
+                          )}
+                        </>
+                      )}
                     </td>
                     <td>{order?.sendMoney}</td>
                     <td>{order?.transaction}</td>
@@ -151,12 +267,60 @@ const Orders = () => {
                     <td>{order?.productName}</td>
 
                     <td>
-                      <button className="btn btn-xs btn-success">
-                        <CheckIcon className="h-4 w-4 text-white font-bold" />{" "}
-                      </button>
-                      <button className="btn btn-xs btn-error ml-2">
-                        <XMarkIcon className="h-4 w-4 text-white font-bold" />{" "}
-                      </button>
+                      {order.status === "Pending" ? (
+                        <div className="text-center">
+                          <button
+                            className="btn btn-xs btn-success"
+                            onClick={() => updateOrder(order)}
+                          >
+                            <CheckIcon className="h-4 w-4 text-white font-bold" />{" "}
+                          </button>
+                          <button
+                            className="btn btn-xs btn-error ml-2"
+                            onClick={() => cancelOrder(order)}
+                          >
+                            <XMarkIcon className="h-4 w-4 text-white font-bold" />{" "}
+                          </button>
+                        </div>
+                      ) : (
+                        <>
+                          {order.status === "Pending" ? (
+                            <>
+                              <button
+                                className="btn btn-xs btn-success"
+                                onClick={() => updateOrder(order)}
+                              >
+                                <CheckIcon className="h-4 w-4 text-white font-bold" />{" "}
+                              </button>
+                              <button
+                                className="btn btn-xs btn-error ml-2"
+                                onClick={() => cancelOrder(order)}
+                              >
+                                <XMarkIcon className="h-4 w-4 text-white font-bold" />{" "}
+                              </button>
+                            </>
+                          ) : (
+                            <>
+                              {order?.status === "Confirm" ? (
+                                <>
+                                  <button className="btn w-full btn-success btn-xs text-sm">
+                                    Confirmed
+                                  </button>
+                                </>
+                              ) : (
+                                <div className="text-center">
+                                  <button
+                                    className="btn btn-error w-full btn-xs text-sm "
+                                    onClick={() => delteOrder(order?._id)}
+                                  >
+                                    Delete
+                                  </button>
+                                </div>
+                              )}
+                            </>
+                          )}
+                        </>
+                      )}
                     </td>
                     <td>{order?.sendMoney}</td>
                     <td>{order?.transaction}</td>

@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 import { ContextData } from "../../Context";
 import Loading from "../../Shared/Loading/inde";
 
-const ConfirmOrder = ({ id, categoryId, productData }) => {
+const ConfirmOrder = ({ id, categoryId, categoryName, productData }) => {
   const [quantity, setQuantity] = useState(1);
   const { loading, setLoading } = useContext(ContextData);
 
@@ -31,8 +31,11 @@ const ConfirmOrder = ({ id, categoryId, productData }) => {
     formState: { errors },
   } = useForm();
 
+  // console.log(categoryName);
+
   const confirmOrder = (data) => {
     // console.log(data);
+    data.categoryName = categoryName;
     fetch("http://localhost:5000/api/v1/order/create", {
       method: "POST",
       headers: {
@@ -48,8 +51,7 @@ const ConfirmOrder = ({ id, categoryId, productData }) => {
           toast.success("Thanks for your Order");
           //   console.log(result);
           navigate("/");
-        }
-        else{
+        } else {
           setLoading(false);
           toast.error("Order not Confirmed");
           //   console.log(result);
@@ -190,6 +192,20 @@ const ConfirmOrder = ({ id, categoryId, productData }) => {
                 className="input input-bordered w-full max-w-xs"
               />
             </div>
+            <div className="hidden form-control w-full max-w-xs">
+              <label className="label">
+                {" "}
+                <span className="label-text text-xl font-bold">
+                  Categoriy Id
+                </span>
+              </label>
+              <input
+                type="text"
+                value={categoryName}
+                {...register("categoryName")}
+                className="input input-bordered w-full max-w-xs"
+              />
+            </div>
 
             <div className="hidden form-control w-full max-w-xs">
               <label className="label">
@@ -320,7 +336,7 @@ const ConfirmOrder = ({ id, categoryId, productData }) => {
               <div className=" text-center  md:col-span-2">
                 <input
                   className="btn btn-accent  font-bold md:w-96"
-                  value="Add Categoriy"
+                  value="Confirm Order"
                   type="submit"
                 />
               </div>
