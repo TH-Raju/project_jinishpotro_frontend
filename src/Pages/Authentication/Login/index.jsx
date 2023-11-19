@@ -9,7 +9,8 @@ import { ContextData } from "../../../Context";
 import Loading from "../../../Shared/Loading/inde";
 
 const Login = () => {
-  const { loading, setLoading } = useContext(ContextData);
+  const { loading, setLoading, userRole, setUserRole } =
+    useContext(ContextData);
   const { register, handleSubmit, reset } = useForm();
   const [visible, setVisible] = useState(false);
   const cookies = new Cookies();
@@ -40,7 +41,8 @@ const Login = () => {
           cookies.set("email", data?.data.email, { path: "/" });
           cookies.set("name", data?.data.name, { path: "/" });
           cookies.set("phone", data?.data.phone, { path: "/" });
-          cookies.set("role", data?.data.role, { path: "/" });
+          // cookies.set("role", data?.data.role, { path: "/" });
+          setUserRole(data?.data.role);
           cookies.set("id", data?.data._id, { path: "/" });
           localStorage.setItem("photo", data?.data.photo);
           localStorage.setItem(

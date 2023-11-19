@@ -10,10 +10,9 @@ const ShareContextData = ({ children }) => {
   const [maxCount, setMaxCount] = useState(100);
   const [minCount, setMinCount] = useState(0);
   const [selectedOptions, setSelectedOptions] = useState([]);
-
+  const [userRole, setUserRole] = useState("buyer");
   let imgbbAPIKey = "cedfa53cc1e836179f47e98c08ae1930";
   const siteName = "JinishPotro";
-
   const share = {
     siteName,
     setTheme,
@@ -29,6 +28,8 @@ const ShareContextData = ({ children }) => {
     setMinCount,
     selectedOptions,
     setSelectedOptions,
+    userRole,
+    setUserRole,
   };
   return <ContextData.Provider value={share}>{children}</ContextData.Provider>;
 };

@@ -10,7 +10,7 @@ const DashboardLayout = () => {
           <Bars3BottomLeftIcon className="h-6 w-6 text-blue-500" />
         </label>
       </div>
-      <div className="mt-9 drawer-content ">
+      <div className="mt-9 drawer-content w-[480px] md:w-[100%] mx-auto">
         <Outlet />
       </div>
       <div className="drawer-side">
@@ -31,9 +31,12 @@ const DashboardLayout = () => {
               Add Product
             </li>
           </Link>
-          <li>
-            <a>Sidebar Item 2</a>
-          </li>
+          <Link to={`/dashboard/orders`}>
+            <li className="btn btn-outline btn-sm w-full btn-info mb-2">
+              Orders
+            </li>
+          </Link>
+          
         </ul>
       </div>
     </div>

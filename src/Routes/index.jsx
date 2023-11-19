@@ -12,6 +12,7 @@ import Products from "../Pages/Products";
 import AddProduct from "../Pages/Dashboard/AddProduct";
 import CategoriesProduct from "../Pages/CategoryProducts";
 import CategoriyAllProduct from "../Pages/CategoriyAllProduct";
+import Orders from "../Pages/Dashboard/Orders";
 
 export const router = createBrowserRouter([
   {
@@ -77,6 +78,10 @@ export const router = createBrowserRouter([
           {
             path: "/dashboard/addProduct",
             element: <AddProduct />,
+          },
+          {
+            path: "/dashboard/orders",
+            element: <Orders />,
           },
         ],
       },
