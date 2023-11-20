@@ -13,6 +13,7 @@ import AddProduct from "../Pages/Dashboard/AddProduct";
 import CategoriesProduct from "../Pages/CategoryProducts";
 import CategoriyAllProduct from "../Pages/CategoriyAllProduct";
 import Orders from "../Pages/Dashboard/Orders";
+import ErrorPage from "../Shared/ErrorPage";
 
 export const router = createBrowserRouter([
   {
@@ -86,5 +87,9 @@ export const router = createBrowserRouter([
         ],
       },
     ],
+  },
+  {
+    path: "*",
+    element: <ErrorPage />,
   },
 ]);
