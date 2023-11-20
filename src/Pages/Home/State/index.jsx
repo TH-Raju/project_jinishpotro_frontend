@@ -4,7 +4,7 @@ import { ContextData } from "../../../Context";
 import { useQuery } from "@tanstack/react-query";
 
 const State = () => {
-  const { siteName } = useContext(ContextData);
+  const { siteName, theme } = useContext(ContextData);
 
   const { data: categories } = useQuery({
     queryKey: ["categorieProduct"],
@@ -72,7 +72,7 @@ const State = () => {
           {siteName} <span className="text-rose-700 ">States</span>
         </h1>
       </div>
-      <div className="stats  stats-vertical lg:stats-horizontal  shadow">
+      <div className={`stats  stats-vertical lg:stats-horizontal  shadow `}>
         <div className="stat place-items-center">
           <div className="stat-title">Categoriy</div>
           <div className="stat-value">{formatCategoriyNumber}</div>
@@ -82,7 +82,7 @@ const State = () => {
           </div>
         </div>
 
-        <div className="stat place-items-center">
+        <div className="stat place-items-center border border-rose-900 border-l-2">
           <div className="stat-title">Users</div>
           <div className="stat-value text-secondary">{formatUserNumber}</div>
           <div className="stat-desc text-secondary">
@@ -91,7 +91,7 @@ const State = () => {
           </div>
         </div>
 
-        <div className="stat place-items-center">
+        <div className="stat place-items-center border border-rose-900 border-l-2">
           <div className="stat-title">Total Products</div>
           <div className="stat-value">{formatProductNumber}</div>
           <div className="stat-desc">

@@ -88,8 +88,8 @@ const Footer = () => {
   return (
     <div>
       <ActualFooter/>
-      <div className="lg:hidden text-black">
-        <div className={`navbar bg-gray-400 bottom-0 fixed lg:hidden pb-5`}>
+      <div className="lg:hidden text-white">
+        <div className={`navbar bg-rose-900 bottom-0 fixed lg:hidden pb-5`}>
           <div className="navbar-start">
             <div className="dropdown">
               <label tabIndex={0} className="btn btn-ghost lg:hidden">
