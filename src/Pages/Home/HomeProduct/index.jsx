@@ -19,7 +19,7 @@ const HomeProducts = () => {
   //   console.log(categories);
   return (
     <div>
-      <div className="text-center">
+      <div className="text-center mt-20">
         <h1 className="text-3xl sm:text-5xl font-extrabold my-4">
           Product <span className="text-rose-700 ">Categories</span>
         </h1>
