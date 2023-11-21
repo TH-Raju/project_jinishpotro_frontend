@@ -21,7 +21,7 @@ const HomeProducts = () => {
     <div>
       <div className="text-center mt-20">
         <h1 className="text-3xl sm:text-5xl font-extrabold my-4">
-          Product <span className="text-rose-700 ">Categories</span>
+           Categories <span className="text-rose-700 "> Product</span>
         </h1>
         <p className="w-[80%] lg:w-[60%] mx-auto">
           "Discover endless possibilities at{" "}
