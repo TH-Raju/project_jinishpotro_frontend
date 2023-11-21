@@ -14,6 +14,7 @@ import { ContextData } from "../../Context";
 import { useNavigate, useParams } from "react-router-dom";
 import toast from "react-hot-toast";
 import Loading from "../../Shared/Loading/inde";
+import PrivateRoute from "../../Secure/PrivateRoute";
 
 function getRating(rating) {
   switch (rating) {
@@ -134,106 +135,111 @@ const Reviews = ({ review, refetch, categoryId, productId }) => {
         </button>
       </div>
 
-      <form action="" onSubmit={handleSubmit(handleAddReview)}>
-        <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
-          <div className="modal-box text-black">
-            <h3 className="font-bold text-lg">Your opinion matters!</h3>
-            <div className=" form-control w-[40%] mx-auto text-center">
-              <Rating
-                value={rating}
-                onChange={setRating}
-                onHoverChange={setHoveredRating}
-              />
-              <div>
-                <div>{`Selected: ${getRating(rating)}`}</div>
-                <div>{`Hovered: ${getRating(hoveredRating)}`}</div>
+      <PrivateRoute>
+        <form action="" onSubmit={handleSubmit(handleAddReview)}>
+          <dialog
+            id="my_modal_5"
+            className="modal modal-bottom sm:modal-middle"
+          >
+            <div className="modal-box text-black">
+              <h3 className="font-bold text-lg">Your opinion matters!</h3>
+              <div className=" form-control w-[40%] mx-auto text-center">
+                <Rating
+                  value={rating}
+                  onChange={setRating}
+                  onHoverChange={setHoveredRating}
+                />
+                <div>
+                  <div>{`Selected: ${getRating(rating)}`}</div>
+                  <div>{`Hovered: ${getRating(hoveredRating)}`}</div>
+                </div>
               </div>
-            </div>
 
-            <div className="form-control  ">
-              <label className="label">
-                {" "}
-                <span className="label-text text-xl font-bold">Review</span>
-              </label>
-              <textarea
-                type="text"
-                placeholder="Enter Your Feedback"
-                {...register("comment", {
-                  required: "Opinion is Required",
-                })}
-                className="input input-bordered w-full "
-              />
-              {errors.name && (
-                <p className="text-red-500">{errors.name.message}</p>
-              )}
-            </div>
-            <div className="hidden form-control w-full max-w-xs">
-              <input
-                type="number"
-                value={rating}
-                onChange={setRating}
-                {...register("rating")}
-              />
-            </div>
-            <div className="hidden form-control w-full max-w-xs">
-              <input
-                type="text"
-                value={photo}
-                onChange={setRating}
-                {...register("userPhoto")}
-              />
-            </div>
-            <div className="hidden form-control w-full max-w-xs">
-              <input
-                type="text"
-                value={formattedDate}
-                onChange={setRating}
-                {...register("date")}
-              />
-            </div>
-            <div className="hidden form-control w-full max-w-xs">
-              <label className="label">
-                {" "}
-                <span className="label-text text-xl font-bold">Name</span>
-              </label>
-              <input
-                type="text"
-                value={name}
-                {...register("name")}
-                className="input input-bordered w-full max-w-xs"
-              />
-            </div>
-            <div className=" hidden form-control w-full max-w-xs">
-              <label className="label">
-                {" "}
-                <span className="label-text text-xl font-bold">Id</span>
-              </label>
-              <input
-                type="text"
-                value={id}
-                placeholder="Enter Categoriy Title"
-                {...register("userId")}
-                className="input input-bordered w-full max-w-xs"
-              />
-            </div>
-            {/* <h1>categoryId ={categoryId}</h1>
-            <h1>productId = {productId}</h1> */}
-            <div className="modal-action flex items-baseline">
-              <form method="dialog">
-                {/* if there is a button in form, it will close the modal */}
-                <button className="btn btn-warning">Close</button>
-              </form>
-              <div className=" text-center mt-8 md:col-span-2">
+              <div className="form-control  ">
+                <label className="label">
+                  {" "}
+                  <span className="label-text text-xl font-bold">Review</span>
+                </label>
+                <textarea
+                  type="text"
+                  placeholder="Enter Your Feedback"
+                  {...register("comment", {
+                    required: "Opinion is Required",
+                  })}
+                  className="input input-bordered w-full "
+                />
+                {errors.name && (
+                  <p className="text-red-500">{errors.name.message}</p>
+                )}
+              </div>
+              <div className="hidden form-control w-full max-w-xs">
                 <input
-                  className="btn btn-accent mt-4 font-bold md:w-96"
-                  value="Add Categoriy"
-                  type="submit"
+                  type="number"
+                  value={rating}
+                  onChange={setRating}
+                  {...register("rating")}
                 />
               </div>
+              <div className="hidden form-control w-full max-w-xs">
+                <input
+                  type="text"
+                  value={photo}
+                  onChange={setRating}
+                  {...register("userPhoto")}
+                />
+              </div>
+              <div className="hidden form-control w-full max-w-xs">
+                <input
+                  type="text"
+                  value={formattedDate}
+                  onChange={setRating}
+                  {...register("date")}
+                />
+              </div>
+              <div className="hidden form-control w-full max-w-xs">
+                <label className="label">
+                  {" "}
+                  <span className="label-text text-xl font-bold">Name</span>
+                </label>
+                <input
+                  type="text"
+                  value={name}
+                  {...register("name")}
+                  className="input input-bordered w-full max-w-xs"
+                />
+              </div>
+              <div className=" hidden form-control w-full max-w-xs">
+                <label className="label">
+                  {" "}
+                  <span className="label-text text-xl font-bold">Id</span>
+                </label>
+                <input
+                  type="text"
+                  value={id}
+                  placeholder="Enter Categoriy Title"
+                  {...register("userId")}
+                  className="input input-bordered w-full max-w-xs"
+                />
+              </div>
+              {/* <h1>categoryId ={categoryId}</h1>
+            <h1>productId = {productId}</h1> */}
+              <div className="modal-action flex items-baseline">
+                <form method="dialog">
+                  {/* if there is a button in form, it will close the modal */}
+                  <button className="btn btn-warning">Close</button>
+                </form>
+                <div className=" text-center mt-8 md:col-span-2">
+                  <input
+                    className="btn btn-accent mt-4 font-bold md:w-96"
+                    value="Add Review"
+                    type="submit"
+                  />
+                </div>
+              </div>
             </div>
-          </div>
-        </dialog>
-      </form>
+          </dialog>
+        </form>
+      </PrivateRoute>
 
       <div>
         {review?.map((rev) => (
