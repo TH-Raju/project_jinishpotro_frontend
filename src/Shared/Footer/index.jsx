@@ -85,7 +85,9 @@ const Footer = () => {
     <div>
       <ActualFooter />
       <div className="lg:hidden text-white">
-        <div className={`navbar bg-rose-900 bottom-0 fixed lg:hidden pb-5`}>
+        <div
+          className={`navbar bg-rose-900 bottom-0 z-40 fixed lg:hidden pb-5`}
+        >
           <div className="navbar-start">
             <div className="dropdown">
               <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -111,10 +113,7 @@ const Footer = () => {
                 {menuItems}
               </ul>
             </div>
-            <Link
-              to={"/"}
-              className="btn btn-ghost text-sm normal-case  -ml-6"
-            >
+            <Link to={"/"} className="btn btn-ghost text-sm normal-case  -ml-6">
               {siteName}
             </Link>
           </div>

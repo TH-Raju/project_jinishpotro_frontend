@@ -12,7 +12,7 @@ const DiscountProdCard = ({ products, categoriyId }) => {
   const discountAmount = (price * discount) / 100;
   let actualPrice = price - discountAmount;
   return (
-    <div>
+    <div className="">
       <div className="card card-compact  text-black w-40 md:w-52 bg-base-100 shadow-xl border border-blue-200 ">
         <figure className="">
           <img src={photo} alt="Shoes" className="relative h- md:h-36 w-fit " />
