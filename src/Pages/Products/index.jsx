@@ -80,7 +80,7 @@ const Products = () => {
   }, []);
 
   // Display the filtered data
-  console.log(filteredPriceData);
+  // console.log(filteredPriceData);
 
   return (
     <div>

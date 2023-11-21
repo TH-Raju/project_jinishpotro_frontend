@@ -1,4 +1,5 @@
 import HomeBanner from "../../Components/HomeBanner";
+import Discount from "./Discount";
 import HomeProducts from "./HomeProduct";
 import State from "./State";
 
@@ -8,6 +9,7 @@ const Home = () => {
       <HomeBanner />
       <HomeProducts />
       <State />
+      <Discount />
     </div>
   );
 };
