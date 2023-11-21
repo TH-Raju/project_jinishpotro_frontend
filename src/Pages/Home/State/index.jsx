@@ -2,6 +2,7 @@
 import { useContext } from "react";
 import { ContextData } from "../../../Context";
 import { useQuery } from "@tanstack/react-query";
+import CountUpOnVisible from "../../../Components/CountUp";
 
 const State = () => {
   const { siteName, theme } = useContext(ContextData);
@@ -64,7 +65,7 @@ const State = () => {
   let formatCategoriyNumber = formatNumber(totalCategoriy);
   let formatProductNumber = formatNumber(totalProduct);
   let formatUserNumber = formatNumber(totalUser);
-
+  let percentage = calculatePercentage(totalProduct, totalCategoriy);
   return (
     <div className="text-center my-20">
       <div>
@@ -75,7 +76,14 @@ const State = () => {
       <div className={`stats  stats-vertical lg:stats-horizontal  shadow `}>
         <div className="stat place-items-center">
           <div className="stat-title">Categoriy</div>
-          <div className="stat-value">{formatCategoriyNumber}</div>
+          <div className="stat-value">
+            <CountUpOnVisible
+              start={0}
+              end={formatCategoriyNumber}
+              duration={3}
+              suf={"+"}
+            />
+          </div>
           <div className="stat-desc">
             From 2023 January 1st to {year} {monthName} {day}
             {day < 10 ? `${"st"}` : `${"th"}`}
@@ -84,7 +92,14 @@ const State = () => {
 
         <div className="stat place-items-center border border-rose-900 border-l-2">
           <div className="stat-title">Users</div>
-          <div className="stat-value text-secondary">{formatUserNumber}</div>
+          <div className="stat-value text-secondary">
+            <CountUpOnVisible
+              start={0}
+              end={formatUserNumber}
+              duration={3}
+              suf="+"
+            />
+          </div>
           <div className="stat-desc text-secondary">
             From 2023 January 1st to {year} {monthName} {day}
             {day < 10 ? `${"st"}` : `${"th"}`}
@@ -93,13 +108,26 @@ const State = () => {
 
         <div className="stat place-items-center border border-rose-900 border-l-2">
           <div className="stat-title">Total Products</div>
-          <div className="stat-value">{formatProductNumber}</div>
+          <div className="stat-value">
+            {" "}
+            <CountUpOnVisible
+              start={0}
+              end={formatProductNumber}
+              duration={3}
+              suf={"+"}
+            />
+          </div>
           <div className="stat-desc">
             <span role="img" aria-label="down-arrow">
               ⬆︎
             </span>{" "}
-            {totalProduct} ({calculatePercentage(totalProduct, totalCategoriy)}
-            %)
+            {totalProduct}
+            <CountUpOnVisible
+              start={0}
+              end={percentage}
+              duration={3}
+              suf={"%"}
+            />
           </div>
         </div>
       </div>
