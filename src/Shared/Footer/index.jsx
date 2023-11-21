@@ -43,9 +43,7 @@ const Footer = () => {
     navigate("/login");
   };
 
-  const d = () => {
-    console.log("hit");
-  };
+
 
   const closeModal = () => {
     setModalVisible(false);

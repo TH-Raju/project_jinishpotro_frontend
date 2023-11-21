@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import ProductCard from "../ProductCard";
 import { useContext } from "react";
 import { ContextData } from "../../Context";
+import { EyeIcon } from '@heroicons/react/24/solid'
 
 const Categoriy = ({ categoriy }) => {
   const { name, title, products, _id, categoryId } = categoriy;
@@ -28,7 +29,8 @@ const Categoriy = ({ categoriy }) => {
           to={`/categoriy/${categoriy._id}`}
           className="card card-compact w-40 md:w-52 bg-base-100 shadow-xl border border-blue-200 p-2 flex justify-center items-center text-black"
         >
-          <h2 className="card-title text-5xl">+</h2>
+          <h2 className="card-title text-5xl"> <EyeIcon className="h-6 w-6 text-gray-400" />
+      </h2>
           <h2 className="card-title text-xl md:text-2xl opacity-20">
             See More Items
           </h2>

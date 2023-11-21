@@ -14,7 +14,7 @@ const User = () => {
 
   let data = localStorage.getItem("list");
   data = JSON.parse(data);
-  console.log(data);
+  // console.log(data);
 
   const deleteData = (id) => {
     let updateData = data.filter((uid) => uid !== id);

@@ -73,7 +73,7 @@ const Signup = () => {
               .then((res) => res.json())
               .then((data) => {
                 if (data.success) {
-                  console.log(data);
+                  // console.log(data);
                   toast.success("Account create Successful.");
                   //   console.log(data?.data.email);
                   cookies.set("email", data?.data.email, { path: "/" });
