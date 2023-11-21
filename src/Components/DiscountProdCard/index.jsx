@@ -6,7 +6,7 @@ import { useContext } from "react";
 import { ContextData } from "../../Context";
 
 // eslint-disable-next-line react/prop-types
-const DiscountProdCard = ({ products }) => {
+const DiscountProdCard = ({ products, categoriyId }) => {
   const { name, price, detail, photo, discount } = products;
   const { theme } = useContext(ContextData);
   const discountAmount = (price * discount) / 100;
@@ -33,8 +33,8 @@ const DiscountProdCard = ({ products }) => {
             $ <span className="font-bold">{actualPrice}</span>
           </p>
           <p className=" bottom-0">
-          <del className="font-bold text-orange-600">  $  {price}</del>
-             
+            <del className="font-bold text-orange-600"> $ {price}</del>
+
             <span className=""> - {discount}%</span>
           </p>
         </div>
