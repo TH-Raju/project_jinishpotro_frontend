@@ -48,12 +48,12 @@ const State = () => {
     } else if (number >= 10000) {
       return (number / 1000).toFixed(0) + "k";
     } else {
-      return number.toString();
+      return number?.toString();
     }
   }
   let totalProduct = 0;
 
-  categories.map((cat) => (totalProduct += cat.products.length));
+  categories?.map((cat) => (totalProduct += cat.products.length));
   //   console.log(totalProduct);
   function calculatePercentage(value, total) {
     return total > 0 ? ((value / total) * 100).toFixed(0) : 0;
