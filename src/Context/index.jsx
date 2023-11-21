@@ -7,7 +7,7 @@ const ShareContextData = ({ children }) => {
   const [theme, setTheme] = useState(true);
   const [loading, setLoading] = useState(false);
   const [count, setCount] = useState(0);
-  const [maxCount, setMaxCount] = useState(100);
+  const [maxCount, setMaxCount] = useState(0);
   const [minCount, setMinCount] = useState(0);
   const [selectedOptions, setSelectedOptions] = useState([]);
   const [userRole, setUserRole] = useState("buyer");

@@ -14,6 +14,7 @@ import { Rating } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
 import toast from "react-hot-toast";
 import ConfirmOrder from "../../Components/ConfirmOrder";
+import PrivateRoute from "../../Secure/PrivateRoute";
 
 const CategoriesProduct = () => {
   const data = useLoaderData();
@@ -162,12 +163,14 @@ const CategoriesProduct = () => {
           ))}
         </div>
       </div>
-      <Reviews
-        review={review}
-        refetch={refetch}
-        categoryId={categoryId}
-        productId={productId}
-      />
+      <PrivateRoute>
+        <Reviews
+          review={review}
+          refetch={refetch}
+          categoryId={categoryId}
+          productId={productId}
+        />
+      </PrivateRoute>
     </div>
   );
 };

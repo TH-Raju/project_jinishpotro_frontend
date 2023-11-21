@@ -11,7 +11,7 @@ const Range = () => {
       <div className="rounded-full py-3 border px-3">
         <input
           type="range"
-          min={minCount}
+          min={0}
           max={maxCount}
           value={count}
           className="range range-success"
