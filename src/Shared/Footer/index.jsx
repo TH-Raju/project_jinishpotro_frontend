@@ -185,7 +185,7 @@ const Footer = () => {
                 </label>
                 <ul
                   tabIndex={0}
-                  className="dropdown-content -ml-28  z-[1] menu p-2 shadow bg-base-100 rounded-box w-40"
+                  className="dropdown-content -ml-28  z-[1] menu p-2 shadow  rounded-box w-40"
                 >
                   {/* <Link to={`/profile`}>
                 <li className=" mb-2">
@@ -196,7 +196,7 @@ const Footer = () => {
               </Link> */}
                   <Link to={`/dashboard`}>
                     <li className=" mb-2">
-                      <button className="hover:bg-primary hover:text-white my-2 bg-sky-500  rounded-lg duration-100">
+                      <button className="hover:bg-sky-700 hover:text-white my-2 bg-sky-500  rounded-lg duration-100">
                         Dashboard
                       </button>
                     </li>

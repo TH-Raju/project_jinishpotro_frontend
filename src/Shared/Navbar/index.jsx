@@ -67,7 +67,7 @@ const Navbar = () => {
   );
   return (
     <div className="lg:block hidden text-white">
-      <div className="navbar fixed top-0 z-40 bg-rose-900">
+      <div className="navbar fixed top-0 z-40 bg-rose-600  lg:w-[1400px] mx-auto  px-5">
         <div className="navbar-start ">
           <div className="dropdown">
             {/* <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -138,7 +138,7 @@ const Navbar = () => {
                 <h2 className="card-title relative">
                   <ShoppingCartIcon className="h-6 w-6  text-blue-500" />
                 </h2>
-                <div className="badge badge-secondary badge-sm mb-8 ml-10 absolute">
+                <div className="badge badge-secondary badge-sm mb-8 ml-10 absolute bg-green-300 text-black">
                   {totalData ? totalData : 0}
                 </div>
               </label>
