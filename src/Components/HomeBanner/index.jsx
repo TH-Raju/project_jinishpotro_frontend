@@ -10,7 +10,7 @@ const HomeBanner = ({ categorie }) => {
   return (
     <div>
       <section
-        className={`relative bg-cover bg-center bg-no-repeat `}
+        className={`relative bg-cover bg-center bg-no-repeat  `}
         style={{ backgroundImage: `url(${categorie.photo})` }}
       >
         <div

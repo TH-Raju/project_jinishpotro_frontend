@@ -15,38 +15,28 @@ const Discount = () => {
   });
   return (
     <div className="w-[90%] md:w-[80%] mx-auto  min-h-screen">
-      {categories?.map((cat) =>
-        cat?.products?.map(
-          (pro) =>
-            pro.discount >= 1 && (
-              <>
-                <h1 className="text-2xl sm:text-2xl font-extrabold mb-5">
-                  <span className="text-rose-700 font-extrabold">I</span>{" "}
-                  Discount{" "}
-                  <h1 className="ml-3 mb-4 text-xl font-normal">Products</h1>
-                </h1>
-                <div>
-                  {categories?.map((categorie) => (
-                    <div key={categorie._id}>
-                      {categorie?.products?.map((product) => (
-                        <div key={product._id}>
-                          {product.discount >= 1 && (
-                            <Link
-                              key={product._id}
-                              to={`/categoriy/${categorie._id}/${product._id}`}
-                            >
-                              <DiscountProdCard products={product} />
-                            </Link>
-                          )}
-                        </div>
-                      ))}
-                    </div>
-                  ))}
-                </div>
-              </>
-            )
-        )
-      )}
+      <h1 className="text-2xl sm:text-2xl font-extrabold mb-5">
+        <span className="text-rose-700 font-extrabold">I</span> Discount{" "}
+        <h1 className="ml-3 mb-4 text-xl font-normal">Products</h1>
+      </h1>
+      <div className="flex gap-4 flex-wrap">
+        {categories?.map((categorie) => (
+          <div key={categorie._id}>
+            {categorie?.products?.map((product) => (
+              <div key={product._id}>
+                {product.discount >= 1 && (
+                  <Link
+                    key={product._id}
+                    to={`/categoriy/${categorie._id}/${product._id}`}
+                  >
+                    <DiscountProdCard products={product} />
+                  </Link>
+                )}
+              </div>
+            ))}
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

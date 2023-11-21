@@ -39,7 +39,7 @@ const Home = () => {
           clickable: true,
         }}
         modules={[Autoplay, Pagination, Navigation]}
-        className="mySwiper"
+        className="mySwiper rounded-b-xl "
       >
         {categories?.map((categorie) => (
           <SwiperSlide key={categorie._id}>
