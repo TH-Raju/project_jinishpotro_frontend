@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { useQuery } from "@tanstack/react-query";
 import ProductCard from "../../../Components/ProductCard";
+import DiscountProdCard from "../../../Components/DiscountProdCard";
 
 const Discount = () => {
   const { data: categories } = useQuery({
@@ -28,7 +29,7 @@ const Discount = () => {
                       {categorie?.products?.map((product) => (
                         <div key={product._id}>
                           {product.discount >= 1 && (
-                            <ProductCard products={product}></ProductCard>
+                            <DiscountProdCard products={product}></DiscountProdCard>
                           )}
                         </div>
                       ))}

@@ -45,19 +45,19 @@ const ActualFooter = () => {
               <rect x="14" y="1" width="7" height="6" />
               <rect x="14" y="11" width="7" height="12" />
             </svg>
-            <span className="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase">
+            <span className="ml-2 text-xl font-bold tracking-wide  uppercase">
               {siteName}
             </span>
           </Link>
           <div className="mt-4 lg:max-w-sm">
-            <p className="text-sm text-gray-800">
+            <p className="text-sm ">
               Welcome to {siteName} – your go-to online marketplace for a
               seamless shopping experience. Explore a curated collection across
               fashion, electronics, and more. Connect with sellers globally and
               enjoy secure transactions, timely deliveries, and excellent
               customer support.
             </p>
-            <p className="mt-4 text-sm text-gray-800">
+            <p className="mt-4 text-sm ">
               Join our community and discover the joy of convenient online
               shopping. At {siteName}, we bring together unique sellers and
               discerning buyers, offering a diverse range of products with just
@@ -68,7 +68,7 @@ const ActualFooter = () => {
         </div>
         <div className="grid grid-cols-2 gap-5 row-gap-8 lg:col-span-4 md:grid-cols-4">
           <div>
-            <p className="font-semibold tracking-wide text-gray-800">
+            <p className="font-bold tracking-wide ">
               Category
             </p>
             <ul className="mt-2 space-y-2">
@@ -79,7 +79,7 @@ const ActualFooter = () => {
                   <li key={categorie._id}>
                     <Link
                       to={`categoriy/${categorie._id}`}
-                      className="text-gray-600 transition-colors duration-300 hover:text-deep-purple-accent-400"
+                      className=" transition-colors duration-300 hover:text-deep-purple-accent-400"
                     >
                       {categorie.name}
                     </Link>
@@ -88,7 +88,7 @@ const ActualFooter = () => {
             </ul>
           </div>
           <div>
-            <p className="font-semibold tracking-wide text-gray-800">
+            <p className="font-bold tracking-wide ">
               Products
             </p>
             <ul className="mt-2 space-y-2">
@@ -99,13 +99,13 @@ const ActualFooter = () => {
                   <li key={categorie._id}>
                     <Link
                       to={`categoriy/${categorie._id}`}
-                      className="text-gray-600 transition-colors duration-300 hover:text-deep-purple-accent-400"
+                      className=" transition-colors duration-300 hover:text-deep-purple-accent-400"
                     >
                       {categorie?.products?.slice(0, 1).map((product) => (
                         <li key={product._id}>
                           <Link
                             to={`categoriy/${categorie._id}/${product._id}`}
-                            className="text-gray-600 transition-colors duration-300 hover:text-deep-purple-accent-400"
+                            className=" transition-colors duration-300 hover:text-deep-purple-accent-400"
                           >
                             {product.name}
                           </Link>
@@ -117,14 +117,14 @@ const ActualFooter = () => {
             </ul>
           </div>
           <div>
-            <p className="font-semibold tracking-wide text-gray-800">
+            <p className="font-bold tracking-wide ">
               JinishPotro
             </p>
             <ul className="mt-2 space-y-2">
               <li>
                 <Link
                   to="/"
-                  className="text-gray-600 transition-colors duration-300 hover:text-deep-purple-accent-400"
+                  className=" transition-colors duration-300 hover:text-deep-purple-accent-400"
                 >
                   Media
                 </Link>
@@ -132,7 +132,7 @@ const ActualFooter = () => {
               <li>
                 <Link
                   to="/"
-                  className="text-gray-600 transition-colors duration-300 hover:text-deep-purple-accent-400"
+                  className=" transition-colors duration-300 hover:text-deep-purple-accent-400"
                 >
                   Brochure
                 </Link>
@@ -140,7 +140,7 @@ const ActualFooter = () => {
               <li>
                 <Link
                   to="/"
-                  className="text-gray-600 transition-colors duration-300 hover:text-deep-purple-accent-400"
+                  className=" transition-colors duration-300 hover:text-deep-purple-accent-400"
                 >
                   Nonprofit
                 </Link>
@@ -148,7 +148,7 @@ const ActualFooter = () => {
               <li>
                 <Link
                   to="/"
-                  className="text-gray-600 transition-colors duration-300 hover:text-deep-purple-accent-400"
+                  className=" transition-colors duration-300 hover:text-deep-purple-accent-400"
                 >
                   News
                 </Link>
@@ -156,7 +156,7 @@ const ActualFooter = () => {
               <li>
                 <Link
                   to="/"
-                  className="text-gray-600 transition-colors duration-300 hover:text-deep-purple-accent-400"
+                  className=" transition-colors duration-300 hover:text-deep-purple-accent-400"
                 >
                   Career
                 </Link>
@@ -164,12 +164,12 @@ const ActualFooter = () => {
             </ul>
           </div>
           <div>
-            <p className="font-semibold tracking-wide text-gray-800">Cherry</p>
+            <p className="font-bold tracking-wide ">Cherry</p>
             <ul className="mt-2 space-y-2">
               <li>
                 <Link
                   to="/"
-                  className="text-gray-600 transition-colors duration-300 hover:text-deep-purple-accent-400"
+                  className=" transition-colors duration-300 hover:text-deep-purple-accent-400"
                 >
                   Infopreneur
                 </Link>
@@ -177,7 +177,7 @@ const ActualFooter = () => {
               <li>
                 <Link
                   to="/"
-                  className="text-gray-600 transition-colors duration-300 hover:text-deep-purple-accent-400"
+                  className=" transition-colors duration-300 hover:text-deep-purple-accent-400"
                 >
                   Personal
                 </Link>
@@ -185,7 +185,7 @@ const ActualFooter = () => {
               <li>
                 <Link
                   to="/"
-                  className="text-gray-600 transition-colors duration-300 hover:text-deep-purple-accent-400"
+                  className=" transition-colors duration-300 hover:text-deep-purple-accent-400"
                 >
                   Wiki
                 </Link>
@@ -193,7 +193,7 @@ const ActualFooter = () => {
               <li>
                 <Link
                   to="/"
-                  className="text-gray-600 transition-colors duration-300 hover:text-deep-purple-accent-400"
+                  className=" transition-colors duration-300 hover:text-deep-purple-accent-400"
                 >
                   Forum
                 </Link>
@@ -203,28 +203,35 @@ const ActualFooter = () => {
         </div>
       </div>
       <div className="flex flex-col justify-between pt-5 pb-10 border-t sm:flex-row">
-        <p className="text-sm text-gray-600">
+        <p className="text-sm ">
           © Copyright {year}{" "}
-          <Link className="text-blue-700 underline" to={"https://tofajjol-hosen-raju.web.app/"} target="__blank">
+          <Link
+            className="text-blue-700 underline"
+            to={"https://tofajjol-hosen-raju.web.app/"}
+            target="__blank"
+          >
             TH-Raju
           </Link>
           . All rights reserved.
         </p>
         <div className="flex items-center mt-4 space-x-4 sm:mt-0">
           <Link
-            to={"https://www.linkedin.com/in/th-raju/"} target="__blank"
+            to={"https://www.linkedin.com/in/th-raju/"}
+            target="__blank"
             className="text-gray-500 transition-colors duration-300 hover:text-deep-purple-accent-400"
           >
             <img src={linkedin} className="h-6" alt="" />
           </Link>
           <Link
-            to={"https://github.com/TH-Raju"} target="__blank"
+            to={"https://github.com/TH-Raju"}
+            target="__blank"
             className="text-gray-500 transition-colors duration-300 hover:text-deep-purple-accent-400"
           >
             <img src={github} className="h-6" alt="" />
           </Link>
           <Link
-            to={"https://www.facebook.com/rjraju.r8/"} target="__blank"
+            to={"https://www.facebook.com/rjraju.r8/"}
+            target="__blank"
             className="text-gray-500 transition-colors duration-300 hover:text-deep-purple-accent-400"
           >
             <img src={facebook} className="h-6" alt="" />
