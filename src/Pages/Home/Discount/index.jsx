@@ -13,7 +13,7 @@ const Discount = () => {
     },
   });
   return (
-    <div className="w-[90%] md:w-[80%] mx-auto py-5">
+    <div className="w-[90%] md:w-[80%] mx-auto py-5 min-h-screen">
       {categories?.map((cat) =>
         cat?.products?.map((pro) =>
             pro.discount >= 1 && (
