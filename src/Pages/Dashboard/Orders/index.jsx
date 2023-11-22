@@ -7,12 +7,13 @@ import { ContextData } from "../../../Context";
 import toast from "react-hot-toast";
 
 const Orders = () => {
-  const { loading, setLoading, orderRole, setorderRole } =
+  const { loading, setLoading, orderRole, setorderRole, userRole } =
     useContext(ContextData);
   const cookies = new Cookies();
   const orderEmail = cookies.get("email");
+  const userId = cookies.get("id");
   let [filterData, setFilterData] = useState([]);
-
+  let actualData = [];
   const { data: orders = [], refetch } = useQuery({
     queryKey: ["orders"],
     queryFn: async () => {
@@ -22,20 +23,42 @@ const Orders = () => {
       const data = await res.json();
 
       // Filter the data to exclude the order with a matching email
-      //   const filteredData = data?.message?.filter(
-      //     (order) =>
-      //       order.email !== orderEmail &&
-      //       order.role !== "super_admin" &&
-      //       order.role !== "admin" &&
-      //       order?.purchesPackage?.status === "active"
-      //   );
+      // const filteredData = data?.message?.filter(
+      //   (order) =>
+      //     order.email !== orderEmail &&
+      //     order.role !== "super_admin" &&
+      //     order.role !== "admin" &&
+      //     order?.purchesPackage?.status === "active"
+      // );
       // refetch();
+      if (userRole === "seller") {
+        const filteredOrder = await data?.data?.filter(
+          (order) => order?.sellerId === userId
+        );
+        return filteredOrder;
+      } else {
+        return data.data;
+      }
+      // console.log(filteredOrder);
 
-      return data.data;
-      //   return filteredData;
+      // return filteredOrder;
+      //   console.log("seller");
+      // }
+
+      // return data.data;
     },
   });
   // console.log(orders);
+  // console.log(userId);
+
+  if (userRole === "seller") {
+    const filteredOrder = orders?.filter((order) => order?.sellerId === userId);
+    actualData = filteredOrder;
+    // console.log(filteredOrder);
+  } else {
+    actualData = orders;
+  }
+  // console.log(actualData);
 
   const handleOnchange = (e) => {
     const categoryName = e.target.value;
@@ -73,7 +96,7 @@ const Orders = () => {
     ...new Set(orders.map((order) => order?.categoryName)),
   ];
 
-//   console.log(uniqueProductName);
+  //   console.log(uniqueProductName);
   // console.log(parseInt(totalAmount));
 
   const delteOrder = (data) => {
@@ -143,7 +166,7 @@ const Orders = () => {
   };
 
   return (
-    <div>
+    <div className="w-[90%] mx-auto">
       <div className="my-4">
         <span className="font-bold ml-4">Filter Data :</span>
         <select
@@ -259,7 +282,7 @@ const Orders = () => {
             <>
               <tbody>
                 {/* row 1 */}
-                {orders?.map((order, i) => (
+                {actualData?.map((order, i) => (
                   <tr key={order._id}>
                     <th>{i + 1}</th>
                     <td>{order?.userName}</td>

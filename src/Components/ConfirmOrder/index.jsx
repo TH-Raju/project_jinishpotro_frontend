@@ -19,8 +19,17 @@ const ConfirmOrder = ({ id, categoryId, categoryName, productData }) => {
   const userPhone = cookies.get("phone");
   const userEmail = cookies.get("email");
   const navigate = useNavigate();
-  const { name, photo, detail, price, sellerName, discount, review, _id } =
-    productData;
+  const {
+    name,
+    photo,
+    detail,
+    price,
+    sellerName,
+    discount,
+    review,
+    _id,
+    sellerId,
+  } = productData;
   const discountAmount = (price * discount) / 100;
   let actualPrice = price - discountAmount;
   actualPrice = actualPrice * quantity;
@@ -210,14 +219,24 @@ const ConfirmOrder = ({ id, categoryId, categoryName, productData }) => {
             <div className="hidden form-control w-full max-w-xs">
               <label className="label">
                 {" "}
-                <span className="label-text text-xl font-bold">
-                  Categoriy Id
-                </span>
+                <span className="label-text text-xl font-bold">user Id</span>
               </label>
               <input
                 type="text"
                 value={userId}
                 {...register("userId")}
+                className="input input-bordered w-full max-w-xs"
+              />
+            </div>
+            <div className="hidden form-control w-full max-w-xs">
+              <label className="label">
+                {" "}
+                <span className="label-text text-xl font-bold">Seller Id</span>
+              </label>
+              <input
+                type="text"
+                value={sellerId}
+                {...register("sellerId")}
                 className="input input-bordered w-full max-w-xs"
               />
             </div>

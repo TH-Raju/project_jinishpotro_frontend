@@ -19,8 +19,17 @@ import PrivateRoute from "../../Secure/PrivateRoute";
 const CategoriesProduct = () => {
   const data = useLoaderData();
   // console.log(data.data.review);
-  const { name, photo, detail, price, sellerName, discount, review, _id } =
-    data.data;
+  const {
+    name,
+    photo,
+    detail,
+    price,
+    sellerName,
+    discount,
+    review,
+    _id,
+    sellerId,
+  } = data.data;
   const { categoryId, productId } = useParams();
   const [rating, setRating] = useState(0);
   const [wishlist, setWishlist] = useState([]);
@@ -52,6 +61,7 @@ const CategoriesProduct = () => {
     photo: photo,
     price: price,
     discount: discount,
+    sellerId: sellerId,
   };
 
   useEffect(() => {
