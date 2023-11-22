@@ -37,7 +37,7 @@ const AllUser = () => {
   // console.log(users.map((user) => user.role));
   const handleDeleteUser = (user) => {
     fetch(
-      `https://marriage-media-server-ongbh0igr-th-raju.vercel.app/api/v1/user/delete/user/1/${user._id}`,
+      `http://localhost:5000/api/v1/user/delete/user/${user._id}`,
       {
         method: "DELETE",
         headers: {
@@ -47,7 +47,7 @@ const AllUser = () => {
     )
       .then((res) => res.json())
       .then((data) => {
-        if (data.status == "success") {
+        if (data.success) {
           toast.success("User Delete successfully");
           refetch();
         }
@@ -56,7 +56,7 @@ const AllUser = () => {
 
   const handleMakeAdmin = (id) => {
     fetch(
-      `https://marriage-media-server-ongbh0igr-th-raju.vercel.app/api/v1/user/update/user/1/admin/${id}`,
+      `http://localhost:5000/api/v1/user/update/admin/${id}`,
       {
         method: "PUT",
         headers: {
@@ -66,7 +66,7 @@ const AllUser = () => {
     )
       .then((res) => res.json())
       .then((data) => {
-        if (data.status == "success") {
+        if (data.success) {
           toast.success("Make admin successful");
           refetch();
         }
@@ -74,7 +74,7 @@ const AllUser = () => {
   };
   const handleMakeUser = (id) => {
     fetch(
-      `https://marriage-media-server-ongbh0igr-th-raju.vercel.app/api/v1/user/update/admin/to/1/user/${id}`,
+      `http://localhost:5000/api/v1/user/update/to/user/${id}`,
       {
         method: "PUT",
         headers: {
@@ -84,7 +84,7 @@ const AllUser = () => {
     )
       .then((res) => res.json())
       .then((data) => {
-        if (data.status == "success") {
+        if (data.success ) {
           toast.success("Make User successful");
           refetch();
         }
