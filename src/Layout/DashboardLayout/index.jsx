@@ -6,6 +6,18 @@ import { ContextData } from "../../Context";
 
 const DashboardLayout = () => {
   const { userRole } = useContext(ContextData);
+  let verify = false;
+  let verifyAdmin = false;
+  const validRoles = ["seller", "admin", "super_admin"];
+  const validAdminRoles = ["admin", "super_admin"];
+
+  if (validRoles.includes(userRole)) {
+    verify = true;
+  }
+
+  if (validAdminRoles.includes(userRole)) {
+    verifyAdmin = true;
+  }
   return (
     <div className="drawer lg:drawer-open lg:mt-16">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -30,27 +42,26 @@ const DashboardLayout = () => {
               Profile
             </li>
           </Link>
-          {userRole === "seller" ||
-            "admin" ||
-            ("super_admin" && (
-              <>
-                <Link to={`/dashboard/addCategoriy`}>
-                  <li className="btn btn-outline btn-sm w-full btn-info mb-2">
-                    Add Categoriy
-                  </li>
-                </Link>
-                <Link to={`/dashboard/addProduct`}>
-                  <li className="btn btn-outline btn-sm w-full btn-info mb-2">
-                    Add Product
-                  </li>
-                </Link>
-                <Link to={`/dashboard/orders`}>
-                  <li className="btn btn-outline btn-sm w-full btn-info mb-2">
-                    Orders
-                  </li>
-                </Link>
-              </>
-            ))}
+
+          {verify && (
+            <>
+              <Link to={`/dashboard/addCategoriy`}>
+                <li className="btn btn-outline btn-sm w-full btn-info mb-2">
+                  Add Categoriy
+                </li>
+              </Link>
+              <Link to={`/dashboard/addProduct`}>
+                <li className="btn btn-outline btn-sm w-full btn-info mb-2">
+                  Add Product
+                </li>
+              </Link>
+              <Link to={`/dashboard/orders`}>
+                <li className="btn btn-outline btn-sm w-full btn-info mb-2">
+                  Orders
+                </li>
+              </Link>
+            </>
+          )}
         </ul>
       </div>
     </div>
