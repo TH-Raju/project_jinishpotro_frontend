@@ -1,7 +1,11 @@
+/* eslint-disable no-unused-vars */
 import { Bars3BottomLeftIcon } from "@heroicons/react/24/solid";
+import { useContext } from "react";
 import { Link, Outlet } from "react-router-dom";
+import { ContextData } from "../../Context";
 
 const DashboardLayout = () => {
+  const { userRole } = useContext(ContextData);
   return (
     <div className="drawer lg:drawer-open lg:mt-16">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -21,22 +25,32 @@ const DashboardLayout = () => {
         ></label>
         <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
           {/* Sidebar content here */}
-          <Link to={`/dashboard/addCategoriy`}>
+          <Link to={`/dashboard/profile`}>
             <li className="btn btn-outline btn-sm w-full btn-info mb-2">
-              Add Categoriy
+              Profile
             </li>
           </Link>
-          <Link to={`/dashboard/addProduct`}>
-            <li className="btn btn-outline btn-sm w-full btn-info mb-2">
-              Add Product
-            </li>
-          </Link>
-          <Link to={`/dashboard/orders`}>
-            <li className="btn btn-outline btn-sm w-full btn-info mb-2">
-              Orders
-            </li>
-          </Link>
-          
+          {userRole === "seller" ||
+            "admin" ||
+            ("super_admin" && (
+              <>
+                <Link to={`/dashboard/addCategoriy`}>
+                  <li className="btn btn-outline btn-sm w-full btn-info mb-2">
+                    Add Categoriy
+                  </li>
+                </Link>
+                <Link to={`/dashboard/addProduct`}>
+                  <li className="btn btn-outline btn-sm w-full btn-info mb-2">
+                    Add Product
+                  </li>
+                </Link>
+                <Link to={`/dashboard/orders`}>
+                  <li className="btn btn-outline btn-sm w-full btn-info mb-2">
+                    Orders
+                  </li>
+                </Link>
+              </>
+            ))}
         </ul>
       </div>
     </div>

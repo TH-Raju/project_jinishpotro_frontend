@@ -14,6 +14,7 @@ import CategoriesProduct from "../Pages/CategoryProducts";
 import CategoriyAllProduct from "../Pages/CategoriyAllProduct";
 import Orders from "../Pages/Dashboard/Orders";
 import ErrorPage from "../Shared/ErrorPage";
+import Profile from "../Pages/Dashboard/Profile";
 
 export const router = createBrowserRouter([
   {
@@ -70,7 +71,11 @@ export const router = createBrowserRouter([
         children: [
           {
             path: "/dashboard",
-            element: <AddCategoriy />,
+            element: <Profile />,
+          },
+          {
+            path: "/dashboard/profile",
+            element: <Profile />,
           },
           {
             path: "/dashboard/addCategoriy",
