@@ -136,7 +136,7 @@ const AllUser = () => {
                             onClick={() => handleMakeUser(user._id)}
                             className="btn btn-outline btn-success btn-sm"
                           >
-                            <span className="text-black">Make User</span>
+                            <span className="text-black">Make Buyer</span>
                           </button>
                         )}
                       </td>
