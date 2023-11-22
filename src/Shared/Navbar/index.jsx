@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { ContextData } from "../../Context";
 import { ShoppingCartIcon, SunIcon } from "@heroicons/react/24/solid";
 import { Link, useNavigate } from "react-router-dom";
@@ -8,6 +8,7 @@ import CardData from "../../Components/CardData";
 
 const Navbar = () => {
   const { siteName, theme, setTheme } = useContext(ContextData);
+  const [isModalVisible, setModalVisible] = useState(false);
   const cookies = new Cookies();
   const userEmail = cookies.get("email");
   const photo = localStorage.getItem("photo");
@@ -34,6 +35,14 @@ const Navbar = () => {
     totalData = wishlist.length;
     // console.log(totalData);
   }
+
+  const closeModal = () => {
+    setModalVisible(false);
+  };
+
+  const openModal = () => {
+    setModalVisible(true);
+  };
   const menuItems = (
     <>
       <li>
@@ -67,7 +76,7 @@ const Navbar = () => {
   );
   return (
     <div className="lg:block hidden text-white">
-      <div className="navbar fixed top-0 z-40 bg-rose-600  lg:w-[1400px] mx-auto  px-5">
+      <div className="navbar fixed top-0 z-40 bg-rose-900  lg:w-[1400px] mx-auto  px-5">
         <div className="navbar-start ">
           <div className="dropdown">
             {/* <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -132,18 +141,18 @@ const Navbar = () => {
                 className="drawer-toggle"
               />
               <label
+                onClick={() => openModal()}
                 htmlFor="my-drawer-44"
                 className="btn drawer-button  border border-none bg-transparent"
               >
                 <h2 className="card-title relative">
                   <ShoppingCartIcon className="h-6 w-6  text-blue-500" />
                 </h2>
-                <div className="badge badge-secondary badge-sm mb-8 ml-10 absolute bg-green-300 text-black">
+                <div className="badge badge-secondary badge-sm mb-8 ml-10 absolute  ">
                   {totalData ? totalData : 0}
                 </div>
               </label>
-
-              <CardData />
+              {isModalVisible && <CardData closeModal={closeModal} />}
             </div>
           </div>
           {userEmail && (

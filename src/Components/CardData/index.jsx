@@ -1,6 +1,7 @@
+/* eslint-disable react/prop-types */
 import WishList from "../WishList";
 
-const CardData = () => {
+const CardData = ({closeModal}) => {
   return (
      
       <div className="drawer-side">
@@ -9,7 +10,7 @@ const CardData = () => {
           aria-label="close sidebar"
           className="drawer-overlay"
         ></label>
-        <WishList/>
+        <WishList closeModal={closeModal}/>
       </div>
   );
 };
