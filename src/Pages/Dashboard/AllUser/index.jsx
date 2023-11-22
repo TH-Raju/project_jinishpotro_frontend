@@ -37,7 +37,7 @@ const AllUser = () => {
   // console.log(users.map((user) => user.role));
   const handleDeleteUser = (user) => {
     fetch(
-      `http://localhost:5000/api/v1/user/delete/user/${user._id}`,
+      `http://localhost:5000/api/v1/user/delete/${user._id}`,
       {
         method: "DELETE",
         headers: {
