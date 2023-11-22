@@ -68,7 +68,7 @@ const AddCategoriy = () => {
           <div className="form-control w-full max-w-xs">
             <label className="label">
               {" "}
-              <span className="label-text text-xl font-bold">
+              <span className=" text-xl font-bold">
                 Categoriy Name
               </span>
             </label>
@@ -87,7 +87,7 @@ const AddCategoriy = () => {
           <div className="form-control w-full max-w-xs">
             <label className="label">
               {" "}
-              <span className="label-text text-xl font-bold">
+              <span className=" text-xl font-bold">
                 Categoriy Title
               </span>
             </label>
@@ -107,7 +107,7 @@ const AddCategoriy = () => {
           <div className="form-control w-full max-w-xs">
             <label className="label">
               {" "}
-              <span className="label-text text-xl font-bold">
+              <span className=" text-xl font-bold">
                 Categoriy Details
               </span>
             </label>
@@ -127,7 +127,7 @@ const AddCategoriy = () => {
           <div className="form-control w-full max-w-xs">
             <label className="label">
               {" "}
-              <span className="label-text text-xl font-bold">
+              <span className=" text-xl font-bold">
                 Upload Categoriy Image
               </span>
             </label>

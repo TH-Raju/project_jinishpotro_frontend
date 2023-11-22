@@ -117,17 +117,23 @@ const State = () => {
               suf={"+"}
             />
           </div>
-          <div className="stat-desc">
-            <span role="img" aria-label="down-arrow">
-              ⬆︎
-            </span>{" "}
-            {totalProduct}
-            <CountUpOnVisible
-              start={0}
-              end={percentage}
-              duration={3}
-              suf={"%"}
-            />
+          <div className="flex gap-3 stat-desc">
+            <div>
+              <span role="img" aria-label="down-arrow">
+                ⬆︎
+              </span>{" "}
+              {totalProduct}
+            </div>
+            <div className="flex">
+              <span>(</span>
+              <CountUpOnVisible
+                start={0}
+                end={percentage}
+                duration={3}
+                suf={"%"}
+              />
+              <span>)</span>
+            </div>
           </div>
         </div>
       </div>

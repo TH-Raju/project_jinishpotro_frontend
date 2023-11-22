@@ -51,7 +51,7 @@ const Discount = () => {
                       to={`/categoriy/${categorie._id}/${product._id}`}
                     >
                       <SwiperSlide>
-                        <DiscountProdCard products={product} />
+                        <DiscountProdCard products={product} categoriyId={categorie._id} />
                       </SwiperSlide>
                     </Link>
                   )}

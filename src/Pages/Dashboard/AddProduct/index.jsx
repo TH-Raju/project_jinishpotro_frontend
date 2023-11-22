@@ -85,7 +85,7 @@ const AddProduct = () => {
           <div className="form-control w-full max-w-xs">
             <label className="label">
               {" "}
-              <span className="label-text text-xl font-bold">
+              <span className=" text-xl font-bold">
                 Select Categorie
               </span>
             </label>
@@ -108,7 +108,7 @@ const AddProduct = () => {
           <div className="form-control w-full max-w-xs">
             <label className="label">
               {" "}
-              <span className="label-text text-xl font-bold">Product Name</span>
+              <span className=" text-xl font-bold">Product Name</span>
             </label>
             <input
               type="text"
@@ -126,7 +126,7 @@ const AddProduct = () => {
           <div className="form-control w-full max-w-xs">
             <label className="label">
               {" "}
-              <span className="label-text text-xl font-bold">
+              <span className=" text-xl font-bold">
                 Product Details
               </span>
             </label>
@@ -146,7 +146,7 @@ const AddProduct = () => {
           <div className="form-control hidden w-full max-w-xs">
             <label className="label">
               {" "}
-              <span className="label-text text-xl font-bold">Seller Name</span>
+              <span className=" text-xl font-bold">Seller Name</span>
             </label>
             <input
               type="text"
@@ -164,7 +164,7 @@ const AddProduct = () => {
           <div className="form-control hidden w-full max-w-xs">
             <label className="label">
               {" "}
-              <span className="label-text text-xl font-bold">Seller ID</span>
+              <span className=" text-xl font-bold">Seller ID</span>
             </label>
             <input
               type="text"
@@ -182,7 +182,7 @@ const AddProduct = () => {
           <div className="form-control w-full max-w-xs">
             <label className="label">
               {" "}
-              <span className="label-text text-xl font-bold">Price</span>
+              <span className=" text-xl font-bold">Price</span>
             </label>
             <input
               type="number"
@@ -200,7 +200,7 @@ const AddProduct = () => {
           <div className="form-control w-full max-w-xs">
             <label className="label">
               {" "}
-              <span className="label-text text-xl font-bold">Discount</span>
+              <span className=" text-xl font-bold">Discount</span>
             </label>
             <input
               type="number"
@@ -218,7 +218,7 @@ const AddProduct = () => {
           <div className="form-control w-full max-w-xs">
             <label className="label">
               {" "}
-              <span className="label-text text-xl font-bold">
+              <span className=" text-xl font-bold">
                 Upload Product Image
               </span>
             </label>

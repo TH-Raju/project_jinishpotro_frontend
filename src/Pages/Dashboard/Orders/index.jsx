@@ -166,11 +166,11 @@ const Orders = () => {
   };
 
   return (
-    <div className="w-[90%] mx-auto">
+    <div className="w-[90%] mx-auto ">
       <div className="my-4">
         <span className="font-bold ml-4">Filter Data :</span>
         <select
-          className="select select-primary ml-4"
+          className="select select-primary ml-4 text-black"
           onChange={handleOnchange}
         >
           <option disabled selected>
@@ -193,7 +193,7 @@ const Orders = () => {
       <div className="overflow-x-auto">
         <table className="table">
           {/* head */}
-          <thead>
+          <thead className="text-gray-300">
             <tr>
               <th>SN</th>
               <th>Client Name</th>

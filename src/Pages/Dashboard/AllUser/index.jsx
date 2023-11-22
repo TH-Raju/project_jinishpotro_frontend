@@ -36,15 +36,12 @@ const AllUser = () => {
   //   console.log(users);
   // console.log(users.map((user) => user.role));
   const handleDeleteUser = (user) => {
-    fetch(
-      `http://localhost:5000/api/v1/user/delete/${user._id}`,
-      {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    )
+    fetch(`http://localhost:5000/api/v1/user/delete/${user._id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
@@ -55,15 +52,12 @@ const AllUser = () => {
   };
 
   const handleMakeAdmin = (id) => {
-    fetch(
-      `http://localhost:5000/api/v1/user/update/admin/${id}`,
-      {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    )
+    fetch(`http://localhost:5000/api/v1/user/update/admin/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
@@ -73,18 +67,15 @@ const AllUser = () => {
       });
   };
   const handleMakeUser = (id) => {
-    fetch(
-      `http://localhost:5000/api/v1/user/update/to/user/${id}`,
-      {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    )
+    fetch(`http://localhost:5000/api/v1/user/update/to/user/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
       .then((res) => res.json())
       .then((data) => {
-        if (data.success ) {
+        if (data.success) {
           toast.success("Make User successful");
           refetch();
         }
@@ -114,7 +105,7 @@ const AllUser = () => {
               )}
             </tr>
           </thead>
-          <tbody>
+          <tbody className="text-black">
             {Array.isArray(users) &&
               users?.map((user, i) => (
                 <tr
