@@ -42,7 +42,7 @@ const Login = () => {
           cookies.set("name", data?.data.name, { path: "/" });
           cookies.set("phone", data?.data.phone, { path: "/" });
           // cookies.set("role", data?.data.role, { path: "/" });
-          setUserRole(data?.data.role);
+    
           cookies.set("id", data?.data._id, { path: "/" });
           localStorage.setItem("photo", data?.data.photo);
           localStorage.setItem(
