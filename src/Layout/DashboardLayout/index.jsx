@@ -60,6 +60,13 @@ const DashboardLayout = () => {
                   Orders
                 </li>
               </Link>
+              {verifyAdmin && (
+                <Link to={`/dashboard/alluser`}>
+                  <li className="btn btn-outline btn-sm w-full btn-info mb-2">
+                    All User
+                  </li>
+                </Link>
+              )}
             </>
           )}
         </ul>
