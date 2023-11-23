@@ -4,6 +4,7 @@ import { router } from "./Routes";
 import { useContext } from "react";
 import { ContextData } from "./Context";
 import { Toaster } from "react-hot-toast";
+import "react-photo-view/dist/react-photo-view.css";
 
 function App() {
   const { theme } = useContext(ContextData);
