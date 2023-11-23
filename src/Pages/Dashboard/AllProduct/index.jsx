@@ -9,7 +9,7 @@ import Loading from "../../../Shared/Loading/inde";
 const AllProduct = () => {
   const { loading, setLoading } = useContext(ContextData);
   const { data: categories = [], refetch } = useQuery({
-    queryKey: ["CategoriyProducts"],
+    queryKey: ["allProducts"],
     queryFn: async () => {
       const res = await fetch(`http://localhost:5000/api/v1/categoriy/`);
       const data = await res.json();
@@ -75,7 +75,7 @@ const AllProduct = () => {
                   <tr key={order._id} className="hover ">
                     <td className=" ">{order.name}</td>
                     <td className=" ">{order.price}</td>
-                    <td className=" ">{order.discount}</td>
+                    <td className=" ">{order.discount} %</td>
                     <td className=" ">
                       <Link to={`/categoriy/${order.categoryId}/${order._id}`}>
                         <button className="btn btn-xs btn-info ml-2">
