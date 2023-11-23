@@ -103,7 +103,7 @@ const Signup = () => {
   return (
     <div>
       {loading && <Loading></Loading>}
-      <section className="relative  flex justify-center items-center h-screen my-20">
+      <section className="relative  flex justify-center items-center h-screen pt-44 lg:pt-20 ">
         <div className="w-full px-4 pt-4 pb-12 sm:px-6 sm:pb-16 lg:w-5/6  lg:px-8 ">
           <div className="mx-auto  text-center">
             <h1 className="text-3xl font-bold sm:text-4xl">
