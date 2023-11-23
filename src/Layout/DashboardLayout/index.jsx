@@ -73,6 +73,11 @@ const DashboardLayout = () => {
                     All User
                   </li>
                 </Link>
+                <Link to={`/dashboard/allcategoriy`}>
+                  <li className="btn btn-outline btn-sm w-full btn-info mb-2">
+                    All Categoriy
+                  </li>
+                </Link>
                 <Link to={`/dashboard/allproduct`}>
                   <li className="btn btn-outline btn-sm w-full btn-info mb-2">
                     All Product
