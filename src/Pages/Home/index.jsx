@@ -14,6 +14,7 @@ import "swiper/css/navigation";
 
 // import required modules
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
+import Testimonial from "./Testimonial";
 
 const Home = () => {
   const { data: categories } = useQuery({
@@ -51,6 +52,7 @@ const Home = () => {
       <HomeProducts />
       <State />
       <Discount />
+      <Testimonial />
     </div>
   );
 };
