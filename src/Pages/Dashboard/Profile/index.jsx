@@ -153,14 +153,14 @@ const Profile = () => {
             >
               Your Product
             </button>
-            <button
+            {/* <button
               className={`tab tab-lifted text-lg ${
                 activeTab === "family" ? "tab-active" : ""
               }`}
               onClick={() => stateChange("family")}
             >
               Family Information
-            </button>
+            </button> */}
           </div>
 
           {/* order  */}
@@ -185,10 +185,10 @@ const Profile = () => {
                     <tbody>
                       {orders?.map((order) => (
                         <tr key={order._id} className="hover ">
-                          <td className=" font-bold">{order.productName}</td>
-                          <td className=" font-bold">{order.quantity}</td>
-                          <td className=" font-bold">{order.status}</td>
-                          <td className=" font-bold">
+                          <td className=" ">{order.productName}</td>
+                          <td className=" ">{order.quantity}</td>
+                          <td className=" ">{order.status}</td>
+                          <td className=" ">
                             <Link
                               to={`/categoriy/${order.categoryId}/${order.productId}`}
                             >
@@ -274,24 +274,7 @@ const Profile = () => {
                 </h1>
                 <table className="table leading-3">
                   {/* <tbody>
-                    <tr className="hover">
-                      <th className="font-normal"> Father Occupation : </th>
-                      <td>
-                        <span className=" font-bold">{fatherOccupation}</span>{" "}
-                      </td>
-                    </tr>
-                    <tr className="hover">
-                      <th className="font-normal"> Mother Occupation : </th>
-                      <td>
-                        <span className=" font-bold">{motherOccupation}</span>{" "}
-                      </td>
-                    </tr>
-                    <tr className="hover">
-                      <th className="font-normal"> Brother : </th>
-                      <td>
-                        <span className=" font-bold">{brother}</span>{" "}
-                      </td>
-                    </tr>
+                    
                     <tr className="hover">
                       <th className="font-normal"> Sister : </th>
                       <td>

@@ -16,6 +16,7 @@ import Orders from "../Pages/Dashboard/Orders";
 import ErrorPage from "../Shared/ErrorPage";
 import Profile from "../Pages/Dashboard/Profile";
 import AllUser from "../Pages/Dashboard/AllUser";
+import AllProduct from "../Pages/Dashboard/AllProduct";
 
 export const router = createBrowserRouter([
   {
@@ -93,6 +94,10 @@ export const router = createBrowserRouter([
           {
             path: "/dashboard/alluser",
             element: <AllUser />,
+          },
+          {
+            path: "/dashboard/allproduct",
+            element: <AllProduct />,
           },
         ],
       },
