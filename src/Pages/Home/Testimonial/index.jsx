@@ -9,19 +9,22 @@ const Testimonial = () => {
   This component comes with some `rtl` classes. Please remove them if they are not needed in your project.
 */}
 
-      <section className="bg-gray-50 w-[80%] mx-auto">
+      <section className="w-[90%] lg:w-[85%] mx-auto">
         <div className="mx-auto max-w-screen-2xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
           <div className="md:flex md:items-end md:justify-between">
             <div className="max-w-xl">
-              <h2 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
+              <h2 className="text-4xl font-bold tracking-tight  sm:text-5xl">
                 Read trusted reviews from our customers
               </h2>
 
-              <p className="mt-6 max-w-lg leading-relaxed text-gray-700">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Aspernatur praesentium natus sapiente commodi. Aliquid sunt
-                tempore iste repellendus explicabo dignissimos placeat, autem
-                harum dolore reprehenderit quis! Quo totam dignissimos earum.
+              <p className="mt-6 max-w-lg leading-relaxed ">
+                Discover satisfaction in every review! Read firsthand
+                experiences from our customers, showcasing the quality of
+                products, efficient services, and the overall excellence of
+                Jinishpotro. Join our community of happy shoppers and make
+                informed decisions based on genuine testimonials. Your trust and
+                satisfaction are our priorities, evident in the positive
+                feedback we consistently receive.
               </p>
             </div>
 
@@ -51,7 +54,7 @@ const Testimonial = () => {
           </div>
 
           <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-3">
-            <blockquote className="flex h-full flex-col justify-between bg-white p-6 shadow-sm sm:p-8">
+            <blockquote className="flex h-full flex-col justify-between border border-sky-500 rounded-xl p-6 shadow-sm sm:p-8">
               <div>
                 <div className="flex gap-0.5 text-orange-400">
                   <svg
@@ -105,7 +108,7 @@ const Testimonial = () => {
                     Seamless Shopping Experience
                   </p>
 
-                  <p className="mt-4 leading-relaxed text-gray-700">
+                  <p className="mt-4 leading-relaxed ">
                     I recently had the pleasure of shopping on Jinishpotro, and
                     I must say it was a fantastic experience from start to
                     finish. Here's why I highly recommend this e-commerce gem{" "}
@@ -113,12 +116,12 @@ const Testimonial = () => {
                 </div>
               </div>
 
-              <footer className="mt-4 text-sm font-medium text-gray-700 sm:mt-6">
+              <footer className="mt-4 text-sm font-medium  sm:mt-6">
                 &mdash; TH Raju
               </footer>
             </blockquote>
 
-            <blockquote className="flex h-full flex-col justify-between bg-white p-6 shadow-sm sm:p-8">
+            <blockquote className="flex h-full flex-col justify-between border border-sky-500 rounded-xl p-6 shadow-sm sm:p-8">
               <div>
                 <div className="flex gap-0.5 text-orange-400">
                   <svg
@@ -172,7 +175,7 @@ const Testimonial = () => {
                     Impressed Beyond Expectations
                   </p>
 
-                  <p className="mt-4 leading-relaxed text-gray-700">
+                  <p className="mt-4 leading-relaxed ">
                     Jinishpotro has won me over with its combination of quality
                     products, user-friendly interface, and reliable delivery. If
                     you're looking for a hassle-free and trustworthy online
@@ -181,12 +184,12 @@ const Testimonial = () => {
                 </div>
               </div>
 
-              <footer className="mt-4 text-sm font-medium text-gray-700 sm:mt-6">
+              <footer className="mt-4 text-sm font-medium  sm:mt-6">
                 &mdash; Michael Scott
               </footer>
             </blockquote>
 
-            <blockquote className="flex h-full flex-col justify-between bg-white p-6 shadow-sm sm:p-8">
+            <blockquote className="flex h-full flex-col justify-between border border-sky-500 rounded-xl p-6 shadow-sm sm:p-8">
               <div>
                 <div className="flex gap-0.5 text-orange-400">
                   <svg
@@ -240,7 +243,7 @@ const Testimonial = () => {
                     Exceptional Product Quality
                   </p>
 
-                  <p className="mt-4 leading-relaxed text-gray-700">
+                  <p className="mt-4 leading-relaxed ">
                     Jinishpotro doesn't just stop at providing quality products;
                     their delivery service is equally impressive. My order
                     arrived well-packaged and within the promised timeframe. The
@@ -250,7 +253,7 @@ const Testimonial = () => {
                 </div>
               </div>
 
-              <footer className="mt-4 text-sm font-medium text-gray-700 sm:mt-6">
+              <footer className="mt-4 text-sm font-medium  sm:mt-6">
                 &mdash; Nazmun Nahar
               </footer>
             </blockquote>

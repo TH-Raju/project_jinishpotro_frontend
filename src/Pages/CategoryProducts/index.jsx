@@ -164,7 +164,9 @@ const CategoriesProduct = () => {
         </div>
         <h1 className="text-2xl sm:text-2xl font-extrabold mb-5">
           <span className="text-rose-700 font-extrabold">I</span> {name}{" "}
-          <h1 className="ml-3 mb-4 text-xl font-normal">{categories.detail}</h1>
+          <h1 className="ml-3 mb-4 text-xl font-normal">
+            {categories && categories.detail}
+          </h1>
         </h1>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 my-5 gap-7 ">
           {categories?.products?.slice(0, 10).map((product) => (

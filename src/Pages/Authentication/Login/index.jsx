@@ -42,7 +42,7 @@ const Login = () => {
           cookies.set("name", data?.data.name, { path: "/" });
           cookies.set("phone", data?.data.phone, { path: "/" });
           // cookies.set("role", data?.data.role, { path: "/" });
-    
+
           cookies.set("id", data?.data._id, { path: "/" });
           localStorage.setItem("photo", data?.data.photo);
           localStorage.setItem(
@@ -59,9 +59,9 @@ const Login = () => {
       });
   };
   return (
-    <div>
+    <div >
       {loading && <Loading />}
-      <section className="relative flex items-center justify-center   ">
+      <section className="relative flex items-center justify-center h-screen  ">
         <div className="w-full px-4  sm:px-6 sm:py-16 lg:w-1/2 lg:px-8 ">
           <div className="mx-auto max-w-lg text-center">
             <h1 className="text-2xl font-bold sm:text-3xl">Log in</h1>
