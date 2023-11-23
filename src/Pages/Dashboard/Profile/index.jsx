@@ -2,7 +2,7 @@
 /* eslint-disable react/no-unescaped-entities */
 import { useContext } from "react";
 import { ContextData } from "../../../Context";
-import { EyeIcon, XMarkIcon } from "@heroicons/react/24/solid";
+import { EyeIcon, XMarkIcon, TrashIcon } from "@heroicons/react/24/solid";
 import Cookies from "universal-cookie";
 import { PhotoProvider, PhotoView } from "react-photo-view";
 import "react-photo-view/dist/react-photo-view.css";
@@ -32,34 +32,38 @@ const Profile = () => {
     queryKey: ["personalOrders"],
     queryFn: async () => {
       let url = `http://localhost:5000/api/v1/order`;
-
       const res = await fetch(url);
       const data = await res.json();
-
-      // Filter the data to exclude the order with a matching email
-      // const filteredData = data?.message?.filter(
-      //   (order) =>
-      //     order.email !== orderEmail &&
-      //     order.role !== "super_admin" &&
-      //     order.role !== "admin" &&
-      //     order?.purchesPackage?.status === "active"
-      // );
-      // refetch();
       const filteredOrder = await data?.data?.filter(
         (order) => order?.userId === userId
       );
       return filteredOrder;
-
-      // console.log(filteredOrder);
-
-      // return filteredOrder;
-      //   console.log("seller");
-      // }
-
-      // return data.data;
     },
   });
-  // console.log(orders);
+
+  const { data: categories = [] } = useQuery({
+    queryKey: ["CategoriyProducts"],
+    queryFn: async () => {
+      const res = await fetch(`http://localhost:5000/api/v1/categoriy/`);
+      const data = await res.json();
+
+      return data.data;
+    },
+  });
+  // console.log(categories);
+  let allProduct = [];
+
+  categories.forEach((category) => {
+    allProduct.push(
+      ...category.products.map((product) => ({
+        ...product,
+        categoryId: category._id,
+      }))
+    );
+  });
+  allProduct = allProduct.filter((pro) => pro.sellerId === userId);
+  // console.log(allProduct);
+
   const delteOrder = (data) => {
     // console.log(data);
     fetch(`http://localhost:5000/api/v1/order/${data}`, {
@@ -80,10 +84,31 @@ const Profile = () => {
         }
       });
   };
+  const delteProduct = (cId, pId) => {
+    // console.log(cId);
+    // console.log(pId);
+    fetch(`http://localhost:5000/api/v1/categoriy/${cId}/products/${pId}`, {
+      method: "DELETE",
+      headers: {
+        "content-type": "application/json",
+        authorization: `bearer ${localStorage.getItem("accessToken")}`,
+      },
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        if (result.acknowledged) {
+          // console.log(result);
+          setLoading(false);
+          toast.success("Successfully Delete");
+          refetch();
+          //   console.log(result);
+        }
+      });
+  };
 
   return (
     <div className="w-[80%] mx-auto">
-      {loading && <Loading/>}
+      {loading && <Loading />}
       <h1>
         Hi, {userName} you're {userRole}
       </h1>
@@ -195,52 +220,47 @@ const Profile = () => {
                 <h1 className="text-center text-2xl border border-blue-700 rounded-full font-bold mb-5 ">
                   Product Information
                 </h1>
-                <table className="table leading-3">
-                  {/* <tbody>
-                    <tr className="hover">
-                      <th className="font-normal"> Profession: </th>
-                      <td>
-                        <span className=" font-bold">{profession}</span>{" "}
-                      </td>
-                    </tr>
-                    <tr className="hover">
-                      <th className="font-normal"> Designation: </th>
-                      <td>
-                        <span className=" font-bold"> {designation}</span>{" "}
-                      </td>
-                    </tr>
-                    <tr className="hover">
-                      <th className="font-normal"> Education: </th>
-                      <td>
-                        <span className=" font-bold">{education}</span>{" "}
-                      </td>
-                    </tr>
-                    <tr className="hover">
-                      <th className="font-normal"> Institute: </th>
-                      <td>
-                        <span className=" font-bold">{institute}</span>{" "}
-                      </td>
-                    </tr>
-                    <tr className="hover">
-                      <th className="font-normal"> Country: </th>
-                      <td>
-                        <span className=" font-bold">{currentCountry}</span>{" "}
-                      </td>
-                    </tr>
-                    <tr className="hover">
-                      <th className="font-normal"> City: </th>
-                      <td>
-                        <span className=" font-bold">{currentCity}</span>{" "}
-                      </td>
-                    </tr>
-                    <tr className="hover">
-                      <th className="font-normal"> Area: </th>
-                      <td>
-                        <span className=" font-bold">{currentArea}</span>{" "}
-                      </td>
-                    </tr>
-                  </tbody> */}
-                </table>
+                <div className="overflow-x-auto">
+                  <table className="table leading-3">
+                    <thead className="text-gray-300">
+                      <tr>
+                        <th>Product Name</th>
+                        <th>Price</th>
+                        <th>Discount</th>
+                        <th>View</th>
+                        <th>Delete</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {allProduct?.map((order) => (
+                        <tr key={order._id} className="hover ">
+                          <td className=" ">{order.name}</td>
+                          <td className=" ">{order.price}</td>
+                          <td className=" ">{order.discount}</td>
+                          <td className=" ">
+                            <Link
+                              to={`/categoriy/${order.categoryId}/${order._id}`}
+                            >
+                              <button className="btn btn-xs btn-info ml-2">
+                                <EyeIcon className="h-4 w-4 text-white font-bold" />{" "}
+                              </button>
+                            </Link>
+                          </td>
+                          <td className=" font-bold">
+                            <button
+                              className="btn btn-xs btn-error ml-2"
+                              onClick={() =>
+                                delteProduct(order.categoryId, order._id)
+                              }
+                            >
+                              <TrashIcon className="h-4 w-4 text-white font-bold" />{" "}
+                            </button>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
               </div>
             )}
           </div>
