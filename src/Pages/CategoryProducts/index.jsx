@@ -4,12 +4,10 @@
 import { useQuery } from "@tanstack/react-query";
 import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
-import ProductCategoriy from "../../Components/ProductCategoriy";
 import ProductCard from "../../Components/ProductCard";
 import { useContext, useEffect, useState } from "react";
 import { ContextData } from "../../Context";
 import Reviews from "../../Components/Review";
-import { Rating } from "@smastrom/react-rating";
 import { PhotoProvider, PhotoView } from "react-photo-view";
 import "@smastrom/react-rating/style.css";
 import toast from "react-hot-toast";

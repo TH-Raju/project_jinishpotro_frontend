@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Cookies from "universal-cookie";
 import defaultPic from "../../assets/default.png";
 import CardData from "../../Components/CardData";
+import logo from "../../assets/jp.png";
 
 const Navbar = () => {
   const { siteName, theme, setTheme } = useContext(ContextData);
@@ -78,9 +79,13 @@ const Navbar = () => {
     <div className="lg:block hidden text-white">
       <div className="navbar fixed top-0 z-40 bg-rose-900  lg:w-[1400px] mx-auto  px-5">
         <div className="navbar-start ">
-          <div className="dropdown">
+          <div className="dropdown"></div>
+          <div className="flex items-center">
+            <img src={logo} className="h-10 mt-2 -mr-3" alt="" />
+            <Link className="btn btn-ghost normal-case text-xl ">
+              {siteName}
+            </Link>
           </div>
-          <a className="btn btn-ghost normal-case text-xl ">{siteName}</a>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1 text-md font-bold">

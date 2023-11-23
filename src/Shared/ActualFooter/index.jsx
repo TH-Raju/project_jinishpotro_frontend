@@ -6,6 +6,8 @@ import { ContextData } from "../../Context";
 import linkedin from "../../assets/linkedin.png";
 import github from "../../assets/Github.png";
 import facebook from "../../assets/facebook.png";
+import logo from "../../assets/jp.png";
+import { PhotoProvider, PhotoView } from "react-photo-view";
 
 const ActualFooter = () => {
   const { siteName } = useContext(ContextData);
@@ -30,21 +32,11 @@ const ActualFooter = () => {
             title="Company"
             className="inline-flex items-center"
           >
-            <svg
-              className="w-8 text-deep-purple-accent-400"
-              viewBox="0 0 24 24"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeMiterlimit="10"
-              stroke="currentColor"
-              fill="none"
-            >
-              <rect x="3" y="1" width="7" height="12" />
-              <rect x="3" y="17" width="7" height="6" />
-              <rect x="14" y="1" width="7" height="6" />
-              <rect x="14" y="11" width="7" height="12" />
-            </svg>
+            <PhotoProvider>
+              <PhotoView src={logo}>
+                <img src={logo} className="w-8" alt="" />
+              </PhotoView>
+            </PhotoProvider>
             <span className="ml-2 text-xl font-bold tracking-wide  uppercase">
               {siteName}
             </span>
@@ -68,9 +60,7 @@ const ActualFooter = () => {
         </div>
         <div className="grid grid-cols-2 gap-5 row-gap-8 lg:col-span-4 md:grid-cols-4">
           <div>
-            <p className="font-bold tracking-wide ">
-              Category
-            </p>
+            <p className="font-bold tracking-wide ">Category</p>
             <ul className="mt-2 space-y-2">
               {categories
                 ?.slice(0, 5)
@@ -88,9 +78,7 @@ const ActualFooter = () => {
             </ul>
           </div>
           <div>
-            <p className="font-bold tracking-wide ">
-              Products
-            </p>
+            <p className="font-bold tracking-wide ">Products</p>
             <ul className="mt-2 space-y-2">
               {categories
                 ?.slice(0, 5)
@@ -117,9 +105,7 @@ const ActualFooter = () => {
             </ul>
           </div>
           <div>
-            <p className="font-bold tracking-wide ">
-              JinishPotro
-            </p>
+            <p className="font-bold tracking-wide ">JinishPotro</p>
             <ul className="mt-2 space-y-2">
               <li>
                 <Link
