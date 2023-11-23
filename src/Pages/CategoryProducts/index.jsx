@@ -10,7 +10,7 @@ import { useContext, useEffect, useState } from "react";
 import { ContextData } from "../../Context";
 import Reviews from "../../Components/Review";
 import { Rating } from "@smastrom/react-rating";
-
+import { PhotoProvider, PhotoView } from "react-photo-view";
 import "@smastrom/react-rating/style.css";
 import toast from "react-hot-toast";
 import ConfirmOrder from "../../Components/ConfirmOrder";
@@ -104,11 +104,15 @@ const CategoriesProduct = () => {
     <div className="-mt-10 md:mt-8 lg:mt-18">
       <div className=" lg:w-[60%] mx-auto shadow-xl shadow-sky-400 lg:p-10 flex flex-wrap justify-around mt-8 py-10 my-10 ">
         <figure>
-          <img
-            src={photo}
-            className="max-h-56 border border-blue-400"
-            alt="Album"
-          />
+          <PhotoProvider>
+            <PhotoView src={photo}>
+              <img
+                src={photo}
+                className="max-h-56 border border-blue-400"
+                alt="Album"
+              />
+            </PhotoView>
+          </PhotoProvider>
         </figure>
         <div className="w-[70%] md:w-[60%] mx-auto mt-5">
           <div className=" justify-center leading-7">
@@ -160,7 +164,7 @@ const CategoriesProduct = () => {
         </div>
         <h1 className="text-2xl sm:text-2xl font-extrabold mb-5">
           <span className="text-rose-700 font-extrabold">I</span> {name}{" "}
-          <h1 className="ml-3 mb-4 text-xl font-normal">{detail}</h1>
+          <h1 className="ml-3 mb-4 text-xl font-normal">{categories.detail}</h1>
         </h1>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 my-5 gap-7 ">
           {categories?.products?.slice(0, 10).map((product) => (
