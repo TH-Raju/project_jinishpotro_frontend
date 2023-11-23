@@ -14,6 +14,7 @@ import "swiper/css/pagination";
 
 // import required modules
 import { FreeMode, Pagination } from "swiper/modules";
+import DiscountBanner from "../DiscountBanner";
 
 const Discount = () => {
   const { data: categories } = useQuery({
@@ -26,6 +27,7 @@ const Discount = () => {
   });
   return (
     <div className="w-[90%] md:w-[80%] mx-auto  min-h-screen">
+      <DiscountBanner/>
       <h1 className="text-2xl sm:text-2xl font-extrabold mb-5">
         <span className="text-rose-700 font-extrabold">I</span> Discount{" "}
         <h1 className="ml-3 mb-4 text-xl font-normal">Products</h1>

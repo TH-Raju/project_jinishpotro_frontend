@@ -79,28 +79,6 @@ const Navbar = () => {
       <div className="navbar fixed top-0 z-40 bg-rose-900  lg:w-[1400px] mx-auto  px-5">
         <div className="navbar-start ">
           <div className="dropdown">
-            {/* <label tabIndex={0} className="btn btn-ghost lg:hidden">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M4 6h16M4 12h8m-8 6h16"
-                />
-              </svg>
-            </label>
-            <ul
-              tabIndex={0}
-              className="menu menu-sm dropdown-content  z-[1] p-2 shadow bg-base-100 rounded-box w-52"
-            >
-              {menuItems}
-            </ul> */}
           </div>
           <a className="btn btn-ghost normal-case text-xl ">{siteName}</a>
         </div>
@@ -169,13 +147,6 @@ const Navbar = () => {
                 tabIndex={0}
                 className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-40"
               >
-                {/* <Link to={`/profile`}>
-                <li className=" mb-2">
-                  <button className="hover:bg-primary hover:text-white my-2 bg-sky-500  rounded-lg duration-100">
-                    Profile
-                  </button>
-                </li>
-              </Link> */}
                 <Link to={`/dashboard`}>
                   <li className=" mb-2">
                     <button className="hover:bg-primary hover:text-white my-2 bg-sky-500  rounded-lg duration-100">

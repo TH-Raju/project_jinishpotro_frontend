@@ -52,7 +52,7 @@ const Products = () => {
   // console.log(selectedOptions);
 
   const filteredData = categories?.filter((item) =>
-    selectedOptions.includes(item.name)
+    selectedOptions?.includes(item.name)
   );
   // console.log(filteredData);
 

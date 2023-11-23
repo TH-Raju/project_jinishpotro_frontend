@@ -9,7 +9,7 @@ const ProductsPageLayout = () => {
   const { selectedOptions, setSelectedOptions } = useContext(ContextData);
 
   const handleCheckboxChange = (option) => {
-    const isSelected = selectedOptions.includes(option);
+    const isSelected = selectedOptions?.includes(option);
 
     if (isSelected) {
       // If the option is already selected, remove it
@@ -64,7 +64,7 @@ const ProductsPageLayout = () => {
                   type="checkbox"
                   id={option}
                   value={option}
-                  checked={selectedOptions.includes(option)}
+                  checked={selectedOptions?.includes(option)}
                   onChange={() => handleCheckboxChange(option)}
                   className="mr-2 peer hidden [&:checked_+_label_svg]:block"
                 />
