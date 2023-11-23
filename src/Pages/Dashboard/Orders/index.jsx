@@ -5,6 +5,7 @@ import { useContext, useState } from "react";
 import Cookies from "universal-cookie";
 import { ContextData } from "../../../Context";
 import toast from "react-hot-toast";
+import Loading from "../../../Shared/Loading/inde";
 
 const Orders = () => {
   const { loading, setLoading, orderRole, setorderRole, userRole } =
@@ -167,6 +168,7 @@ const Orders = () => {
 
   return (
     <div className="w-[90%] mx-auto ">
+      {loading && <Loading />}
       <div className="my-4">
         <span className="font-bold ml-4">Filter Data :</span>
         <select
