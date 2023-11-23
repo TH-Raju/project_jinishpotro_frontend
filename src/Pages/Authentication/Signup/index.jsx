@@ -127,7 +127,7 @@ const Signup = () => {
               >
                 As a <span className="text-red-600">*</span>
               </label>
-              <div className="relative border border-black p-2 rounded-full ">
+              <div className="relative border border-gray-400 p-2 rounded-full ">
                 <div className="flex justify-around">
                   <label className="flex items-center">
                     <input

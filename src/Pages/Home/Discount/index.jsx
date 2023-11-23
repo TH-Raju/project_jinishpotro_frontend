@@ -25,17 +25,29 @@ const Discount = () => {
       return data.data;
     },
   });
+
+  let slidesPerView = 4; // Default value for large screens
+  let spacePerView = 10; // Default value for large screens
+
+  if (window?.innerWidth <= 768) {
+    slidesPerView = 2; // Small screens
+    spacePerView = 100;
+  } else if (window?.innerWidth <= 1024) {
+    slidesPerView = 2; // Medium screens
+    spacePerView = 50;
+  }
+
   return (
     <div className="w-[90%] md:w-[80%] mx-auto  min-h-screen">
-      <DiscountBanner/>
+      <DiscountBanner />
       <h1 className="text-2xl sm:text-2xl font-extrabold mb-5">
         <span className="text-rose-700 font-extrabold">I</span> Discount{" "}
         <h1 className="ml-3 mb-4 text-xl font-normal">Products</h1>
       </h1>
-      <div className="">
+      <div className="w-[90%] mx-auto">
         <Swiper
-          slidesPerView={3}
-          spaceBetween={30}
+          slidesPerView={slidesPerView}
+          spaceBetween={spacePerView}
           freeMode={true}
           pagination={{
             clickable: true,
@@ -53,7 +65,10 @@ const Discount = () => {
                       to={`/categoriy/${categorie._id}/${product._id}`}
                     >
                       <SwiperSlide>
-                        <DiscountProdCard products={product} categoriyId={categorie._id} />
+                        <DiscountProdCard
+                          products={product}
+                          categoriyId={categorie._id}
+                        />
                       </SwiperSlide>
                     </Link>
                   )}
