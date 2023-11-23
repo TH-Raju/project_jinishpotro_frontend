@@ -9,10 +9,11 @@ import ConfirmModal from "../../../Shared/ConfirmModal/inde";
 import { ContextData } from "../../../Context";
 
 const AllUser = () => {
-  const { userRole } = useContext(ContextData);
+  const { userRole, setUserRole } = useContext(ContextData);
   const [deleteUser, setDeleteUser] = useState(null);
   const cookies = new Cookies();
   const userEmail = cookies.get("email");
+  const userId = cookies.get("id");
   const superAdmin = "super_admin";
   const closeModal = () => {
     setDeleteUser(null);
@@ -35,6 +36,8 @@ const AllUser = () => {
   });
   //   console.log(users);
   // console.log(users.map((user) => user.role));
+
+
   const handleDeleteUser = (user) => {
     fetch(`http://localhost:5000/api/v1/user/delete/${user._id}`, {
       method: "DELETE",
