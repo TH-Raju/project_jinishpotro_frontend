@@ -170,6 +170,9 @@ const Orders = () => {
     <div className="w-[90%] mx-auto ">
       {loading && <Loading />}
       <div className="my-4">
+        <h2 className="text-3xl text-center md:text-5xl font-bold mb-10">
+          All <span className="text-rose-700">Orders</span>
+        </h2>
         <span className="font-bold ml-4">Filter Data :</span>
         <select
           className="select select-primary ml-4 text-black"

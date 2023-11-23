@@ -16,7 +16,7 @@ const ShareContextData = ({ children }) => {
   let accessToken = localStorage.getItem("accessToken");
   const [minCount, setMinCount] = useState(0);
   const [userData, setUserData] = useState([]);
-  const [selectedOptions, setSelectedOptions] = useState();
+  const [selectedOptions, setSelectedOptions] = useState([]);
   // const [userRole, setUserRole] = useState("buyer");
   let imgbbAPIKey = "cedfa53cc1e836179f47e98c08ae1930";
   const siteName = "JinishPotro";
@@ -29,7 +29,7 @@ const ShareContextData = ({ children }) => {
     const decoded = jwtDecode(accessToken);
     // setUserRole(decoded.role);
     userRole = decoded.role;
-    console.log(decoded);
+    // console.log(decoded);
   } else {
     userRole = "buyer";
   }

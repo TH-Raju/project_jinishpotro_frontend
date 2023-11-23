@@ -68,27 +68,27 @@ const DashboardLayout = () => {
               </Link>
               {verifyAdmin && (
                 <>
-                <Link to={`/dashboard/alluser`}>
-                  <li className="btn btn-outline btn-sm w-full btn-info mb-2">
-                    All User
-                  </li>
-                </Link>
-                <Link to={`/dashboard/allcategoriy`}>
-                  <li className="btn btn-outline btn-sm w-full btn-info mb-2">
-                    All Categoriy
-                  </li>
-                </Link>
-                <Link to={`/dashboard/allproduct`}>
-                  <li className="btn btn-outline btn-sm w-full btn-info mb-2">
-                    All Product
-                  </li>
-                </Link>
+                  <Link to={`/dashboard/alluser`}>
+                    <li className="btn btn-outline btn-sm w-full btn-info mb-2">
+                      All User
+                    </li>
+                  </Link>
+                  <Link to={`/dashboard/allcategoriy`}>
+                    <li className="btn btn-outline btn-sm w-full btn-info mb-2">
+                      All Categoriy
+                    </li>
+                  </Link>
+                  <Link to={`/dashboard/allproduct`}>
+                    <li className="btn btn-outline btn-sm w-full btn-info mb-2">
+                      All Product
+                    </li>
+                  </Link>
                 </>
               )}
             </>
           )}
 
-          <div className="text-center mt-[100%]">
+          <div className="text-center mt-[80%] lg:mt-[90%] ">
             {" "}
             {/* "mt-auto" adds margin-top to push the button to the bottom */}
             <div className="flex items-center gap-2 bg-gradient-to-tr from-sky-200 to-sky-400 p-4 hover:bg-gradient-to-bl hover:from-sky-200 hover:to-sky-400 rounded-full duration-300">

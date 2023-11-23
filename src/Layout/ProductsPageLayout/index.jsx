@@ -7,9 +7,21 @@ import { useQuery } from "@tanstack/react-query";
 
 const ProductsPageLayout = () => {
   const { selectedOptions, setSelectedOptions } = useContext(ContextData);
+  const { data: categories } = useQuery({
+    queryKey: ["product"],
+    queryFn: async () => {
+      const res = await fetch("http://localhost:5000/api/v1/categoriy");
+      const data = await res.json();
+      return data.data;
+    },
+  });
 
-  const handleCheckboxChange = (option) => {
-    const isSelected = selectedOptions?.includes(option);
+  let options = categories?.map((categorie) => categorie.name);
+
+  // console.log(options);
+
+  const handleCheckboxChange = async (option) => {
+    const isSelected = await selectedOptions?.includes(option);
 
     if (isSelected) {
       // If the option is already selected, remove it
@@ -24,16 +36,6 @@ const ProductsPageLayout = () => {
 
   // const options = ["Option 1", "Option 2", "Option 3", "Option 4"];
 
-  const { data: categories } = useQuery({
-    queryKey: ["product"],
-    queryFn: async () => {
-      const res = await fetch("http://localhost:5000/api/v1/categoriy");
-      const data = await res.json();
-      return data.data;
-    },
-  });
-
-  let options = categories?.map((categorie) => categorie.name);
   // console.log(options);
   // console.log("options");
   return (
@@ -64,7 +66,7 @@ const ProductsPageLayout = () => {
                   type="checkbox"
                   id={option}
                   value={option}
-                  checked={selectedOptions?.includes(option)}
+                  checked={selectedOptions.includes(option)}
                   onChange={() => handleCheckboxChange(option)}
                   className="mr-2 peer hidden [&:checked_+_label_svg]:block"
                 />

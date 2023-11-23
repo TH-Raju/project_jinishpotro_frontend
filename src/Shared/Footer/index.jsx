@@ -2,11 +2,9 @@
 import { useContext, useState } from "react";
 import { ContextData } from "../../Context";
 import { ShoppingCartIcon, SunIcon } from "@heroicons/react/24/solid";
-
 import defaultPic from "../../assets/default.png";
 import Cookies from "universal-cookie";
 import { Link, useNavigate } from "react-router-dom";
-import CardData from "../../Components/CardData";
 import FooterData from "../../Components/FooterData";
 import ActualFooter from "../ActualFooter";
 
@@ -186,13 +184,7 @@ const Footer = () => {
                   tabIndex={0}
                   className="dropdown-content -ml-28  z-[1] menu p-2 shadow  rounded-box w-40"
                 >
-                  {/* <Link to={`/profile`}>
-                <li className=" mb-2">
-                  <button className="hover:bg-primary hover:text-white my-2 bg-sky-500  rounded-lg duration-100">
-                    Profile
-                  </button>
-                </li>
-              </Link> */}
+
                   <Link to={`/dashboard`}>
                     <li className=" mb-2">
                       <button className="hover:bg-sky-700 hover:text-white my-2 bg-sky-500  rounded-lg duration-100">

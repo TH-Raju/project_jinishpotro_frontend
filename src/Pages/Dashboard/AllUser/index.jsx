@@ -87,9 +87,9 @@ const AllUser = () => {
 
   return (
     <div className="max-h-screen">
-      <h2 className="  md:text-4xl text-2xl my-4 font-bold text-center">
-        All User
-      </h2>
+      <h2 className="text-3xl text-center md:text-5xl font-bold mb-10">
+          All <span className="text-rose-700">Users</span>
+        </h2>
       <Toaster />
       <div className="lg:w-[90%] w-[100%] mx-auto overflow-x-scroll rounded-lg ">
         <table className="mb-5  table min-w-full  text-sm bg-gray-100">

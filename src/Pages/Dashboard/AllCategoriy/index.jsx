@@ -56,12 +56,12 @@ const AllCategoriy = () => {
       {loading && <Loading />}
       <div className="w-[80%] lg:w-[90%] mx-auto pt-0 lg:pt-7">
         <div>
-          <h1 className="text-center text-2xl border border-blue-700 rounded-full font-bold mb-5 ">
-            All Categories
-          </h1>
+          <h2 className="text-3xl text-center md:text-5xl font-bold mb-5 lg:mb-10">
+            All <span className="text-rose-700">Categories</span>
+          </h2>
           <div className="overflow-x-auto">
             <table className="table leading-3">
-              <thead className="text-gray-300 text-center">
+              <thead className="text-gray-400 text-center">
                 <tr>
                   <th>Categoriy Name</th>
                   <th>Total Products</th>

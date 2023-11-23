@@ -109,10 +109,8 @@ const Profile = () => {
   return (
     <div className="w-[80%] mx-auto">
       {loading && <Loading />}
-      <h1>
-        Hi, {userName} you're {userRole}
-      </h1>
-      <div className="w-[80%] mx-auto">
+
+      <div className="w-[80%] mx-auto mb-10">
         <div className="card lg:card-side shadow-xl justify-between">
           <figure>
             <PhotoProvider>
@@ -136,18 +134,22 @@ const Profile = () => {
       {/* new */}
       <div>
         <div className="w-[90%] mx-auto">
-          <div className="tabs my-3">
+          <div className="tabs my-3 ">
             <button
-              className={`tab tab-lifted text-lg ${
-                activeTab === "order" ? "tab-active" : ""
+              className={`tab tab-lifted text-lg  ${
+                activeTab === "order"
+                  ? "tab-active font-bold "
+                  : " text-gray-500"
               }`}
               onClick={() => stateChange("order")}
             >
               Your Orders
             </button>
             <button
-              className={`tab tab-lifted text-lg ${
-                activeTab === "product" ? "tab-active" : ""
+              className={`tab tab-lifted text-lg  ${
+                activeTab === "product"
+                  ? "tab-active font-bold"
+                  : "text-gray-500"
               }`}
               onClick={() => stateChange("product")}
             >
@@ -173,7 +175,7 @@ const Profile = () => {
                 </h1>
                 <div className="overflow-x-auto">
                   <table className="table leading-3">
-                    <thead className="text-gray-300">
+                    <thead className="text-gray-500">
                       <tr>
                         <th>Product Name</th>
                         <th>Quantity</th>
@@ -222,7 +224,7 @@ const Profile = () => {
                 </h1>
                 <div className="overflow-x-auto">
                   <table className="table leading-3">
-                    <thead className="text-gray-300">
+                    <thead className="text-gray-500">
                       <tr>
                         <th>Product Name</th>
                         <th>Price</th>
