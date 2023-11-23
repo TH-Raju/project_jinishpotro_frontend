@@ -282,12 +282,7 @@ const Reviews = ({ review, refetch, categoryId, productId }) => {
                 </div>
 
                 <div className="flex items-center space-x-2 dark:text-yellow-500">
-                  <Rating
-                    className="w-28"
-                    value={rev.rating}
-                    onChange={setRating}
-                    isRequired
-                  />
+                  <Rating className="w-28" value={rev.rating} readOnly />
                   <span className="text-xl font-bold">{rev.rating}</span>
                 </div>
               </div>

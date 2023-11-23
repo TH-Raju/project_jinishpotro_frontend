@@ -5,6 +5,7 @@
 import { useContext } from "react";
 import { ContextData } from "../../Context";
 import { Link } from "react-router-dom";
+import { PhotoProvider, PhotoView } from "react-photo-view";
 
 // eslint-disable-next-line react/prop-types
 const DiscountProdCard = ({ products, categoriyId }) => {
@@ -17,11 +18,15 @@ const DiscountProdCard = ({ products, categoriyId }) => {
       <div className="card card-compact text-black w-40 md:w-52 bg-base-100 shadow-xl border border-blue-200 ">
         <Link to={`/categoriy/${categoriyId}/${_id}`}>
           <figure className="">
-            <img
-              src={photo}
-              alt="Shoes"
-              className="relative h- md:h-36 w-fit "
-            />
+            <PhotoProvider>
+              <PhotoView src={photo}>
+                <img
+                  src={photo}
+                  alt="Shoes"
+                  className="relative h- md:h-36 w-fit "
+                />
+              </PhotoView>
+            </PhotoProvider>
             <div className="badge badge-secondary absolute top-0 right-0">
               {discount}%
             </div>

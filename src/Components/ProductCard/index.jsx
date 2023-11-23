@@ -5,7 +5,7 @@
 import { useContext, useState } from "react";
 import { ContextData } from "../../Context";
 import { Rating } from "@smastrom/react-rating";
-
+import { PhotoProvider, PhotoView } from "react-photo-view";
 import "@smastrom/react-rating/style.css";
 
 // eslint-disable-next-line react/prop-types
@@ -15,16 +15,15 @@ const ProductCard = ({ products }) => {
   const [rating, setRating] = useState(0);
   // console.log(products);
 
-
   return (
     <div>
       <div className="card card-compact  text-black w-40 md:w-52 bg-base-100 shadow-xl border border-blue-200 ">
         <figure className="">
-          <img
-            src={photo}
-            alt="Shoes"
-            className="h- md:h-36 w-fit "
-          />
+          <PhotoProvider>
+            <PhotoView src={photo}>
+              <img src={photo} alt="Shoes" className="h- md:h-36 w-fit " />
+            </PhotoView>
+          </PhotoProvider>
         </figure>
         <div className="px-2 h-40">
           <h2 className="md:card-title  h-10  font-bold text-base w-[90%] leading-5">
