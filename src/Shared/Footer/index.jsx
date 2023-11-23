@@ -114,7 +114,7 @@ const Footer = () => {
               </ul>
             </div>
             <Link to={"/"} className="btn btn-ghost text-sm normal-case  -ml-6">
-              {siteName}
+              {siteName && siteName}
             </Link>
           </div>
           <div className="navbar-end flex items-center gap-3">

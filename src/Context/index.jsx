@@ -55,7 +55,7 @@ const ShareContextData = ({ children }) => {
     userRole = decoded.role;
     console.log(decoded);
   } else {
-    console.log("No Access token here");
+    userRole = "buyer";
   }
 
   const share = {
