@@ -41,7 +41,7 @@ const CategoriesProduct = () => {
     queryKey: ["singleCategoriy"],
     queryFn: async () => {
       const res = await fetch(
-        `http://localhost:5000/api/v1/categoriy/${categoryId}`
+        `https://jinishpotro-backend-5zxijrpet-th-raju.vercel.app/api/v1/categoriy/${categoryId}`
       );
       const data = await res.json();
       return data.data;

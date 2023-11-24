@@ -19,7 +19,9 @@ const Products = () => {
   const { data: categories } = useQuery({
     queryKey: ["categoriesProduct"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/api/v1/categoriy");
+      const res = await fetch(
+        "https://jinishpotro-backend-5zxijrpet-th-raju.vercel.app/api/v1/categoriy"
+      );
       const data = await res.json();
       return data.data;
     },

@@ -43,14 +43,17 @@ const AddProduct = () => {
 
           //save Product
 
-          fetch("http://localhost:5000/api/v1/categoriy/product", {
-            method: "PUT",
-            headers: {
-              "content-type": "application/json",
-              authorization: `bearer ${localStorage.getItem("accessToken")}`,
-            },
-            body: JSON.stringify(data),
-          })
+          fetch(
+            "https://jinishpotro-backend-5zxijrpet-th-raju.vercel.app/api/v1/categoriy/product",
+            {
+              method: "PUT",
+              headers: {
+                "content-type": "application/json",
+                authorization: `bearer ${localStorage.getItem("accessToken")}`,
+              },
+              body: JSON.stringify(data),
+            }
+          )
             .then((res) => res.json())
             .then((result) => {
               setLoading(false);
@@ -65,14 +68,16 @@ const AddProduct = () => {
   const { data: categories } = useQuery({
     queryKey: ["categoriy"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/api/v1/categoriy");
+      const res = await fetch(
+        "https://jinishpotro-backend-5zxijrpet-th-raju.vercel.app/api/v1/categoriy"
+      );
       const data = await res.json();
       return data.data;
     },
   });
   //   console.log(categories);
 
-  useTitle("Add Product")
+  useTitle("Add Product");
 
   return (
     <div>
@@ -88,9 +93,7 @@ const AddProduct = () => {
           <div className="form-control w-full max-w-xs">
             <label className="label">
               {" "}
-              <span className=" text-xl font-bold">
-                Select Categorie
-              </span>
+              <span className=" text-xl font-bold">Select Categorie</span>
             </label>
             <select
               {...register("categoriyId")}
@@ -129,9 +132,7 @@ const AddProduct = () => {
           <div className="form-control w-full max-w-xs">
             <label className="label">
               {" "}
-              <span className=" text-xl font-bold">
-                Product Details
-              </span>
+              <span className=" text-xl font-bold">Product Details</span>
             </label>
             <textarea
               type="text"
@@ -221,9 +222,7 @@ const AddProduct = () => {
           <div className="form-control w-full max-w-xs">
             <label className="label">
               {" "}
-              <span className=" text-xl font-bold">
-                Upload Product Image
-              </span>
+              <span className=" text-xl font-bold">Upload Product Image</span>
             </label>
             <input
               type="file"

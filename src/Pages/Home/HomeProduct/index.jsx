@@ -10,7 +10,9 @@ const HomeProducts = () => {
   const { data: categories } = useQuery({
     queryKey: ["categoriy"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/api/v1/categoriy");
+      const res = await fetch(
+        "https://jinishpotro-backend-5zxijrpet-th-raju.vercel.app/api/v1/categoriy"
+      );
       const data = await res.json();
       return data.data;
     },
@@ -21,7 +23,7 @@ const HomeProducts = () => {
     <div>
       <div className="text-center mt-20">
         <h1 className="text-3xl sm:text-5xl font-extrabold my-4">
-           Categories <span className="text-rose-700 "> Product</span>
+          Categories <span className="text-rose-700 "> Product</span>
         </h1>
         <p className="w-[80%] lg:w-[60%] mx-auto">
           "Discover endless possibilities at{" "}

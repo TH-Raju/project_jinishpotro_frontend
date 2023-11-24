@@ -65,13 +65,16 @@ const Signup = () => {
           if (imgData.success) {
             data.photo = imgData?.data.url;
             // console.log(data);
-            fetch("http://localhost:5000/api/v1/signup", {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify(data),
-            })
+            fetch(
+              "https://jinishpotro-backend-5zxijrpet-th-raju.vercel.app/api/v1/signup",
+              {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify(data),
+              }
+            )
               .then((res) => res.json())
               .then((data) => {
                 if (data.success) {

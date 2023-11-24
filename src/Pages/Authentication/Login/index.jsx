@@ -27,13 +27,16 @@ const Login = () => {
   const onSubmit = async (data) => {
     // console.log(data);
     setLoading(true);
-    fetch("http://localhost:5000/api/v1/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    })
+    fetch(
+      "https://jinishpotro-backend-5zxijrpet-th-raju.vercel.app/api/v1/login",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         // console.log(data);

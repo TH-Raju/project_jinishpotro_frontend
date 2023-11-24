@@ -45,14 +45,17 @@ const ConfirmOrder = ({ id, categoryId, categoryName, productData }) => {
   const confirmOrder = (data) => {
     // console.log(data);
     data.categoryName = categoryName;
-    fetch("http://localhost:5000/api/v1/order/create", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-        authorization: `bearer ${localStorage.getItem("accessToken")}`,
-      },
-      body: JSON.stringify(data),
-    })
+    fetch(
+      "https://jinishpotro-backend-5zxijrpet-th-raju.vercel.app/api/v1/order/create",
+      {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+          authorization: `bearer ${localStorage.getItem("accessToken")}`,
+        },
+        body: JSON.stringify(data),
+      }
+    )
       .then((res) => res.json())
       .then((result) => {
         if (result.success) {

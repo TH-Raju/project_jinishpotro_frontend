@@ -12,7 +12,9 @@ const AllProduct = () => {
   const { data: categories = [], refetch } = useQuery({
     queryKey: ["allProducts"],
     queryFn: async () => {
-      const res = await fetch(`http://localhost:5000/api/v1/categoriy/`);
+      const res = await fetch(
+        `https://jinishpotro-backend-5zxijrpet-th-raju.vercel.app/api/v1/categoriy/`
+      );
       const data = await res.json();
 
       return data.data;
@@ -33,13 +35,16 @@ const AllProduct = () => {
   const delteProduct = (cId, pId) => {
     // console.log(cId);
     // console.log(pId);
-    fetch(`http://localhost:5000/api/v1/categoriy/${cId}/products/${pId}`, {
-      method: "DELETE",
-      headers: {
-        "content-type": "application/json",
-        authorization: `bearer ${localStorage.getItem("accessToken")}`,
-      },
-    })
+    fetch(
+      `https://jinishpotro-backend-5zxijrpet-th-raju.vercel.app/api/v1/categoriy/${cId}/products/${pId}`,
+      {
+        method: "DELETE",
+        headers: {
+          "content-type": "application/json",
+          authorization: `bearer ${localStorage.getItem("accessToken")}`,
+        },
+      }
+    )
       .then((res) => res.json())
       .then((result) => {
         if (result.acknowledged) {
@@ -51,14 +56,14 @@ const AllProduct = () => {
         }
       });
   };
-  useTitle("All Products")
+  useTitle("All Products");
 
   return (
     <div>
       {loading && <Loading />}
       <div className="w-[80%] lg:w-[90%] mx-auto pt-0 lg:pt-7">
         <div>
-        <h2 className="text-3xl text-center md:text-5xl font-bold mb-5 lg:mb-10">
+          <h2 className="text-3xl text-center md:text-5xl font-bold mb-5 lg:mb-10">
             All <span className="text-rose-700">Products</span>
           </h2>
           <div className="overflow-x-auto">

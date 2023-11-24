@@ -34,7 +34,7 @@ const Profile = () => {
   const { data: orders = [], refetch } = useQuery({
     queryKey: ["personalOrders"],
     queryFn: async () => {
-      let url = `http://localhost:5000/api/v1/order`;
+      let url = `https://jinishpotro-backend-5zxijrpet-th-raju.vercel.app/api/v1/order`;
       const res = await fetch(url);
       const data = await res.json();
       const filteredOrder = await data?.data?.filter(
@@ -47,7 +47,9 @@ const Profile = () => {
   const { data: categories = [] } = useQuery({
     queryKey: ["CategoriyProducts"],
     queryFn: async () => {
-      const res = await fetch(`http://localhost:5000/api/v1/categoriy/`);
+      const res = await fetch(
+        `https://jinishpotro-backend-5zxijrpet-th-raju.vercel.app/api/v1/categoriy/`
+      );
       const data = await res.json();
 
       return data.data;
@@ -69,13 +71,16 @@ const Profile = () => {
 
   const delteOrder = (data) => {
     // console.log(data);
-    fetch(`http://localhost:5000/api/v1/order/${data}`, {
-      method: "DELETE",
-      headers: {
-        "content-type": "application/json",
-        authorization: `bearer ${localStorage.getItem("accessToken")}`,
-      },
-    })
+    fetch(
+      `https://jinishpotro-backend-5zxijrpet-th-raju.vercel.app/api/v1/order/${data}`,
+      {
+        method: "DELETE",
+        headers: {
+          "content-type": "application/json",
+          authorization: `bearer ${localStorage.getItem("accessToken")}`,
+        },
+      }
+    )
       .then((res) => res.json())
       .then((result) => {
         if (result.acknowledged) {
@@ -90,13 +95,16 @@ const Profile = () => {
   const delteProduct = (cId, pId) => {
     // console.log(cId);
     // console.log(pId);
-    fetch(`http://localhost:5000/api/v1/categoriy/${cId}/products/${pId}`, {
-      method: "DELETE",
-      headers: {
-        "content-type": "application/json",
-        authorization: `bearer ${localStorage.getItem("accessToken")}`,
-      },
-    })
+    fetch(
+      `https://jinishpotro-backend-5zxijrpet-th-raju.vercel.app/api/v1/categoriy/${cId}/products/${pId}`,
+      {
+        method: "DELETE",
+        headers: {
+          "content-type": "application/json",
+          authorization: `bearer ${localStorage.getItem("accessToken")}`,
+        },
+      }
+    )
       .then((res) => res.json())
       .then((result) => {
         if (result.acknowledged) {

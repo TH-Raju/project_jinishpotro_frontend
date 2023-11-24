@@ -66,14 +66,17 @@ const Reviews = ({ review, refetch, categoryId, productId }) => {
       reviewData: data,
     };
     setLoading(true);
-    fetch("http://localhost:5000/api/v1/categoriy/product/review", {
-      method: "PUT",
-      headers: {
-        "content-type": "application/json",
-        authorization: `bearer ${localStorage.getItem("accessToken")}`,
-      },
-      body: JSON.stringify(revData),
-    })
+    fetch(
+      "https://jinishpotro-backend-5zxijrpet-th-raju.vercel.app/api/v1/categoriy/product/review",
+      {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+          authorization: `bearer ${localStorage.getItem("accessToken")}`,
+        },
+        body: JSON.stringify(revData),
+      }
+    )
       .then((res) => res.json())
       .then((result) => {
         if (result.acknowledged) {
@@ -94,7 +97,7 @@ const Reviews = ({ review, refetch, categoryId, productId }) => {
   const delteReview = (data, userId) => {
     if (id === userId) {
       fetch(
-        `http://localhost:5000/api/v1/categoriy/${categoryId}/products/${productId}/review/${data}`,
+        `https://jinishpotro-backend-5zxijrpet-th-raju.vercel.app/api/v1/categoriy/${categoryId}/products/${productId}/review/${data}`,
         {
           method: "DELETE",
           headers: {

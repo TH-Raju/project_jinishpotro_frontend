@@ -19,7 +19,7 @@ const Orders = () => {
   const { data: orders = [], refetch } = useQuery({
     queryKey: ["orders"],
     queryFn: async () => {
-      let url = `http://localhost:5000/api/v1/order`;
+      let url = `https://jinishpotro-backend-5zxijrpet-th-raju.vercel.app/api/v1/order`;
 
       const res = await fetch(url);
       const data = await res.json();
@@ -103,13 +103,16 @@ const Orders = () => {
 
   const delteOrder = (data) => {
     // console.log(data);
-    fetch(`http://localhost:5000/api/v1/order/${data}`, {
-      method: "DELETE",
-      headers: {
-        "content-type": "application/json",
-        authorization: `bearer ${localStorage.getItem("accessToken")}`,
-      },
-    })
+    fetch(
+      `https://jinishpotro-backend-5zxijrpet-th-raju.vercel.app/api/v1/order/${data}`,
+      {
+        method: "DELETE",
+        headers: {
+          "content-type": "application/json",
+          authorization: `bearer ${localStorage.getItem("accessToken")}`,
+        },
+      }
+    )
       .then((res) => res.json())
       .then((result) => {
         if (result.acknowledged) {
@@ -125,14 +128,17 @@ const Orders = () => {
   const updateOrder = (data) => {
     // console.log(data);
     data.status = "Confirm";
-    fetch(`http://localhost:5000/api/v1/order/update/${data._id}`, {
-      method: "PATCH",
-      headers: {
-        "content-type": "application/json",
-        authorization: `bearer ${localStorage.getItem("accessToken")}`,
-      },
-      body: JSON.stringify(data),
-    })
+    fetch(
+      `https://jinishpotro-backend-5zxijrpet-th-raju.vercel.app/api/v1/order/update/${data._id}`,
+      {
+        method: "PATCH",
+        headers: {
+          "content-type": "application/json",
+          authorization: `bearer ${localStorage.getItem("accessToken")}`,
+        },
+        body: JSON.stringify(data),
+      }
+    )
       .then((res) => res.json())
       .then((result) => {
         if (result.success) {
@@ -147,14 +153,17 @@ const Orders = () => {
   const cancelOrder = (data) => {
     // console.log(data);
     data.status = "Cancel";
-    fetch(`http://localhost:5000/api/v1/order/update/${data._id}`, {
-      method: "PATCH",
-      headers: {
-        "content-type": "application/json",
-        authorization: `bearer ${localStorage.getItem("accessToken")}`,
-      },
-      body: JSON.stringify(data),
-    })
+    fetch(
+      `https://jinishpotro-backend-5zxijrpet-th-raju.vercel.app/api/v1/order/update/${data._id}`,
+      {
+        method: "PATCH",
+        headers: {
+          "content-type": "application/json",
+          authorization: `bearer ${localStorage.getItem("accessToken")}`,
+        },
+        body: JSON.stringify(data),
+      }
+    )
       .then((res) => res.json())
       .then((result) => {
         if (result.success) {

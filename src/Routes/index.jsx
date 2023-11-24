@@ -48,14 +48,16 @@ export const router = createBrowserRouter([
         path: "/categoriy/:categoryId/:productId",
         loader: ({ params }) =>
           fetch(
-            `http://localhost:5000/api/v1/categoriy/${params.categoryId}/product/${params.productId}`
+            `https://jinishpotro-backend-5zxijrpet-th-raju.vercel.app/api/v1/categoriy/${params.categoryId}/product/${params.productId}`
           ),
         element: <CategoriesProduct />,
       },
       {
         path: "/categoriy/:id",
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/api/v1/categoriy/${params.id}`),
+          fetch(
+            `https://jinishpotro-backend-5zxijrpet-th-raju.vercel.app/api/v1/categoriy/${params.id}`
+          ),
         element: <CategoriyAllProduct />,
       },
       {

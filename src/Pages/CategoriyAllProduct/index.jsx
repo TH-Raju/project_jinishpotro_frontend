@@ -17,12 +17,14 @@ const CategoriyAllProduct = () => {
   const { data: categories } = useQuery({
     queryKey: ["singleCategoriyProduct"],
     queryFn: async () => {
-      const res = await fetch(`http://localhost:5000/api/v1/categoriy/${id}`);
+      const res = await fetch(
+        `https://jinishpotro-backend-5zxijrpet-th-raju.vercel.app/api/v1/categoriy/${id}`
+      );
       const data = await res.json();
       return data.data;
     },
   });
-  useTitle("Categoriy Product")
+  useTitle("Categoriy Product");
   // console.log(categories);
   // console.log(data.data);
   // console.log(name);

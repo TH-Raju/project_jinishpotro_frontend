@@ -23,7 +23,9 @@ const AllUser = () => {
   const { data: users = [], refetch } = useQuery({
     queryKey: ["user"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/api/v1/user");
+      const res = await fetch(
+        "https://jinishpotro-backend-5zxijrpet-th-raju.vercel.app/api/v1/user"
+      );
       const data = await res.json();
 
       // Filter the data to exclude the user with a matching email
@@ -38,14 +40,16 @@ const AllUser = () => {
   //   console.log(users);
   // console.log(users.map((user) => user.role));
 
-
   const handleDeleteUser = (user) => {
-    fetch(`http://localhost:5000/api/v1/user/delete/${user._id}`, {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
+    fetch(
+      `https://jinishpotro-backend-5zxijrpet-th-raju.vercel.app/api/v1/user/delete/${user._id}`,
+      {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
@@ -56,12 +60,15 @@ const AllUser = () => {
   };
 
   const handleMakeAdmin = (id) => {
-    fetch(`http://localhost:5000/api/v1/user/update/admin/${id}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
+    fetch(
+      `https://jinishpotro-backend-5zxijrpet-th-raju.vercel.app/api/v1/user/update/admin/${id}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
@@ -71,12 +78,15 @@ const AllUser = () => {
       });
   };
   const handleMakeUser = (id) => {
-    fetch(`http://localhost:5000/api/v1/user/update/to/user/${id}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
+    fetch(
+      `https://jinishpotro-backend-5zxijrpet-th-raju.vercel.app/api/v1/user/update/to/user/${id}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
@@ -85,13 +95,13 @@ const AllUser = () => {
         }
       });
   };
-  useTitle("All user")
+  useTitle("All user");
 
   return (
     <div className="max-h-screen">
       <h2 className="text-3xl text-center md:text-5xl font-bold mb-10">
-          All <span className="text-rose-700">Users</span>
-        </h2>
+        All <span className="text-rose-700">Users</span>
+      </h2>
       <Toaster />
       <div className="lg:w-[90%] w-[100%] mx-auto overflow-x-scroll rounded-lg ">
         <table className="mb-5  table min-w-full  text-sm bg-gray-100">
