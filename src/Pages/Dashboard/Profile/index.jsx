@@ -11,6 +11,7 @@ import { useQuery } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 import Loading from "../../../Shared/Loading/inde";
+import useTitle from "../../../Shared/UseTitle";
 
 const Profile = () => {
   const { userRole, loading, setLoading } = useContext(ContextData);
@@ -27,6 +28,8 @@ const Profile = () => {
     setStateName(d);
     setActiveTab(d);
   };
+
+  useTitle("Profile");
 
   const { data: orders = [], refetch } = useQuery({
     queryKey: ["personalOrders"],

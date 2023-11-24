@@ -6,6 +6,7 @@ import Cookies from "universal-cookie";
 import { ContextData } from "../../../Context";
 import toast from "react-hot-toast";
 import Loading from "../../../Shared/Loading/inde";
+import useTitle from "../../../Shared/UseTitle";
 
 const Orders = () => {
   const { loading, setLoading, orderRole, setorderRole, userRole } =
@@ -165,6 +166,7 @@ const Orders = () => {
         }
       });
   };
+  useTitle("Orders");
 
   return (
     <div className="w-[90%] mx-auto ">

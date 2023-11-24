@@ -7,6 +7,7 @@ import { EyeIcon } from "@heroicons/react/24/solid";
 import { Link } from "react-router-dom";
 import ConfirmModal from "../../../Shared/ConfirmModal/inde";
 import { ContextData } from "../../../Context";
+import useTitle from "../../../Shared/UseTitle";
 
 const AllUser = () => {
   const { userRole, setUserRole } = useContext(ContextData);
@@ -84,6 +85,7 @@ const AllUser = () => {
         }
       });
   };
+  useTitle("All user")
 
   return (
     <div className="max-h-screen">

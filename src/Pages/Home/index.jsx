@@ -15,6 +15,7 @@ import "swiper/css/navigation";
 // import required modules
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import Testimonial from "./Testimonial";
+import useTitle from "../../Shared/UseTitle";
 
 const Home = () => {
   const { data: categories } = useQuery({
@@ -25,6 +26,8 @@ const Home = () => {
       return data.data;
     },
   });
+
+  useTitle("Home");
 
   return (
     <div>

@@ -13,6 +13,7 @@ import "@smastrom/react-rating/style.css";
 import toast from "react-hot-toast";
 import ConfirmOrder from "../../Components/ConfirmOrder";
 import PrivateRoute from "../../Secure/PrivateRoute";
+import useTitle from "../../Shared/UseTitle";
 
 const CategoriesProduct = () => {
   const data = useLoaderData();
@@ -28,6 +29,8 @@ const CategoriesProduct = () => {
     _id,
     sellerId,
   } = data.data;
+
+  useTitle("Order Product");
   const { categoryId, productId } = useParams();
   const [rating, setRating] = useState(0);
   const [wishlist, setWishlist] = useState([]);

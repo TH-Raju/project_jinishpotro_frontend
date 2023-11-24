@@ -5,6 +5,7 @@ import { useContext } from "react";
 import { ContextData } from "../../../Context";
 import toast from "react-hot-toast";
 import Loading from "../../../Shared/Loading/inde";
+import useTitle from "../../../Shared/UseTitle";
 
 const AllProduct = () => {
   const { loading, setLoading } = useContext(ContextData);
@@ -50,6 +51,7 @@ const AllProduct = () => {
         }
       });
   };
+  useTitle("All Products")
 
   return (
     <div>

@@ -7,6 +7,7 @@ import ProductCategoriy from "../../Components/ProductCategoriy";
 import ProductCard from "../../Components/ProductCard";
 import { useContext } from "react";
 import { ContextData } from "../../Context";
+import useTitle from "../../Shared/UseTitle";
 
 const CategoriyAllProduct = () => {
   const data = useLoaderData();
@@ -21,7 +22,7 @@ const CategoriyAllProduct = () => {
       return data.data;
     },
   });
-
+  useTitle("Categoriy Product")
   // console.log(categories);
   // console.log(data.data);
   // console.log(name);

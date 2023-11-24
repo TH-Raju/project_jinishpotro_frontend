@@ -7,6 +7,7 @@ import { ContextData } from "../../../Context";
 import Loading from "../../../Shared/Loading/inde";
 import Cookies from "universal-cookie";
 import { useQuery } from "@tanstack/react-query";
+import useTitle from "../../../Shared/UseTitle";
 
 const AddProduct = () => {
   const navigate = useNavigate();
@@ -70,6 +71,8 @@ const AddProduct = () => {
     },
   });
   //   console.log(categories);
+
+  useTitle("Add Product")
 
   return (
     <div>

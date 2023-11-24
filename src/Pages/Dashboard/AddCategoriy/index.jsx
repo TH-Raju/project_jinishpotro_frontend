@@ -5,6 +5,7 @@ import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { ContextData } from "../../../Context";
 import Loading from "../../../Shared/Loading/inde";
+import useTitle from "../../../Shared/UseTitle";
 
 const AddCategoriy = () => {
   const navigate = useNavigate();
@@ -53,7 +54,7 @@ const AddCategoriy = () => {
         }
       });
   };
-
+  useTitle("Add Categorie");
   return (
     <div>
       {loading && <Loading />}
@@ -68,9 +69,7 @@ const AddCategoriy = () => {
           <div className="form-control w-full max-w-xs">
             <label className="label">
               {" "}
-              <span className=" text-xl font-bold">
-                Categoriy Name
-              </span>
+              <span className=" text-xl font-bold">Categoriy Name</span>
             </label>
             <input
               type="text"
@@ -87,9 +86,7 @@ const AddCategoriy = () => {
           <div className="form-control w-full max-w-xs">
             <label className="label">
               {" "}
-              <span className=" text-xl font-bold">
-                Categoriy Title
-              </span>
+              <span className=" text-xl font-bold">Categoriy Title</span>
             </label>
             <input
               type="text"
@@ -107,9 +104,7 @@ const AddCategoriy = () => {
           <div className="form-control w-full max-w-xs">
             <label className="label">
               {" "}
-              <span className=" text-xl font-bold">
-                Categoriy Details
-              </span>
+              <span className=" text-xl font-bold">Categoriy Details</span>
             </label>
             <textarea
               type="text"
@@ -127,9 +122,7 @@ const AddCategoriy = () => {
           <div className="form-control w-full max-w-xs">
             <label className="label">
               {" "}
-              <span className=" text-xl font-bold">
-                Upload Categoriy Image
-              </span>
+              <span className=" text-xl font-bold">Upload Categoriy Image</span>
             </label>
             <input
               type="file"

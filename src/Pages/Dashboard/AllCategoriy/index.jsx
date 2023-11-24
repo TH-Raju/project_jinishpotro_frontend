@@ -5,6 +5,7 @@ import { useContext } from "react";
 import { ContextData } from "../../../Context";
 import toast from "react-hot-toast";
 import Loading from "../../../Shared/Loading/inde";
+import useTitle from "../../../Shared/UseTitle";
 
 const AllCategoriy = () => {
   const { loading, setLoading } = useContext(ContextData);
@@ -50,6 +51,8 @@ const AllCategoriy = () => {
         }
       });
   };
+
+  useTitle("All Categoriy")
 
   return (
     <div>

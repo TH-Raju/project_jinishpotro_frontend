@@ -7,6 +7,7 @@ import Cookies from "universal-cookie";
 import toast, { Toaster } from "react-hot-toast";
 import { ContextData } from "../../../Context";
 import Loading from "../../../Shared/Loading/inde";
+import useTitle from "../../../Shared/UseTitle";
 
 const Login = () => {
   const { loading, setLoading, userRole, setUserRole } =
@@ -22,6 +23,7 @@ const Login = () => {
   } else {
     dataType = "password";
   }
+  useTitle("Log in");
   const onSubmit = async (data) => {
     // console.log(data);
     setLoading(true);
@@ -59,7 +61,7 @@ const Login = () => {
       });
   };
   return (
-    <div >
+    <div>
       {loading && <Loading />}
       <section className="relative flex items-center justify-center h-screen  ">
         <div className="w-full px-4  sm:px-6 sm:py-16 lg:w-1/2 lg:px-8 ">

@@ -7,6 +7,7 @@ import Cookies from "universal-cookie";
 import toast from "react-hot-toast";
 import { ContextData } from "../../../Context";
 import Loading from "../../../Shared/Loading/inde";
+import useTitle from "../../../Shared/UseTitle";
 
 const Signup = () => {
   const {
@@ -32,6 +33,7 @@ const Signup = () => {
     dataType = "password";
   }
 
+  useTitle("Sign up");
   let dataTyped = "";
   if (visibled) {
     dataTyped = "text";

@@ -4,6 +4,7 @@ import { useContext } from "react";
 import { ContextData } from "../../Context";
 import { useQuery } from "@tanstack/react-query";
 import ProductCategoriy from "../../Components/ProductCategoriy";
+import useTitle from "../../Shared/UseTitle";
 
 const Products = () => {
   const {
@@ -23,6 +24,7 @@ const Products = () => {
       return data.data;
     },
   });
+  useTitle("Products");
   // Initialize max and min variables
   let maxPrice = -Infinity;
   let minPrice = Infinity;
