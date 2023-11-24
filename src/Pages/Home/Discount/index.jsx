@@ -33,7 +33,7 @@ const Discount = () => {
     slidesPerView = 2; // Small screens
     spacePerView = 100;
   } else if (window?.innerWidth <= 1024) {
-    slidesPerView = 2; // Medium screens
+    slidesPerView = 3; // Medium screens
     spacePerView = 50;
   }
 
@@ -44,7 +44,7 @@ const Discount = () => {
         <span className="text-rose-700 font-extrabold">I</span> Discount{" "}
         <h1 className="ml-3 mb-4 text-xl font-normal">Products</h1>
       </h1>
-      <div className="w-[90%] mx-auto">
+      <div className="w-[80%] mx-auto">
         <Swiper
           slidesPerView={slidesPerView}
           spaceBetween={spacePerView}
@@ -53,7 +53,7 @@ const Discount = () => {
             clickable: true,
           }}
           modules={[FreeMode, Pagination]}
-          className="mySwiper"
+          className="mySwiper "
         >
           {categories?.map((categorie) => (
             <div key={categorie._id}>

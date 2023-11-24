@@ -14,14 +14,14 @@ const DiscountProdCard = ({ products, categoriyId }) => {
   let actualPrice = price - discountAmount;
   return (
     <div className="">
-      <div className="card card-compact text-black w-40 md:w-52 bg-base-100 shadow-xl border border-blue-200 ">
+      <div className="card mb-9 card-compact text-black w-40 md:w-52 bg-base-100 shadow-xl border border-blue-200 ">
         <Link to={`/categoriy/${categoriyId}/${_id}`}>
           <figure className="">
-                <img
-                  src={photo}
-                  alt="Shoes"
-                  className="relative h- md:h-36 w-fit "
-                />
+            <img
+              src={photo}
+              alt="Shoes"
+              className="relative h- md:h-36 w-fit "
+            />
             <div className="badge badge-secondary absolute top-0 right-0">
               {discount}%
             </div>
