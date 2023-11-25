@@ -46,3 +46,33 @@ Explore the live demo of JinishPotro at https://jinishpotro.netlify.app/.
   - User and content moderation
   - Manage admin and users
   - Full control over the platform
+
+## Tech Stack
+* Frontend
+
+    - React+Vite
+    - React Hooks
+    - React-hook-form
+    - Tailwind CSS
+    - DaisyUI for UI components
+    - NPM Packages
+
+* Backend
+
+    - Node.js
+    - Express.js
+    - Mongoose
+
+* Database
+    - MongoDB
+
+* Authentication
+
+    - JSON Web Tokens (JWT)
+* Image Upload
+
+    - Imgbb API
+* Hosting
+
+    - Netlify (Frontend)
+    - Vercel (Backend)
