@@ -10,8 +10,8 @@ Welcome to JinishPotro, a cutting-edge e-commerce platform built with the MERN s
   - Image Upload
   - Hosting
   - Setup
-  - Feedback
   - License
+  - Contact
 
 ## Live Demo
 
@@ -76,11 +76,11 @@ JinishPotro is hosted on Vercel for the frontend and Netlify for the backend, en
 
 ## License
 
-This project is licensed under the [MIT License](LICENSE).
+This project is licensed under [TH-Raju](https://tofajjol-hosen-raju.web.app/).
 
 ## Contact
 
-For inquiries, reach out to us at [your.email@example.com].
+For inquiries, reach out to us at [rajukhan894200@gmail.com]().
 
 ---
 
