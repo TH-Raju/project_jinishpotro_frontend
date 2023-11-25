@@ -1,8 +1,48 @@
-# React + Vite
+# [JinishPotro](https://jinishpotro.netlify.app/) - Your Ultimate E-Commerce Solution
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to JinishPotro, a cutting-edge e-commerce platform built with the MERN stack (MongoDB, Express.js, React, Node.js). This document provides an overview of the project, its features, Whether you're a buyer, seller, admin, or super admin, JinishPotro has you covered.
 
-Currently, two official plugins are available:
+- Table of Contents
+  - Live Demo
+  - Features
+  - Tech Stack
+  - Setup
+  - Authentication
+  - Image Upload
+  - Hosting
+  - Contributing
+  - Feedback
+  - License
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Live Demo
+
+Explore the live demo of JinishPotro at https://jinishpotro.netlify.app/.
+
+## Features
+
+- Buyer Features
+
+  - Browse a wide range of products
+  - Add products to the cart
+  - View and edit the cart
+  - Place orders securely
+
+- Seller Features
+
+  - Add proudct and delete self product
+  - List new products for sale
+  - Manage product listings
+  - Track and fulfill orders
+
+- Admin Features
+
+  - Monitor user activity
+  - Manage products and categories
+  - View and manage user accounts
+
+- Super Admin Features
+
+  - Access to all features
+  - User and content moderation
+  - Manage admin and users
+  - Full control over the platform
