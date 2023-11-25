@@ -46,12 +46,12 @@ Explore the live demo of JinishPotro at https://jinishpotro.netlify.app/.
 
 # Technologies Used
 
-- **Frontend**: React, Vite, Tailwind CSS, DaisyUI
-- **Backend**: Node.js, Express.js
+- **Frontend**: React+Vite, React-hooks, React-hook-form, Tailwind CSS, DaisyUI, NPM packages, localStorage, Cookies.
+- **Backend**: Node.js, Express.js, Mongoose.
 - **Database**: MongoDB
 - **Authentication**: JSON Web Tokens (JWT)
 - **Image Upload**: Imgbb
-- **Hosting**: Vercel (Frontend), Netlify (Backend)
+- **Hosting**: Netlify (Frontend), Vercel (Backend)
 
 ## Authentication
 
@@ -72,15 +72,13 @@ JinishPotro is hosted on Vercel for the frontend and Netlify for the backend, en
 3. Set up environment variables for MongoDB, JWT, and other configurations.
 4. Run the development server with `npm start` for both client and server.
 
-
-
 ## License
 
 This project is licensed under [TH-Raju](https://tofajjol-hosen-raju.web.app/).
 
 ## Contact
 
-For inquiries, reach out to us at [rajukhan894200@gmail.com]().
+For inquiries, reach out to me at [rajukhan894200@gmail.com]().
 
 ---
 
