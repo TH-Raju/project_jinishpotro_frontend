@@ -3,9 +3,7 @@
 import { useContext } from "react";
 import { ContextData } from "../../../Context";
 import { useQuery } from "@tanstack/react-query";
-import Categoriy from "../../../Components/Categoriy";
 import { Link } from "react-router-dom";
-import Loading from "../../../Shared/Loading/inde";
 
 const AllCategoriys = () => {
   const { siteName } = useContext(ContextData);

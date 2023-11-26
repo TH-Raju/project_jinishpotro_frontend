@@ -5,12 +5,13 @@ import { ContextData } from "../../Context";
 import { useQuery } from "@tanstack/react-query";
 import ProductCategoriy from "../../Components/ProductCategoriy";
 import useTitle from "../../Shared/UseTitle";
+import Loading from "../../Shared/Loading/inde";
 
 const Products = () => {
   const {
     count,
-    setCount,
-    maxCount,
+    loading,
+    setLoading,
     setMinCount,
     setMaxCount,
     selectedOptions,
@@ -19,10 +20,14 @@ const Products = () => {
   const { data: categories } = useQuery({
     queryKey: ["categoriesProduct"],
     queryFn: async () => {
+      setLoading(true);
       const res = await fetch(
         "https://jinishpotro-backend-5zxijrpet-th-raju.vercel.app/api/v1/categoriy"
       );
       const data = await res.json();
+      if (data) {
+        setLoading(false);
+      }
       return data.data;
     },
   });
@@ -92,6 +97,7 @@ const Products = () => {
       <div>
         <strong>Selected Options:</strong> {selectedOptions.join(", ")}
       </div> */}
+      {loading && <Loading />}
       <div>
         <div className="text-center">
           <h1 className="text-3xl sm:text-5xl font-extrabold my-4">
