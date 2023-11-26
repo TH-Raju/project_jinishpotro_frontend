@@ -5,6 +5,7 @@ import { ContextData } from "../../../Context";
 import { useQuery } from "@tanstack/react-query";
 import Categoriy from "../../../Components/Categoriy";
 import { Link } from "react-router-dom";
+import Loading from "../../../Shared/Loading/inde";
 
 const AllCategoriys = () => {
   const { siteName } = useContext(ContextData);
@@ -16,6 +17,7 @@ const AllCategoriys = () => {
         "https://jinishpotro-backend-5zxijrpet-th-raju.vercel.app/api/v1/categoriy"
       );
       const data = await res.json();
+
       return data.data;
     },
   });
