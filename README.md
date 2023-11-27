@@ -82,4 +82,7 @@ For inquiries, reach out to me at [rajukhan894200@gmail.com]().
 
 ---
 
-**Happy Shopping with JinishPotro! 🛍️**
+<p align="center">
+  <img src="./src/assets/jp.png" alt="JinishPotro Logo" width="30" height="30" style="display: block; margin: auto;">
+  <strong>Happy Shopping with JinishPotro!</strong>
+</p>
