@@ -1,4 +1,4 @@
-# [JinishPotro](https://jinishpotro.netlify.app/) - Your Ultimate E-Commerce Solution
+# [<img src="./src/assets/jp.png" alt="JinishPotro" width="30" height="30"> JinishPotro](https://jinishpotro.netlify.app/) - Your Ultimate E-Commerce Solution
 
 Welcome to JinishPotro, a cutting-edge e-commerce platform built with the MERN stack (MongoDB, Express.js, React, Node.js). This document provides an overview of the project, its features, Whether you're a buyer, seller, admin, or super admin, JinishPotro has you covered.
 
