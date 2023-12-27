@@ -15,7 +15,7 @@ const ProductCard = ({ products }) => {
 
   return (
     <div>
-      <div className="card card-compact  text-black w-40 md:w-52 bg-base-100 shadow-xl border border-blue-200 ">
+      <div className="card card-compact  text-black md:w-52 bg-base-100 shadow-xl border border-blue-200 ">
         <figure className="">
           <img src={photo} alt="Shoes" className="h- md:h-36 w-fit " />
         </figure>

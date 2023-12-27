@@ -41,7 +41,7 @@ const CategoriyAllProduct = () => {
           <span className="text-rose-700 font-extrabold">I</span> {name}{" "}
           <h1 className="ml-3 mb-4 text-xl font-normal">{detail}</h1>
         </h1>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 my-5 gap-7 ">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 my-5 gap-4 ">
           {categories?.products?.map((product) => (
             <Link key={product._id} to={`/categoriy/${id}/${product._id}`}>
               <ProductCard products={product} />

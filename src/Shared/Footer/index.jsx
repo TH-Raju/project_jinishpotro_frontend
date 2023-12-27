@@ -82,9 +82,9 @@ const Footer = () => {
   return (
     <div>
       <ActualFooter />
-      <div className="lg:hidden text-white">
+      <div className="lg:hidden text-white fixed ">
         <div
-          className={`navbar bg-rose-900 bottom-0 z-40 fixed lg:hidden pb-5`}
+          className={`navbar bg-rose-900 z-40 fixed bottom-0 lg:hidden pb-5`}
         >
           <div className="navbar-start">
             <div className="dropdown">
@@ -111,7 +111,10 @@ const Footer = () => {
                 {menuItems}
               </ul>
             </div>
-            <Link to={"/"} className="btn btn-ghost text-sm normal-case  -ml-6">
+            <Link
+              to={"/"}
+              className="btn  btn-ghost text-sm normal-case  -ml-6"
+            >
               {siteName && siteName}
             </Link>
           </div>
@@ -184,7 +187,6 @@ const Footer = () => {
                   tabIndex={0}
                   className="dropdown-content -ml-28  z-[1] menu p-2 shadow  rounded-box w-40"
                 >
-
                   <Link to={`/dashboard`}>
                     <li className=" mb-2">
                       <button className="hover:bg-sky-700 hover:text-white my-2 bg-sky-500  rounded-lg duration-100">
