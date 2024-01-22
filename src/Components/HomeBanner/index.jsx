@@ -21,14 +21,14 @@ const HomeBanner = ({ categorie }) => {
 
         <div className="relative mx-auto max-w-screen-xl px-4 py-32 sm:px-6 lg:flex  lg:items-center lg:px-8">
           <div className="max-w-xl text-center sm:text-left">
-            <h1 className="text-3xl font-extrabold sm:text-5xl">
+            <h1 className=" text-3xl font-extrabold sm:text-5xl">
               Let us find your
               <strong className="block font-extrabold text-rose-700">
                 {categorie.name}
               </strong>
             </h1>
 
-            <p className="mt-4 max-w-lg sm:text-xl/relaxed">
+            <p className=" mt-4 max-w-lg sm:text-xl/relaxed">
               {categorie.detail}
             </p>
 

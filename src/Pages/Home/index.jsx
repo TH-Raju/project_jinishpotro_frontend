@@ -41,7 +41,7 @@ const Home = () => {
 
   return (
     <div>
-      {loading && <Loading />}
+      {/* {loading && <Loading />} */}
       <Swiper
         spaceBetween={30}
         loop={true}
