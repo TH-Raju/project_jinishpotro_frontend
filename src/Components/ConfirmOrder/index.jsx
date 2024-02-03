@@ -18,6 +18,7 @@ const ConfirmOrder = ({ id, categoryId, categoryName, productData }) => {
   const userId = cookies.get("id");
   const userPhone = cookies.get("phone");
   const userEmail = cookies.get("email");
+  
   const navigate = useNavigate();
   const {
     name,

@@ -15,7 +15,12 @@ import ConfirmOrder from "../../Components/ConfirmOrder";
 import PrivateRoute from "../../Secure/PrivateRoute";
 import useTitle from "../../Shared/UseTitle";
 
+import Cookies from "universal-cookie";
+
 const CategoriesProduct = () => {
+  const cookies = new Cookies();
+  const userEmail = cookies.get("email");
+  const userId = cookies.get("id");
   const data = useLoaderData();
   // console.log(data.data.review);
   const {
@@ -98,6 +103,25 @@ const CategoriesProduct = () => {
     }
   }
 
+  function check(id) {
+    if (userEmail === undefined && userId === undefined) {
+      toast.error("Please Log in First");
+
+      navigate("/login");
+    } else {
+      document.getElementById(id).showModal();
+    }
+  }
+
+  function checkCart(id) {
+    if (userEmail === undefined && userId === undefined) {
+      toast.error("Please Log in First");
+      navigate("/login");
+    } else {
+      addToWishlist(id);
+      // console.log(userEmail);
+    }
+  }
   // console.log(wishlist);
 
   // console.log(categories);
@@ -131,13 +155,13 @@ const CategoriesProduct = () => {
             <div className="bottom-0 mt-12 flex justify-between md:justify-end">
               <button
                 className="btn btn-primary btn-sm mb-2 lg:mb-0"
-                onClick={() => document.getElementById(_id).showModal()}
+                onClick={() => check(_id)}
               >
                 Buy Now
               </button>
               <button
                 className="btn btn-primary btn-sm lg:ml-4 ml-2 md:ml-3"
-                onClick={() => addToWishlist(_id)}
+                onClick={() => checkCart(_id)}
               >
                 Add to Cart
               </button>
@@ -180,14 +204,14 @@ const CategoriesProduct = () => {
           ))}
         </div>
       </div>
-      <PrivateRoute>
-        <Reviews
-          review={review}
-          refetch={refetch}
-          categoryId={categoryId}
-          productId={productId}
-        />
-      </PrivateRoute>
+      {/* <PrivateRoute> */}
+      <Reviews
+        review={review}
+        refetch={refetch}
+        categoryId={categoryId}
+        productId={productId}
+      />
+      {/* </PrivateRoute> */}
     </div>
   );
 };

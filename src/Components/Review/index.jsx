@@ -37,6 +37,7 @@ const Reviews = ({ review, refetch, categoryId, productId }) => {
   const cookies = new Cookies();
   const name = cookies.get("name");
   const id = cookies.get("id");
+  const email = cookies.get("email");
   const photo = localStorage.getItem("photo");
   const navigate = useNavigate();
   const [rating, setRating] = useState(0);
@@ -59,6 +60,11 @@ const Reviews = ({ review, refetch, categoryId, productId }) => {
   const handleAddReview = (data) => {
     data.rating = rating;
     // console.log(data);
+    if (email === undefined && id === undefined) {
+      toast.error("Please Log in First");
+      navigate("/login");
+      return false
+    }
 
     const revData = {
       categoriyId: categoryId,
