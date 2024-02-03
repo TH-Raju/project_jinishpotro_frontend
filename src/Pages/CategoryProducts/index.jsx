@@ -150,7 +150,7 @@ const CategoriesProduct = () => {
               Discount: <span className="font-bold">{discount}%</span>
             </p>
             <p>
-              Price: <span className="font-bold">${actualPrice}</span>
+              Total Price: <span className="font-bold">${actualPrice}</span>
             </p>
             <div className="bottom-0 mt-12 flex justify-between md:justify-end">
               <button
